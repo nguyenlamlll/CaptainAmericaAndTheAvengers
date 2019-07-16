@@ -30,7 +30,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -155,19 +155,53 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="CaptainAmericaAndTheAvengers.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="EndScene.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameError.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Graphics.h" />
+    <ClInclude Include="IndexManager.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="OptionScene.h" />
+    <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CaptainAmericaAndTheAvengers.cpp" />
+    <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="EndScene.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameError.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="IndexManager.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="OptionScene.cpp" />
+    <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CaptainAmericaAndTheAvengers.rc" />
