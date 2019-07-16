@@ -19,8 +19,8 @@
 #define TRANSCOLOR  SETCOLOR_ARGB(255,0,0,0)  // transparent color (magenta)
 
 // Window
-const char CLASS_NAME[] = "Metroid";
-const char GAME_TITLE[] = "Metroid";
+const char CLASS_NAME[] = "Captain America And The Avengers";
+const char GAME_TITLE[] = "Captain America And The Avengers";
 const bool FULLSCREEN = false;              // windowed or fullscreen
 const UINT VIEWPORT_WIDTH = 256;               // width of game in pixels
 const UINT VIEWPORT_HEIGHT = 224;               // height of game in pixels
