@@ -42,8 +42,10 @@ LRESULT SceneManager::messageHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM 
 	case WM_CHAR:                           // character entered
 		input->keyIn(wParam);
 		return 0;
+	default:
+		return DefWindowProc(hwnd, msg, wParam, lParam);    // let Windows handle it
 	}
-	return DefWindowProc(hwnd, msg, wParam, lParam);    // let Windows handle it
+	return 0;
 }
 void SceneManager::insertScene(const char * name, Scene * Scene)
 {
@@ -54,13 +56,13 @@ void SceneManager::run()
 {
 	this->currentScene->run();
 	input->clear(InputNS::KEYS_PRESSED);
-	if (input->isKeyDown(VK_RETURN))
-	{
-		this->goToScene(SceneType::PLAY);
+	//if (input->isKeyDown(VK_RETURN))
+	//{
+	//	this->goToScene(SceneType::PLAY);
 
-		//Sound::getInstance()->stop(SOUND_TITLE);
-		//Sound::getInstance()->play(SOUND_BACKGROUND, true);
-	}
+	//	//Sound::getInstance()->stop(SOUND_TITLE);
+	//	//Sound::getInstance()->play(SOUND_BACKGROUND, true);
+	//}
 }
 
 void SceneManager::init(HWND hwnd)
@@ -75,17 +77,16 @@ void SceneManager::init(HWND hwnd)
 	input->initialize(hwnd, false);
 
 	this->sceneContainer = new std::map<SceneType, Scene*>();
-	OptionScene* optionS = new OptionScene(graphics, input);
+	OptionScene* optionS = new OptionScene(graphics, input, this);
 	optionS->init();
 	PlayScene* playS = new PlayScene(graphics, input);
 	EndScene* endS = new EndScene(graphics, input);
 	endS->init();
 
 	currentScene = optionS;
-	//sceneContainer->insert(std::pair<SceneType, Scene*>(SceneType::OPTION, optionS));
-	//this->sceneContainer->insert(std::pair<SceneType, Scene*>(SceneType::OPTION, optionS));
-	//this->sceneContainer->insert(std::pair<SceneType, Scene*>(SceneType::PLAY, playS));
-	//this->sceneContainer->insert(std::pair<SceneType, Scene*>(SceneType::END, endS));
+	this->sceneContainer->insert(std::pair<SceneType, Scene*>(SceneType::OPTION, optionS));
+	this->sceneContainer->insert(std::pair<SceneType, Scene*>(SceneType::PLAY, playS));
+	this->sceneContainer->insert(std::pair<SceneType, Scene*>(SceneType::END, endS));
 
 	//Sound::getInstance()->loadAllSound();
 	//Sound::getInstance()->play(SOUND_TITLE, true);

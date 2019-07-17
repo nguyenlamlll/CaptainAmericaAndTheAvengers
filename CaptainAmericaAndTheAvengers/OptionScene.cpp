@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "OptionScene.h"
-
+#include "Constants.h"
 
 void OptionScene::init()
 {
@@ -24,6 +24,7 @@ void OptionScene::init()
 	data.rotate = 0;
 	data.flipVertical = false;
 	data.flipHorizontal = false;
+
 }
 
 void OptionScene::update()
@@ -58,6 +59,14 @@ void OptionScene::run()
 {
 	update();
 	draw();
+	
+	if (input->isKeyDown(VK_RETURN))
+	{
+		sceneManager->getInstance()->goToScene(SceneType::PLAY);
+
+		//Sound::getInstance()->stop(SOUND_TITLE);
+		//Sound::getInstance()->play(SOUND_BACKGROUND, true);
+	}
 }
 
 void OptionScene::release()
@@ -75,6 +84,13 @@ OptionScene::OptionScene(Graphics * graphics, Input * input)
 {
 	this->graphics = graphics;
 	this->input = input;
+}
+
+OptionScene::OptionScene(Graphics * graphics, Input * input, SceneManager * sceneManager)
+{
+	this->graphics = graphics;
+	this->input = input;
+	this->sceneManager = sceneManager;
 }
 
 

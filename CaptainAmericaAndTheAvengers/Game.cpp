@@ -1,14 +1,15 @@
 #include "stdafx.h"
 #include "Game.h"
 #include "ObjectManager.h"
+
 Game* Game::instance = nullptr;
 Game::Game()
 {
-	//this->spriteManger = SpriteManager::getInstance();
-	//this->textureManager = new TextureManager();
+	this->spriteManger = SpriteManager::getInstance();
+	this->textureManager = new TextureManager();
 
-	//// new map component
-	//this->tileset = new TextureManager();
+	// new map component
+	this->tileset = new TextureManager();
 	//this->mapInfo = new MapInfo();
 	//this->mapBrinstar = new Map();
 

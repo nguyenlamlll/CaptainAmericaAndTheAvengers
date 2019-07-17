@@ -1,17 +1,22 @@
 #pragma once
 #include "GameManager.h"
-
+#include "TextureManager.h"
+#include "SpriteManager.h"
 #include "Camera.h"
+#include "Map.h"
 
 class Game : public GameManager
 {
 private:
 	static Game* instance;
 
-	//TextureManager *textureManager;
-	//SpriteManager *spriteManger;
+	TextureManager *textureManager;
+	SpriteManager *spriteManger;
 
-	Camera *camera;
+	TextureManager *tileset;
+	Map* map;
+
+	Camera* camera;
 
 public:
 	Game();

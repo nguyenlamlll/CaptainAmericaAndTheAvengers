@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CaptainAmericaAndTheAvengers.h" />
     <ClInclude Include="Constants.h" />
@@ -165,6 +166,8 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="IndexManager.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="MapInfo.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="OptionScene.h" />
     <ClInclude Include="PlayScene.h" />
@@ -178,6 +181,7 @@
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CaptainAmericaAndTheAvengers.cpp" />
     <ClCompile Include="Constants.cpp" />
@@ -188,6 +192,8 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="IndexManager.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapInfo.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="OptionScene.cpp" />
     <ClCompile Include="PlayScene.cpp" />
