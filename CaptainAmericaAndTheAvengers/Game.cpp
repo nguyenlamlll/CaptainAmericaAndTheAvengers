@@ -10,10 +10,10 @@ Game::Game()
 
 	// new map component
 	this->tileset = new TextureManager();
-	//this->mapInfo = new MapInfo();
-	//this->mapBrinstar = new Map();
+	this->mapInfo = new MapInfo();
+	this->map= new Map();
 
-	//instance = this;
+	instance = this;
 }
 
 
@@ -31,10 +31,40 @@ Game * Game::getInstance()
 
 void Game::initialize(HWND hwnd)
 {
+	
 }
 
 void Game::initialize(Graphics * graphics, Input * input)
 {
+	GameManager::initialize(graphics, input); // graphics was init inside
+
+	if (!spriteManger->initialize(SOURCE_JSON))
+	{
+		throw GameError(GameErrorNS::FATAL_ERROR, "Can not  load json");
+	}
+
+	if (!textureManager->initialize(graphics, SOURCE_IMAGE))
+	{
+		throw GameError(GameErrorNS::FATAL_ERROR, "Can not load spite sheet");
+	}
+
+	if (!tileset->initialize(graphics, TILESET_IMAGE))
+	{
+		throw GameError(GameErrorNS::FATAL_ERROR, "Can not load tileset");
+	}
+
+	if (!mapInfo->initialize(MAP_BRINSTAR_JSON))
+	{
+		throw GameError(GameErrorNS::FATAL_ERROR, "Can not load map info");
+	}
+
+	if (!map->initialize(graphics, tileset, mapInfo))
+	{
+		throw GameError(GameErrorNS::FATAL_ERROR, "Can not initalize map brinstar");
+	}
+
+	fpsText = new Text("FPS: 0", eFont::body, 8, VECTOR2(VIEWPORT_WIDTH - 70, 5), GraphicsNS::WHITE, false, true);
+	fpsText->initialize(graphics);
 }
 
 void Game::update(float dt)
@@ -51,6 +81,15 @@ void Game::collisions(float dt)
 
 void Game::render()
 {
+	this->getGraphics()->spriteBegin();
+	map->draw();
+	this->getGraphics()->spriteEnd();
+	
+	fpsText->setText("FPS: " + std::to_string((int)this->fps));
+	fpsText->draw();
+
+	//opsText->setText("DPS: " + std::to_string(ObjectManager::getInstance()->getTotalObjectsPerFrame()));
+	//opsText->draw();
 }
 
 void Game::releaseAll()

@@ -4,6 +4,7 @@
 #include "SpriteManager.h"
 #include "Camera.h"
 #include "Map.h"
+#include "Text.h"
 
 class Game : public GameManager
 {
@@ -14,9 +15,14 @@ private:
 	SpriteManager *spriteManger;
 
 	TextureManager *tileset;
+	MapInfo* mapInfo;
 	Map* map;
 
 	Camera* camera;
+
+	// Utility texts
+	Text* fpsText;
+	Text* opsText;
 
 public:
 	Game();

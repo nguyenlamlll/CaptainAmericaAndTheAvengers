@@ -8,8 +8,9 @@ PlayScene::PlayScene()
 
 PlayScene::PlayScene(Graphics * graphics, Input * input)
 {
+	game = new Game();
+	game->initialize(graphics, input);
 }
-
 
 PlayScene::~PlayScene()
 {
@@ -29,8 +30,10 @@ void PlayScene::draw()
 
 void PlayScene::run()
 {
+	game->run();
 }
 
 void PlayScene::release()
 {
+	game->releaseAll();
 }
