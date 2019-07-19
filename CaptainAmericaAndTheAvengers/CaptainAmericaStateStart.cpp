@@ -52,6 +52,32 @@ void CaptainAmericaStateStart::handleInput(float dt)
 		this->captainAmerica->setStatus(eStatus::MOVE);
 		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::MOVE);
 	}
+
+	if (input->isKeyDown(VK_W)) {
+		this->captainAmerica->setStatus(eStatus::JUMP);
+		onExit();
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::JUMP);
+		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+	}
+
+	if (input->isKeyDown(VK_J)) {
+		this->captainAmerica->setStatus(eStatus::HIT);
+		onExit();
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::HIT);
+		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+	}
+
+	if (input->isKeyDown(VK_X)) {
+		this->captainAmerica->setStatus(eStatus::SPIN);
+		onExit();
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::SPIN);
+		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+	}
+
+	if (input->isKeyDown(VK_S) && input->isKeyDown(VK_J)) {
+		this->captainAmerica->setStatus(eStatus::SITATTACK);
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::SITATTACK);
+	}
 }
 
 void CaptainAmericaStateStart::update(float dt)
@@ -61,6 +87,7 @@ void CaptainAmericaStateStart::update(float dt)
 
 void CaptainAmericaStateStart::onStart()
 {
+	animation->start();
 }
 
 void CaptainAmericaStateStart::onExit()

@@ -138,6 +138,21 @@
     <ClInclude Include="CaptainAmericaStateMove.h">
       <Filter>Header Files\Objects\Players\States</Filter>
     </ClInclude>
+    <ClInclude Include="CaptainAmericaStateSitAttack.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateHit.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateJump.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateSpin.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateKick.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -225,6 +240,21 @@
       <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
     <ClCompile Include="CaptainAmericaStateStart.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateSitAttack.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateHit.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateJump.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateKick.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateSpin.cpp">
       <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
   </ItemGroup>

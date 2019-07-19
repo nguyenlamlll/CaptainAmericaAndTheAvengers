@@ -7,8 +7,8 @@
 
 
 //start position
-#define START_POS_X 500	
-#define START_POS_Y 500
+#define START_POS_X 650	
+#define START_POS_Y 1770
 
 CaptainAmerica::CaptainAmerica()
 {
@@ -29,18 +29,52 @@ CaptainAmerica::CaptainAmerica(TextureManager * textureM, Graphics * graphics, I
 
 	this->setPosition(VECTOR2(START_POS_X, START_POS_Y));
 
+	
+	hitAnimation = new Animation(
+		sprite,
+		IndexManager::getInstance()->captainAmericaHit,
+		4,
+		0.1f
+	);
+	jumpAnimation = new Animation(
+		sprite,
+		IndexManager::getInstance()->captainAmericaJump,
+		3,
+		0.1f
+	);
+	kickAnimation = new Animation(
+		sprite,
+		IndexManager::getInstance()->captainAmericaKick,
+		5,
+		0.1f
+	);
 	startAnimation = new Animation(
 		sprite,
 		IndexManager::getInstance()->captainAmericaStart,
 		1,
-		0.1f);
+		0.1f
+	);
 	moveAnimation = new Animation(
 		sprite,
 		IndexManager::getInstance()->captainAmericaMove,
 		5,
 		0.1f
 	);
+	sitAttackAnimation = new Animation(
+		sprite,
+		IndexManager::getInstance()->captainAmericaSitAttack,
+		5,
+		0.1f
+	);
+	spinAnimation = new Animation(
+		sprite,
+		IndexManager::getInstance()->captainAmericaSpin,
+		7,
+		0.1f
+	);
 
+
+	// Initialize the states and their manager class.
 	CaptainAmericaStateManager::getInstance()->init(this, input);
 
 	visible = true;
@@ -76,12 +110,3 @@ void CaptainAmerica::release()
 {
 }
 
-Animation * CaptainAmerica::getStartAnimation()
-{
-	return this->startAnimation;
-}
-
-Animation * CaptainAmerica::getMoveAnimation()
-{
-	return this->moveAnimation;
-}

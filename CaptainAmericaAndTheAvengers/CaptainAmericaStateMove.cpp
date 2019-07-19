@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "CaptainAmericaStateMove.h"
-
+#include "CaptainAmericaStateManager.h"
 
 CaptainAmericaStateMove::CaptainAmericaStateMove()
 {
@@ -30,6 +30,22 @@ void CaptainAmericaStateMove::setBoundCollision()
 
 void CaptainAmericaStateMove::handleInput(float dt)
 {
+	if (input->isKeyDown(VK_A)) {
+		this->captainAmerica->setStatus(eStatus::START);
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::START);
+	}
+
+	if (input->isKeyDown(VK_S) && input->isKeyDown(VK_J)) {
+		this->captainAmerica->setStatus(eStatus::SITATTACK);
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::SITATTACK);
+	}
+
+	if (input->isKeyUp(VK_D)) {
+		this->captainAmerica->setStatus(eStatus::START);
+		onExit();
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::START);
+		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+	}
 }
 
 void CaptainAmericaStateMove::update(float dt)
@@ -39,6 +55,7 @@ void CaptainAmericaStateMove::update(float dt)
 
 void CaptainAmericaStateMove::onStart()
 {
+	animation->start();
 }
 
 void CaptainAmericaStateMove::onExit()

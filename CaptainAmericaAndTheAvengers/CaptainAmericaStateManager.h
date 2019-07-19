@@ -2,6 +2,11 @@
 #include "BaseState.h"
 #include "CaptainAmericaStateStart.h"
 #include "CaptainAmericaStateMove.h"
+#include "CaptainAmericaStateSitAttack.h"
+#include "CaptainAmericaStateHit.h"
+#include "CaptainAmericaStateJump.h"
+#include "CaptainAmericaStateKick.h"
+#include "CaptainAmericaStateSpin.h"
 
 class CaptainAmericaStateManager
 {
@@ -10,11 +15,11 @@ private:
 
 	CaptainAmericaStateStart* stateStart;
 	CaptainAmericaStateMove* stateMove;
-	//CaptainAmericaStateHit* stateHit;
-	//CaptainAmericaStateJump* stateJump;
-	//CaptainAmericaStateKick* stateKick;
-	//CaptainAmericaStateSitAttack* stateSitAttack;
-	//CaptainAmericaStateSpin* CaptainAmericaSpin;
+	CaptainAmericaStateHit* stateHit;
+	CaptainAmericaStateJump* stateJump;
+	CaptainAmericaStateKick* stateKick;
+	CaptainAmericaStateSitAttack* stateSitAttack;
+	CaptainAmericaStateSpin* stateSpin;
 
 	BaseState* currentState;
 

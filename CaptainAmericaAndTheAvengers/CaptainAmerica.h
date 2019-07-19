@@ -18,8 +18,13 @@ private:
 	TextureManager* textureManager;
 	Graphics* graphics;
 
+	Animation* hitAnimation;
+	Animation* jumpAnimation;
+	Animation* kickAnimation;
 	Animation* startAnimation;
 	Animation* moveAnimation;
+	Animation* sitAttackAnimation;
+	Animation* spinAnimation;
 
 	bool visible;
 
@@ -39,7 +44,12 @@ public:
 	//void updateHorizontal(float dt);
 	//void updateVertical(float dt);
 
-	Animation* getStartAnimation();
-	Animation* getMoveAnimation();
+	Animation* getHitAnimation() { return this->hitAnimation; }
+	Animation* getJumpAnimation() { return this->jumpAnimation; }
+	Animation* getKickAnimation() { return this->kickAnimation; }
+	Animation* getStartAnimation() { return this->startAnimation; }
+	Animation* getMoveAnimation() { return this->moveAnimation; }
+	Animation* getSitAttackAnimation() { return this->sitAttackAnimation; }
+	Animation* getSpinAnimation() { return this->spinAnimation; }
 };
 

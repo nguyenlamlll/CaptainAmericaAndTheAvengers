@@ -26,8 +26,10 @@ const UINT VIEWPORT_WIDTH = 256;               // width of game in pixels
 const UINT VIEWPORT_HEIGHT = 224;               // height of game in pixels
 
 // Change width and height accordingly to the map to calculate the columns and the rows.
-const UINT MAP_WIDTH = 3200;
-const UINT MAP_HEIGHT = 2400;
+//const UINT MAP_WIDTH = 3200; 
+//const UINT MAP_HEIGHT = 2400;
+const UINT MAP_WIDTH = 6400;
+const UINT MAP_HEIGHT = 4800;
 
 // Game Manger
 const double PI = 3.14159265;
@@ -46,14 +48,17 @@ const UCHAR ALT_KEY = VK_MENU;         // Alt key
 const UCHAR ENTER_KEY = VK_RETURN;       // Enter key
 #define VK_X 0x58
 #define VK_Z 0x5A
+#define VK_W 0x57
 #define VK_D 0x44
 #define VK_S 0x53 
 #define VK_A 0x41
 #define VK_F 0x46
 #define VK_G 0x47
+#define VK_J 0x4A
+
 // Source
 const char ENDGAME_IMAGE[] = "Resources\\SpriteSheets\\EndGame.png";
-const char STARTGAME_IMAGE[] = "Resources\\SpriteSheets\\StartGame.png";
+const char STARTGAME_IMAGE[] = "Resources\\SpriteSheets\\hqdefault.jpg";
 
 //const char SOURCE_IMAGE[] = "Resources\\SpriteSheets\\MetroidTexture.png";//character of game
 //const char SOURCE_JSON[] = "json\\MetroidTexture.json"; //json file of metroid sprite
@@ -62,8 +67,12 @@ const char SOURCE_JSON[] = "json\\Animation.json"; //json file of metroid sprite
 
 //const char MAP_BRINSTAR_JSON[] = "json\\MapBrinstar.json"; //json file of map brinstar
 //const char TILESET_IMAGE[] = "Resources\\Tileset\\Tileset.png"; //tileset of map brinstar
-const char MAP_BRINSTAR_JSON[] = "json\\MapOmaha.json"; //json file of map brinstar
-const char TILESET_IMAGE[] = "Resources\\Tileset\\Tileset_Omaha.png"; //tileset of map brinstar
+//
+//const char MAP_BRINSTAR_JSON[] = "json\\Charleston.json"; 
+//const char TILESET_IMAGE[] = "Resources\\Tileset\\3 Charleston.png"; 
+
+const char MAP_BRINSTAR_JSON[] = "json\\Pittsburgh.json";
+const char TILESET_IMAGE[] = "Resources\\Tileset\\4 Pittsburgh.png";
 
 const char OBJECT_LAYER_BRINSTAR_JSON[] = "json\\ObjectLayerBrinstar.json"; //object layer json of Brinstar
 const char QUADTREE[] = "json\\QuadTree.json";
@@ -137,17 +146,11 @@ enum CollideDirection
 enum eStatus {
 	START,
 	MOVE,
-	JUMPING,
-	RUNNING,
-	ROLLING,
-	ACROBAT,
-	ENDING,
-	STANDING,
-	FALLING,
-	FOLLOW,
-	FALLING_ROLLING,
-	INJURING,
-	BOOM
+	SITATTACK,
+	SPIN,
+	KICK,
+	JUMP,
+	HIT
 };
 
 // direction

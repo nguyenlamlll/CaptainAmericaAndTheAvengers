@@ -25,7 +25,11 @@ void CaptainAmericaStateManager::init(CaptainAmerica* captainAmerica, Input* inp
 {
 	stateStart = new CaptainAmericaStateStart(captainAmerica, input);
 	stateMove = new CaptainAmericaStateMove(captainAmerica, input);
-
+	stateHit = new CaptainAmericaStateHit(captainAmerica, input);
+	stateKick = new CaptainAmericaStateKick(captainAmerica, input);
+	stateSitAttack = new CaptainAmericaStateSitAttack(captainAmerica, input);
+	stateSpin = new CaptainAmericaStateSpin(captainAmerica, input);
+	stateJump = new CaptainAmericaStateJump(captainAmerica, input);
 	currentState = stateStart;
 }
 
@@ -68,6 +72,21 @@ void CaptainAmericaStateManager::changeStateTo(eStatus eStatus)
 	}
 	case eStatus::MOVE:
 		currentState = stateMove;
+		break;
+	case eStatus::SITATTACK:
+		currentState = stateSitAttack;
+		break;
+	case eStatus::SPIN:
+		currentState = stateSpin;
+		break;
+	case eStatus::HIT:
+		currentState = stateHit;
+		break;
+	case eStatus::JUMP:
+		currentState = stateJump;
+		break;
+	case eStatus::KICK:
+		currentState = stateKick;
 		break;
 	default:
 		break;

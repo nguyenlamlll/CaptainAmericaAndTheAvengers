@@ -161,8 +161,13 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CaptainAmerica.h" />
     <ClInclude Include="CaptainAmericaAndTheAvengers.h" />
+    <ClInclude Include="CaptainAmericaStateHit.h" />
+    <ClInclude Include="CaptainAmericaStateJump.h" />
+    <ClInclude Include="CaptainAmericaStateKick.h" />
+    <ClInclude Include="CaptainAmericaStateSitAttack.h" />
     <ClInclude Include="CaptainAmericaStateManager.h" />
     <ClInclude Include="CaptainAmericaStateMove.h" />
+    <ClInclude Include="CaptainAmericaStateSpin.h" />
     <ClInclude Include="CaptainAmericaStateStart.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="EndScene.h" />
@@ -194,8 +199,13 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CaptainAmerica.cpp" />
     <ClCompile Include="CaptainAmericaAndTheAvengers.cpp" />
+    <ClCompile Include="CaptainAmericaStateHit.cpp" />
+    <ClCompile Include="CaptainAmericaStateJump.cpp" />
+    <ClCompile Include="CaptainAmericaStateKick.cpp" />
+    <ClCompile Include="CaptainAmericaStateSitAttack.cpp" />
     <ClCompile Include="CaptainAmericaStateManager.cpp" />
     <ClCompile Include="CaptainAmericaStateMove.cpp" />
+    <ClCompile Include="CaptainAmericaStateSpin.cpp" />
     <ClCompile Include="CaptainAmericaStateStart.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="EndScene.cpp" />
