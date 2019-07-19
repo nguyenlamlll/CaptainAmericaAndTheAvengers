@@ -30,7 +30,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -155,19 +155,83 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="BaseState.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="CaptainAmerica.h" />
     <ClInclude Include="CaptainAmericaAndTheAvengers.h" />
+    <ClInclude Include="CaptainAmericaStateHit.h" />
+    <ClInclude Include="CaptainAmericaStateJump.h" />
+    <ClInclude Include="CaptainAmericaStateKick.h" />
+    <ClInclude Include="CaptainAmericaStateSitAttack.h" />
+    <ClInclude Include="CaptainAmericaStateManager.h" />
+    <ClInclude Include="CaptainAmericaStateMove.h" />
+    <ClInclude Include="CaptainAmericaStateSpin.h" />
+    <ClInclude Include="CaptainAmericaStateStart.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="EndScene.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameError.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Graphics.h" />
+    <ClInclude Include="IndexManager.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="MapInfo.h" />
+    <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="OptionScene.h" />
+    <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SpriteManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="BaseState.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CaptainAmerica.cpp" />
     <ClCompile Include="CaptainAmericaAndTheAvengers.cpp" />
+    <ClCompile Include="CaptainAmericaStateHit.cpp" />
+    <ClCompile Include="CaptainAmericaStateJump.cpp" />
+    <ClCompile Include="CaptainAmericaStateKick.cpp" />
+    <ClCompile Include="CaptainAmericaStateSitAttack.cpp" />
+    <ClCompile Include="CaptainAmericaStateManager.cpp" />
+    <ClCompile Include="CaptainAmericaStateMove.cpp" />
+    <ClCompile Include="CaptainAmericaStateSpin.cpp" />
+    <ClCompile Include="CaptainAmericaStateStart.cpp" />
+    <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="EndScene.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameError.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="IndexManager.cpp" />
+    <ClCompile Include="Input.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapInfo.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="OptionScene.cpp" />
+    <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="SpriteManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CaptainAmericaAndTheAvengers.rc" />

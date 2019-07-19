@@ -13,6 +13,36 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Scenes">
+      <UniqueIdentifier>{2be803f1-0543-4ed4-8b52-fbc638f86182}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes">
+      <UniqueIdentifier>{8cfcf696-5aeb-44be-a6b4-470be00300d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{1b2d21e6-8e00-4bfb-a079-18a9ed44f750}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects">
+      <UniqueIdentifier>{dabbd8fb-380d-49d4-afd7-5e6ae321bc7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Maps">
+      <UniqueIdentifier>{d696dfab-9660-413d-b46d-c4dbea39e343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Maps">
+      <UniqueIdentifier>{4f36cbbb-2565-4d50-8ee3-6feca7665610}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\Players">
+      <UniqueIdentifier>{dad84e86-f09d-4cee-8183-7e613b0a9ea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\Players">
+      <UniqueIdentifier>{30ee599c-32f5-4997-8f5f-bb8288ca9b0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\Players\States">
+      <UniqueIdentifier>{87473ea5-934e-4d87-9f27-c628b158566f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\Players\States">
+      <UniqueIdentifier>{da90feec-d215-4c2b-af56-c2b23945109f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -27,6 +57,102 @@
     <ClInclude Include="CaptainAmericaAndTheAvengers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionScene.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="EndScene.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="MapInfo.h">
+      <Filter>Header Files\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseState.h">
+      <Filter>Header Files\Objects\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmerica.h">
+      <Filter>Header Files\Objects\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateManager.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateStart.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateMove.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateSitAttack.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateHit.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateJump.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateSpin.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateKick.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -34,6 +160,102 @@
     </ClCompile>
     <ClCompile Include="CaptainAmericaAndTheAvengers.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameError.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionScene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="EndScene.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="MapInfo.cpp">
+      <Filter>Source Files\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseObject.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseState.cpp">
+      <Filter>Source Files\Objects\Players</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmerica.cpp">
+      <Filter>Source Files\Objects\Players</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateMove.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateManager.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateStart.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateSitAttack.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateHit.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateJump.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateKick.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateSpin.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
