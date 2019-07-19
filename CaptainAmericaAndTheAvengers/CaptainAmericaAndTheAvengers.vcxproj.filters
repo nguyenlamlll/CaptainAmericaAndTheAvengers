@@ -31,6 +31,18 @@
     <Filter Include="Source Files\Maps">
       <UniqueIdentifier>{4f36cbbb-2565-4d50-8ee3-6feca7665610}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\Players">
+      <UniqueIdentifier>{dad84e86-f09d-4cee-8183-7e613b0a9ea5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\Players">
+      <UniqueIdentifier>{30ee599c-32f5-4997-8f5f-bb8288ca9b0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\Players\States">
+      <UniqueIdentifier>{87473ea5-934e-4d87-9f27-c628b158566f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\Players\States">
+      <UniqueIdentifier>{da90feec-d215-4c2b-af56-c2b23945109f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -108,6 +120,24 @@
     <ClInclude Include="Text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BaseObject.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseState.h">
+      <Filter>Header Files\Objects\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmerica.h">
+      <Filter>Header Files\Objects\Players</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateManager.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateStart.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateMove.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -178,6 +208,24 @@
     </ClCompile>
     <ClCompile Include="Text.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseObject.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseState.cpp">
+      <Filter>Source Files\Objects\Players</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmerica.cpp">
+      <Filter>Source Files\Objects\Players</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateMove.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateManager.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateStart.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

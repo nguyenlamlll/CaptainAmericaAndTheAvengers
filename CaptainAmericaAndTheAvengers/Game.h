@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "Map.h"
 #include "Text.h"
+#include "CaptainAmerica.h"
 
 class Game : public GameManager
 {
@@ -19,6 +20,8 @@ private:
 	Map* map;
 
 	Camera* camera;
+
+	CaptainAmerica* captainAmerica;
 
 	// Utility texts
 	Text* fpsText;

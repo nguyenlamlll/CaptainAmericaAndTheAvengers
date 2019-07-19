@@ -65,7 +65,10 @@ void Game::initialize(Graphics * graphics, Input * input)
 
 	camera = new Camera(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
 	camera->setPosition(VECTOR2(CAM_POS_X, CAM_POS_Y));
-	camera->setPosition(VECTOR2(600, 1200));
+	camera->setPosition(VECTOR2(550, 600));
+
+	captainAmerica = new CaptainAmerica(textureManager, graphics, input);
+
 	fpsText = new Text("FPS: 0", eFont::body, 8, VECTOR2(VIEWPORT_WIDTH - 70, 5), GraphicsNS::WHITE, false, true);
 	fpsText->initialize(graphics);
 }
@@ -73,6 +76,9 @@ void Game::initialize(Graphics * graphics, Input * input)
 void Game::update(float dt)
 {
 	this->camera->update(dt);
+
+	// Update the animations and dt-related codes
+	captainAmerica->update(dt);
 }
 
 void Game::handleInput(float dt)
@@ -85,6 +91,9 @@ void Game::handleInput(float dt)
 		Camera::getInstance()->setVelocity(VECTOR2(0, 150));
 	if (input->isKeyDown(VK_DOWN))
 		Camera::getInstance()->setVelocity(VECTOR2(0, -150));
+	if (input->isKeyDown(VK_RETURN))
+		Camera::getInstance()->setVelocity(VECTOR2(0, 0));
+	captainAmerica->handleInput(dt);
 }
 
 void Game::collisions(float dt)
@@ -94,6 +103,7 @@ void Game::collisions(float dt)
 void Game::render()
 {
 	this->getGraphics()->spriteBegin();
+	captainAmerica->draw();
 	map->draw();
 	this->getGraphics()->spriteEnd();
 

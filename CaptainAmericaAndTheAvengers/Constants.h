@@ -54,11 +54,14 @@ const UCHAR ENTER_KEY = VK_RETURN;       // Enter key
 // Source
 const char ENDGAME_IMAGE[] = "Resources\\SpriteSheets\\EndGame.png";
 const char STARTGAME_IMAGE[] = "Resources\\SpriteSheets\\StartGame.png";
-const char SOURCE_IMAGE[] = "Resources\\SpriteSheets\\MetroidTexture.png";//character of game
-const char SOURCE_JSON[] = "json\\MetroidTexture.json"; //json file of metroid sprite
+
+//const char SOURCE_IMAGE[] = "Resources\\SpriteSheets\\MetroidTexture.png";//character of game
+//const char SOURCE_JSON[] = "json\\MetroidTexture.json"; //json file of metroid sprite
+const char SOURCE_IMAGE[] = "Resources\\SpriteSheets\\animation.png";//character of game
+const char SOURCE_JSON[] = "json\\Animation.json"; //json file of metroid sprite
+
 //const char MAP_BRINSTAR_JSON[] = "json\\MapBrinstar.json"; //json file of map brinstar
 //const char TILESET_IMAGE[] = "Resources\\Tileset\\Tileset.png"; //tileset of map brinstar
-
 const char MAP_BRINSTAR_JSON[] = "json\\MapOmaha.json"; //json file of map brinstar
 const char TILESET_IMAGE[] = "Resources\\Tileset\\Tileset_Omaha.png"; //tileset of map brinstar
 
@@ -133,6 +136,7 @@ enum CollideDirection
 // Element's status
 enum eStatus {
 	START,
+	MOVE,
 	JUMPING,
 	RUNNING,
 	ROLLING,
