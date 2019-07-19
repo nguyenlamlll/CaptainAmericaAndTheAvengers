@@ -156,8 +156,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="BaseState.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CaptainAmerica.h" />
     <ClInclude Include="CaptainAmericaAndTheAvengers.h" />
+    <ClInclude Include="CaptainAmericaStateManager.h" />
+    <ClInclude Include="CaptainAmericaStateMove.h" />
+    <ClInclude Include="CaptainAmericaStateStart.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="Game.h" />
@@ -183,8 +189,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="BaseState.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CaptainAmerica.cpp" />
     <ClCompile Include="CaptainAmericaAndTheAvengers.cpp" />
+    <ClCompile Include="CaptainAmericaStateManager.cpp" />
+    <ClCompile Include="CaptainAmericaStateMove.cpp" />
+    <ClCompile Include="CaptainAmericaStateStart.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="Game.cpp" />
