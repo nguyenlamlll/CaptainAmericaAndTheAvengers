@@ -55,6 +55,7 @@ const UCHAR ENTER_KEY = VK_RETURN;       // Enter key
 #define VK_F 0x46
 #define VK_G 0x47
 #define VK_J 0x4A
+#define VK_K 0x4B
 
 // Source
 const char ENDGAME_IMAGE[] = "Resources\\SpriteSheets\\EndGame.png";
@@ -68,11 +69,11 @@ const char SOURCE_JSON[] = "json\\Animation.json"; //json file of metroid sprite
 //const char MAP_BRINSTAR_JSON[] = "json\\MapBrinstar.json"; //json file of map brinstar
 //const char TILESET_IMAGE[] = "Resources\\Tileset\\Tileset.png"; //tileset of map brinstar
 //
-//const char MAP_BRINSTAR_JSON[] = "json\\Charleston.json"; 
-//const char TILESET_IMAGE[] = "Resources\\Tileset\\3 Charleston.png"; 
+const char MAP_BRINSTAR_JSON[] = "json\\Charleston.json"; 
+const char TILESET_IMAGE[] = "Resources\\Tileset\\3 Charleston.png"; 
 
-const char MAP_BRINSTAR_JSON[] = "json\\Pittsburgh.json";
-const char TILESET_IMAGE[] = "Resources\\Tileset\\4 Pittsburgh.png";
+//const char MAP_BRINSTAR_JSON[] = "json\\Pittsburgh.json";
+//const char TILESET_IMAGE[] = "Resources\\Tileset\\4 Pittsburgh.png";
 
 const char OBJECT_LAYER_BRINSTAR_JSON[] = "json\\ObjectLayerBrinstar.json"; //object layer json of Brinstar
 const char QUADTREE[] = "json\\QuadTree.json";

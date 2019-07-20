@@ -103,8 +103,8 @@ void Game::collisions(float dt)
 void Game::render()
 {
 	this->getGraphics()->spriteBegin();
-	captainAmerica->draw();
 	map->draw();
+	captainAmerica->draw();
 	this->getGraphics()->spriteEnd();
 
 	fpsText->setText("FPS: " + std::to_string((int)this->fps));

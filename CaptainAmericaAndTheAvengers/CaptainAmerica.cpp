@@ -7,8 +7,8 @@
 
 
 //start position
-#define START_POS_X 650	
-#define START_POS_Y 1770
+#define START_POS_X 760	
+#define START_POS_Y 1680
 
 CaptainAmerica::CaptainAmerica()
 {

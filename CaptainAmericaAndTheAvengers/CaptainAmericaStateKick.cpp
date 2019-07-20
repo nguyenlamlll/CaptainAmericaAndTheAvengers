@@ -30,6 +30,12 @@ void CaptainAmericaStateKick::setBoundCollision()
 
 void CaptainAmericaStateKick::handleInput(float dt)
 {
+	if (input->isKeyUp(VK_K)) {
+		this->captainAmerica->setStatus(eStatus::START);
+		onExit();
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::START);
+		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+	}
 }
 
 void CaptainAmericaStateKick::update(float dt)

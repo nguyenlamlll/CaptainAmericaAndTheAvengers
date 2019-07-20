@@ -78,6 +78,13 @@ void CaptainAmericaStateStart::handleInput(float dt)
 		this->captainAmerica->setStatus(eStatus::SITATTACK);
 		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::SITATTACK);
 	}
+
+	if (input->isKeyDown(VK_K)) {
+		this->captainAmerica->setStatus(eStatus::KICK);
+		onExit();
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::KICK);
+		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+	}
 }
 
 void CaptainAmericaStateStart::update(float dt)
