@@ -11,7 +11,7 @@ CaptainAmericaStateMove::~CaptainAmericaStateMove()
 {
 }
 
-CaptainAmericaStateMove::CaptainAmericaStateMove(CaptainAmerica* captainAmerica, Input* input)
+CaptainAmericaStateMove::CaptainAmericaStateMove(CaptainAmerica * captainAmerica, Input * input)
 	: BaseState(captainAmerica, input)
 {
 	captainAmerica->setOrigin(VECTOR2(0.5, 0.5));
@@ -30,20 +30,17 @@ void CaptainAmericaStateMove::setBoundCollision()
 
 void CaptainAmericaStateMove::handleInput(float dt)
 {
-	if (input->isKeyDown(VK_A)) {
-		this->captainAmerica->setStatus(eStatus::START);
-		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::START);
-	}
-
-	if (input->isKeyDown(VK_S) && input->isKeyDown(VK_J)) {
-		this->captainAmerica->setStatus(eStatus::SITATTACK);
-		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::SITATTACK);
-	}
-
-	if (input->isKeyUp(VK_D)) {
-		this->captainAmerica->setStatus(eStatus::START);
+	/*if (input->isKeyUp(VK_A)) {
+		this->captainAmerica->setStatus(eStatus::MOVE);
 		onExit();
-		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::START);
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::MOVE);
+		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+	}*/
+
+	if (input->isKeyUp(VK_LEFT) || input->isKeyUp(VK_RIGHT))
+	{
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::STAND);
+		this->captainAmerica->setVelocityX(0);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
 }
@@ -62,3 +59,4 @@ void CaptainAmericaStateMove::onExit()
 {
 	animation->stop();
 }
+

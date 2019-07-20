@@ -18,13 +18,19 @@ private:
 	TextureManager* textureManager;
 	Graphics* graphics;
 
-	Animation* hitAnimation;
+	Animation* attackAnimation;
+	Animation* dashAnimation;
+	Animation* dieAnimation;
 	Animation* jumpAnimation;
 	Animation* kickAnimation;
-	Animation* startAnimation;
+	Animation* lookUpAnimation;
 	Animation* moveAnimation;
+	Animation* shieldlessAttackAnimation;
+	Animation* sitAnimation;
 	Animation* sitAttackAnimation;
 	Animation* spinAnimation;
+	Animation* standAnimation;
+
 
 	bool visible;
 
@@ -44,12 +50,20 @@ public:
 	//void updateHorizontal(float dt);
 	//void updateVertical(float dt);
 
-	Animation* getHitAnimation() { return this->hitAnimation; }
+	Animation* getAttackAnimation() { return this->attackAnimation; }
+	Animation* getDashAnimation() { return this->dashAnimation; }
+	Animation* getDieAnimation() { return this->dieAnimation; }
 	Animation* getJumpAnimation() { return this->jumpAnimation; }
 	Animation* getKickAnimation() { return this->kickAnimation; }
-	Animation* getStartAnimation() { return this->startAnimation; }
+	Animation* getLookUpAnimation() { return this->lookUpAnimation; }
 	Animation* getMoveAnimation() { return this->moveAnimation; }
+	Animation* getShieldlessAttackAnimation() { return this->shieldlessAttackAnimation; }
+	Animation* getSitAnimation() { return this->sitAnimation; }
 	Animation* getSitAttackAnimation() { return this->sitAttackAnimation; }
 	Animation* getSpinAnimation() { return this->spinAnimation; }
+	Animation* getStandAnimation() { return this->standAnimation; }
+
+
+	
 };
 

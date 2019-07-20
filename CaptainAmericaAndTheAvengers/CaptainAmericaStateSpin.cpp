@@ -6,6 +6,11 @@ CaptainAmericaStateSpin::CaptainAmericaStateSpin()
 {
 }
 
+
+CaptainAmericaStateSpin::~CaptainAmericaStateSpin()
+{
+}
+
 CaptainAmericaStateSpin::CaptainAmericaStateSpin(CaptainAmerica * captainAmerica, Input * input)
 	: BaseState(captainAmerica, input)
 {
@@ -13,11 +18,6 @@ CaptainAmericaStateSpin::CaptainAmericaStateSpin(CaptainAmerica * captainAmerica
 	animation = captainAmerica->getSpinAnimation();
 	init();
 	animation->start();
-}
-
-
-CaptainAmericaStateSpin::~CaptainAmericaStateSpin()
-{
 }
 
 void CaptainAmericaStateSpin::init()
@@ -30,11 +30,10 @@ void CaptainAmericaStateSpin::setBoundCollision()
 
 void CaptainAmericaStateSpin::handleInput(float dt)
 {
-
-	if (input->isKeyUp(VK_X)) {
-		this->captainAmerica->setStatus(eStatus::START);
+	if (input->isKeyUp(VK_W)) {
+		this->captainAmerica->setStatus(eStatus::SPIN);
 		onExit();
-		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::START);
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::SPIN);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
 }
@@ -53,3 +52,4 @@ void CaptainAmericaStateSpin::onExit()
 {
 	animation->stop();
 }
+
