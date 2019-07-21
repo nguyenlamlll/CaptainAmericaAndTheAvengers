@@ -31,7 +31,7 @@ void Map::draw()
 	int tileW = this->info->getTileWidth();
 	MapCell** mapCell = this->info->getMap();
 
-	MetroidRect viewport = Camera::getInstance()->getBound();
+	GameRect viewport = Camera::getInstance()->getBound();
 	int columnBegin = (int)(viewport.left / tileW + 0.5f) - 1;
 	int columnEnd = columnBegin + Camera::getInstance()->getWidth() / tileW + 2;
 	int rowBegin = (int)((MAP_HEIGHT - viewport.top) / tileH);

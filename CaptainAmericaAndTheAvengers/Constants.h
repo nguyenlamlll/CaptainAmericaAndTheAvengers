@@ -76,14 +76,15 @@ const char TILESET_IMAGE[] = "Resources\\Tileset\\4 Pittsburgh.png";
 
 const char OBJECT_LAYER_BRINSTAR_JSON[] = "json\\ObjectLayerBrinstar.json"; //object layer json of Brinstar
 const char QUADTREE[] = "json\\QuadTree.json";
+
 //Rectangle of metroid
-struct MetroidRect
+struct GameRect
 {
 	float top, left, right, bottom;
-	MetroidRect()
+	GameRect()
 	{
 	};
-	MetroidRect(float top, float bottom, float left, float right)
+	GameRect(float top, float bottom, float left, float right)
 	{
 		this->top = top;
 		this->bottom = bottom;

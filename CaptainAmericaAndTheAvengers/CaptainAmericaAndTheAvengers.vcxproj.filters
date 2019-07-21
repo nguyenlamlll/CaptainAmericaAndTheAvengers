@@ -153,6 +153,9 @@
     <ClInclude Include="CaptainAmericaStateKick.h">
       <Filter>Header Files\Objects\Players\States</Filter>
     </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -256,6 +259,9 @@
     </ClCompile>
     <ClCompile Include="CaptainAmericaStateSpin.cpp">
       <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

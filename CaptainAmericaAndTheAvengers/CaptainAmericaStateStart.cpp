@@ -33,7 +33,7 @@ void CaptainAmericaStateStart::handleInput(float dt)
 	//if (animation->isFinished()) {
 	//	if (input->isKeyDown(VK_RIGHT) || input->isKeyDown(VK_LEFT))
 	//	{
-	//		//MetroidRect bound = samus->getBoundCollision();
+	//		//GameRect bound = samus->getBoundCollision();
 	//		if (input->isKeyDown(VK_RIGHT) && input->isKeyUp(VK_LEFT))
 	//		{
 	//			//samus->setDirection(eDirection::right);

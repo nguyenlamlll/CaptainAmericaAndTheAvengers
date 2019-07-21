@@ -11,6 +11,16 @@
 #include <list>
 #include <map>
 
+#define CAPTAIN_MIN_SPEED_Y 70
+#define CAPTAIN_VERLOCITY_X 100
+#define ACELERATE 70
+#define CAPTAIN_MAX_SPEED_Y 170
+#define CAPTAIN_V0_FALL_Y -60
+#define CAPTAIN_VELOCITY_JUMP_X 70
+
+#define MIN_JUMP  32.0f
+#define MAX_JUMP 94.0f
+
 class CaptainAmerica : public BaseObject
 {
 private:
