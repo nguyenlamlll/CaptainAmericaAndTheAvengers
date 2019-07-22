@@ -11,6 +11,8 @@
 
 #include "CaptainAmerica.h"
 
+#include "Grid.h"
+
 #include <map>
 
 using namespace rapidjson;
@@ -24,6 +26,8 @@ private:
 	TextureManager* textureManager;
 	Graphics* graphics;
 
+	Grid* grid;
+
 	CaptainAmerica* captainAmerica;
 public:
 	ObjectManager();
@@ -32,7 +36,7 @@ public:
 	static ObjectManager* getInstance();
 	void init(TextureManager* textureM, Graphics* graphics, CaptainAmerica* captainAmerica);
 
-	//void update(float dt);
-	//void draw();
+	void update(float dt);
+	void draw();
 };
 

@@ -23,6 +23,8 @@ public:
 	BaseObject();
 	~BaseObject();
 
+	virtual void setPositionInGrid();
+
 	virtual void update(float dt);
 	virtual void draw();
 

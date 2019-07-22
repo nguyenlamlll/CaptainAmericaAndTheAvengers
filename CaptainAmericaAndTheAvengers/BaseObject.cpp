@@ -23,6 +23,11 @@ BaseObject::~BaseObject()
 {
 }
 
+void BaseObject::setPositionInGrid()
+{
+
+}
+
 void BaseObject::update(float dt)
 {
 }

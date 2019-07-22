@@ -26,3 +26,11 @@ void ObjectManager::init(TextureManager * textureM, Graphics * graphics, Captain
 	this->graphics = graphics;
 	this->captainAmerica = captainAmerica;
 }
+
+void ObjectManager::update(float dt)
+{
+}
+
+void ObjectManager::draw()
+{
+}
