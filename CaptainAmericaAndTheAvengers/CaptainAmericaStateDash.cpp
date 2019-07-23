@@ -30,10 +30,11 @@ void CaptainAmericaStateDash::setBoundCollision()
 
 void CaptainAmericaStateDash::handleInput(float dt)
 {
-	if (input->isKeyUp(VK_W)) {
-		this->captainAmerica->setStatus(eStatus::DASH);
-		onExit();
-		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::DASH);
+	if (input->isKeyDown(VK_D) ) {
+		this->captainAmerica->setStatus(eStatus::STAND);
+		this->captainAmerica->setVelocityX(0);
+
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::STAND);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
 }

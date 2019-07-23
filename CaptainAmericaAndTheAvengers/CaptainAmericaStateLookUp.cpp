@@ -30,10 +30,9 @@ void CaptainAmericaStateLookUp::setBoundCollision()
 
 void CaptainAmericaStateLookUp::handleInput(float dt)
 {
-	if (input->isKeyUp(VK_W)) {
-		this->captainAmerica->setStatus(eStatus::LOOKUP);
-		onExit();
-		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::LOOKUP);
+	if (input->isKeyUp(VK_UP))
+	{
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::STAND);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
 }

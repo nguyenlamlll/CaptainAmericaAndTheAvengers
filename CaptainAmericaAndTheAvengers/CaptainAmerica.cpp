@@ -33,7 +33,7 @@ CaptainAmerica::CaptainAmerica(TextureManager * textureM, Graphics * graphics, I
 		sprite,
 		IndexManager::getInstance()->captainAmericaAttack,
 		2,
-		0.1f
+		0.2f
 	);
 
 	dashAnimation = new Animation(
@@ -135,7 +135,14 @@ void CaptainAmerica::handleInput(float dt)
 
 void CaptainAmerica::update(float dt)
 {
-	this->setPositionX(this->getPosition().x + this->getVelocity().x*dt);
+	this->setVelocityX(this->getVelocity().x + this->getAccelerate().x);
+	float deltaX = this->getVelocity().x * dt;
+	this->setPositionX(this->getPosition().x + deltaX);
+
+	this->setVelocityY(this->getVelocity().y + this->getAccelerate().y);
+	float deltaY = this->getVelocity().y * dt;
+	this->setPositionY(this->getPosition().y + deltaY);
+
 	CaptainAmericaStateManager::getInstance()->getCurrentState()->update(dt);
 }
 
@@ -153,4 +160,16 @@ void CaptainAmerica::drawIndicators()
 void CaptainAmerica::release()
 {
 }
+
+bool CaptainAmerica::canMoveLeft()
+{
+	return this->moveLeft;
+}
+
+bool CaptainAmerica::canMoveRight()
+{
+	return this->moveRight;
+}
+
+
 

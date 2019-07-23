@@ -10,6 +10,13 @@
 
 #include <list>
 #include <map>
+#define CAPTAIN_VERLOCITY_X 100
+#define CAPTAIN_VELOCITY_JUMP_X 70
+#define CAPTAIN_VERLOCITY_Y 100
+#define CAPTAIN_VELOCITY_JUMP_Y 70
+
+#define WIDTH_COLLISION 10
+#define HEIGHT_COLLISION 30
 
 class CaptainAmerica : public BaseObject
 {
@@ -31,8 +38,10 @@ private:
 	Animation* spinAnimation;
 	Animation* standAnimation;
 
-
+	bool moveRight;
+	bool moveLeft;
 	bool visible;
+	
 
 public:
 	CaptainAmerica();
@@ -46,6 +55,12 @@ public:
 	void draw();
 	void drawIndicators();
 	void release();
+
+	bool canMoveLeft();
+
+	bool canMoveRight();
+
+	bool isPressed();
 
 	//void updateHorizontal(float dt);
 	//void updateVertical(float dt);

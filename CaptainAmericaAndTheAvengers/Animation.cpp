@@ -44,6 +44,11 @@ Animation::~Animation()
 {
 }
 
+int Animation::getTotalFrames()
+{
+	return this->totalFrames;
+}
+
 void Animation::reverse()
 {
 }

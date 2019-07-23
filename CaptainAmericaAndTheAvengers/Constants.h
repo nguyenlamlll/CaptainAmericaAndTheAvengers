@@ -22,8 +22,8 @@
 const char CLASS_NAME[] = "Captain America And The Avengers";
 const char GAME_TITLE[] = "Captain America And The Avengers";
 const bool FULLSCREEN = false;              // windowed or fullscreen
-const UINT VIEWPORT_WIDTH = 256;               // width of game in pixels
-const UINT VIEWPORT_HEIGHT = 224;               // height of game in pixels
+const UINT VIEWPORT_WIDTH = 500;               // width of game in pixels
+const UINT VIEWPORT_HEIGHT = 500;               // height of game in pixels
 
 // Change width and height accordingly to the map to calculate the columns and the rows.
 //const UINT MAP_WIDTH = 3200; 

@@ -22,6 +22,8 @@ public:
 	Animation(Sprite *sprite, const int* list, int totalFrames, float timeFrameDelay);
 	~Animation();
 
+	int getTotalFrames();
+
 	void reverse();
 	void previousFrame();
 

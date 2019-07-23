@@ -30,10 +30,9 @@ void CaptainAmericaStateAttack::setBoundCollision()
 
 void CaptainAmericaStateAttack::handleInput(float dt)
 {
-	if (input->isKeyUp(VK_W)) {
-		this->captainAmerica->setStatus(eStatus::ATTACK);
-		onExit();
-		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::ATTACK);
+	if (input->isKeyUp(VK_Z)) {
+		this->captainAmerica->setStatus(eStatus::STAND);
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::STAND);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
 }

@@ -2,6 +2,8 @@
 #include "BaseState.h"
 class CaptainAmericaStateStand : public BaseState
 {
+private:
+	float timerToRunning;
 public:
 	CaptainAmericaStateStand();
 	~CaptainAmericaStateStand();

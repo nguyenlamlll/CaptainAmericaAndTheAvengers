@@ -67,8 +67,10 @@ BaseState * CaptainAmericaStateManager::getCurrentState()
 
 void CaptainAmericaStateManager::changeStateTo(eStatus eStatus)
 {
-	if (currentState != nullptr)
+	if (currentState != nullptr) {
+		oldStatus = currentState->getName();
 		currentState->onExit();
+	}
 
 	switch (eStatus)
 	{

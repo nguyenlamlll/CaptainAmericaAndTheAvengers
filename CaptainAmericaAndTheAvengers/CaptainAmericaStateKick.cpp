@@ -41,6 +41,10 @@ void CaptainAmericaStateKick::handleInput(float dt)
 void CaptainAmericaStateKick::update(float dt)
 {
 	animation->update(dt);
+	if (animation->getCurrentFrame() == animation->getTotalFrames() - 1) {
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::JUMP);
+		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+	}
 }
 
 void CaptainAmericaStateKick::onStart()
