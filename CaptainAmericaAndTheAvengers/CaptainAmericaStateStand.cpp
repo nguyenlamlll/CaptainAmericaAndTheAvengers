@@ -96,6 +96,13 @@ void CaptainAmericaStateStand::handleInput(float dt)
 		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::ATTACK);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
+
+	if (input->isKeyDown(VK_D))
+	{
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::DASH);
+		this->captainAmerica->setVelocityX(100);
+		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+	}
 }
 
 void CaptainAmericaStateStand::update(float dt)

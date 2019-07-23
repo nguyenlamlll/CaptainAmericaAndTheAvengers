@@ -36,10 +36,11 @@ void CaptainAmericaStateSit::handleInput(float dt)
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
 
-	if (input->isKeyDown(VK_Z) && input->isKeyDown(VK_DOWN)) {
+	if (input->isKeyDown(VK_Z) ) {
 		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::SITATTACK);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
+
 }
 
 void CaptainAmericaStateSit::update(float dt)
