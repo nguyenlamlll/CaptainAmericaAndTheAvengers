@@ -31,11 +31,37 @@ void CaptainAmericaStateDash::setBoundCollision()
 void CaptainAmericaStateDash::handleInput(float dt)
 {
 	if (input->isKeyUp(VK_D)) {
-		this->captainAmerica->setStatus(eStatus::STAND);
-		this->captainAmerica->setVelocityX(0);
+		if (input->isKeyDown(VK_LEFT) && input->isKeyUp(VK_RIGHT))
+		{
 
-		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::STAND);
-		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+			if (this->captainAmerica->isInDirection(eDirection::left))
+			{
+				this->captainAmerica->setFlipX(false);
+				//set direction to left
+				this->captainAmerica->setDirection(eDirection::right);
+			}
+			this->captainAmerica->setStatus(eStatus::STAND);
+			this->captainAmerica->setVelocityX(0);
+
+			CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::STAND);
+			CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+		}
+		
+		if (input->isKeyDown(VK_RIGHT) && input->isKeyUp(VK_LEFT))
+		{
+
+			if (this->captainAmerica->isInDirection(eDirection::right))
+			{
+				this->captainAmerica->setFlipX(false);
+				//set direction to left
+				this->captainAmerica->setDirection(eDirection::left);
+			}
+			this->captainAmerica->setStatus(eStatus::STAND);
+			this->captainAmerica->setVelocityX(0);
+
+			CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::STAND);
+			CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+		}
 	}
 }
 
