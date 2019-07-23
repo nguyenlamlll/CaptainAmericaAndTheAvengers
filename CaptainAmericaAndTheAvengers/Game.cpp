@@ -69,6 +69,11 @@ void Game::initialize(Graphics * graphics, Input * input)
 
 	captainAmerica = new CaptainAmerica(textureManager, graphics, input);
 
+
+	ObjectManager::getInstance()->init(textureManager, graphics, captainAmerica);
+
+
+
 	fpsText = new Text("FPS: 0", eFont::body, 8, VECTOR2(VIEWPORT_WIDTH - 70, 5), GraphicsNS::WHITE, false, true);
 	fpsText->initialize(graphics);
 }

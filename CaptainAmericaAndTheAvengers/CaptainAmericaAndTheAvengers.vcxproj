@@ -169,6 +169,7 @@
     <ClInclude Include="CaptainAmericaStateMove.h" />
     <ClInclude Include="CaptainAmericaStateSpin.h" />
     <ClInclude Include="CaptainAmericaStateStart.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="EndScene.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="GameError.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Graphics.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="IndexManager.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Map.h" />
@@ -208,6 +210,7 @@
     <ClCompile Include="CaptainAmericaStateMove.cpp" />
     <ClCompile Include="CaptainAmericaStateSpin.cpp" />
     <ClCompile Include="CaptainAmericaStateStart.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="EndScene.cpp" />
@@ -215,6 +218,7 @@
     <ClCompile Include="GameError.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="IndexManager.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Map.cpp" />

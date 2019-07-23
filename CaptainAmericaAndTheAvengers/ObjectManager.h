@@ -29,6 +29,9 @@ private:
 	Grid* grid;
 
 	CaptainAmerica* captainAmerica;
+
+	int totalObjectsPerFrame;
+
 public:
 	ObjectManager();
 	~ObjectManager();
@@ -38,5 +41,8 @@ public:
 
 	void update(float dt);
 	void draw();
+
+	int getTotalObjectsPerFrame() { return totalObjectsPerFrame; }
+	void setTotalObjectsPerFrame(int value) { totalObjectsPerFrame = value; }
 };
 

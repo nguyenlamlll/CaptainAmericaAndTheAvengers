@@ -21,6 +21,13 @@
 #define MIN_JUMP  32.0f
 #define MAX_JUMP 94.0f
 
+#define OFFSET_STAND 19
+#define WIDTH_COLLISION 10
+#define HEIGHT_COLLISION 30
+#define OFFSET_COLLISION_X 0
+#define OFFSET_COLLISION_Y 4
+#define OFFSET_ROLLING 6.0f
+
 class CaptainAmerica : public BaseObject
 {
 private:

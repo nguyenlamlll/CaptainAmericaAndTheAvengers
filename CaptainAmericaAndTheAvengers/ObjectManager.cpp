@@ -4,6 +4,7 @@
 ObjectManager* ObjectManager::instance = nullptr;
 ObjectManager::ObjectManager()
 {
+	this->totalObjectsPerFrame = 0;
 }
 
 
@@ -25,6 +26,12 @@ void ObjectManager::init(TextureManager * textureM, Graphics * graphics, Captain
 	this->textureManager = textureM;
 	this->graphics = graphics;
 	this->captainAmerica = captainAmerica;
+
+	grid = new Grid();
+	grid->add(this->captainAmerica);
+	//std::list<BaseObject*> objects;
+	//grid->getCollidableObjects(objects, 13, 35);
+	//grid->getAllObjects(13, 35);
 }
 
 void ObjectManager::update(float dt)

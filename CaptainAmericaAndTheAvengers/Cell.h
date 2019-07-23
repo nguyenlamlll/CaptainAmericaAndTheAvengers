@@ -10,5 +10,6 @@ public:
 	~Cell();
 
 	void add(BaseObject* object);
+	std::list<BaseObject*> getAllObjects() { return listOfObjects; }
 };
 
