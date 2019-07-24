@@ -24,6 +24,8 @@ void Grid::add(int id, BaseObject * object)
 	auto objectPositionOnGrid = calculateObjectPositionOnGrid(object);
 
 	cells[(int)objectPositionOnGrid.x][(int)objectPositionOnGrid.y]->add(id, object);
+
+	//TODO: If an object is bigger than a cell, add that object to all cells which it resides.
 }
 
 void Grid::add(int id, BaseObject * object, int x, int y)
@@ -31,6 +33,8 @@ void Grid::add(int id, BaseObject * object, int x, int y)
 	auto objectPositionOnGrid = calculateObjectPositionOnGrid(object, x, y);
 
 	cells[(int)objectPositionOnGrid.x][(int)objectPositionOnGrid.y]->add(id, object);
+
+	//TODO: If an object is bigger than a cell, add that object to all cells which it resides.
 }
 
 VECTOR2 Grid::calculateObjectPositionOnGrid(BaseObject * object)
