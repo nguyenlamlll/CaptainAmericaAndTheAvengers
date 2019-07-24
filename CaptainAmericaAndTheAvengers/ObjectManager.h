@@ -27,10 +27,12 @@ private:
 	Graphics* graphics;
 
 	Grid* grid;
+	map<int, BaseObject*> mapObjects;
 
 	CaptainAmerica* captainAmerica;
 
 	int totalObjectsPerFrame;
+	float timer;
 
 public:
 	ObjectManager();
@@ -44,5 +46,13 @@ public:
 
 	int getTotalObjectsPerFrame() { return totalObjectsPerFrame; }
 	void setTotalObjectsPerFrame(int value) { totalObjectsPerFrame = value; }
+
+	// Load map objects defined in a file.
+	bool loadMapObjects(const char *fileName);
+
+	void handleVelocity(float dt);
+
+	void onCheckCollision(float frametime);
+	void onCheckCollision(BaseObject* obj, float frametime);
 };
 

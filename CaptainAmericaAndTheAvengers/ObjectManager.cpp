@@ -5,6 +5,8 @@ ObjectManager* ObjectManager::instance = nullptr;
 ObjectManager::ObjectManager()
 {
 	this->totalObjectsPerFrame = 0;
+	this->timer = 0;
+
 }
 
 
@@ -39,5 +41,69 @@ void ObjectManager::update(float dt)
 }
 
 void ObjectManager::draw()
+{
+}
+
+bool ObjectManager::loadMapObjects(const char * fileName)
+{
+	try 
+	{
+		ifstream ifs(fileName);
+		IStreamWrapper isw(ifs);
+		Document jSon;
+		jSon.ParseStream(isw);
+		float x, y, height, width;
+		int id;
+		GameRect bound;
+
+#pragma region Load Grounds (Including grounds and walls)
+		const Value& groundObjectList = jSon["Ground"];
+		for (SizeType i = 0; i < groundObjectList.Size(); i++)
+		{
+			BaseObject* ground = new BaseObject(eID::GROUND);
+			id = groundObjectList[i]["id"].GetInt();
+			x = groundObjectList[i]["x"].GetFloat();
+			y = groundObjectList[i]["y"].GetFloat();
+			height = groundObjectList[i]["height"].GetFloat();
+			width = groundObjectList[i]["width"].GetFloat();
+
+			bound.left = x;
+			bound.top = y;
+			bound.right = bound.left + width;
+			bound.bottom = bound.top - height;
+			ground->setBoundCollision(bound);
+
+			ground->setActiveBound(bound);
+
+			mapObjects.insert(std::pair<int, BaseObject*>(id, ground));
+		}
+#pragma endregion
+
+
+		return true;
+	}
+	catch (...) 
+	{
+	}
+	return false;
+}
+
+#define TIME_RETRIEVE 0.65f
+void ObjectManager::handleVelocity(float dt)
+{
+	// Update the objects on viewport after a short period of time.
+	timer += dt;
+	if (timer >= TIME_RETRIEVE)
+	{
+		
+	}
+}
+
+void ObjectManager::onCheckCollision(float frametime)
+{
+
+}
+
+void ObjectManager::onCheckCollision(BaseObject * obj, float frametime)
 {
 }

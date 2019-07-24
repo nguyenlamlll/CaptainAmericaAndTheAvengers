@@ -76,6 +76,8 @@ void Game::initialize(Graphics * graphics, Input * input)
 
 	fpsText = new Text("FPS: 0", eFont::body, 8, VECTOR2(VIEWPORT_WIDTH - 70, 5), GraphicsNS::WHITE, false, true);
 	fpsText->initialize(graphics);
+	opsText = new Text("OPS: 0", eFont::body, 8, VECTOR2(VIEWPORT_WIDTH - 70, 15), GraphicsNS::WHITE, false, true);
+	opsText->initialize(graphics);
 }
 
 void Game::update(float dt)
@@ -84,6 +86,8 @@ void Game::update(float dt)
 
 	// Update the animations and dt-related codes
 	captainAmerica->update(dt);
+
+	ObjectManager::getInstance()->update(dt);
 }
 
 void Game::handleInput(float dt)
@@ -99,24 +103,28 @@ void Game::handleInput(float dt)
 	if (input->isKeyDown(VK_RETURN))
 		Camera::getInstance()->setVelocity(VECTOR2(0, 0));
 	captainAmerica->handleInput(dt);
+
+	ObjectManager::getInstance()->handleVelocity(dt);
 }
 
 void Game::collisions(float dt)
 {
+	ObjectManager::getInstance()->onCheckCollision(dt);
 }
 
 void Game::render()
 {
 	this->getGraphics()->spriteBegin();
-	captainAmerica->draw();
 	map->draw();
+	captainAmerica->draw();
+	ObjectManager::getInstance()->draw();
 	this->getGraphics()->spriteEnd();
 
 	fpsText->setText("FPS: " + std::to_string((int)this->fps));
 	fpsText->draw();
 
-	//opsText->setText("DPS: " + std::to_string(ObjectManager::getInstance()->getTotalObjectsPerFrame()));
-	//opsText->draw();
+	opsText->setText("OPS: " + std::to_string(ObjectManager::getInstance()->getTotalObjectsPerFrame()));
+	opsText->draw();
 }
 
 void Game::releaseAll()
