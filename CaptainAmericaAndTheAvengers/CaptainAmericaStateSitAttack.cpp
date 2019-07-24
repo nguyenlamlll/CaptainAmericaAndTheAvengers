@@ -1,3 +1,4 @@
+
 #include "stdafx.h"
 #include "CaptainAmericaStateSitAttack.h"
 #include "CaptainAmericaStateManager.h"
@@ -11,7 +12,7 @@ CaptainAmericaStateSitAttack::~CaptainAmericaStateSitAttack()
 {
 }
 
-CaptainAmericaStateSitAttack::CaptainAmericaStateSitAttack(CaptainAmerica* captainAmerica, Input* input)
+CaptainAmericaStateSitAttack::CaptainAmericaStateSitAttack(CaptainAmerica * captainAmerica, Input * input)
 	: BaseState(captainAmerica, input)
 {
 	captainAmerica->setOrigin(VECTOR2(0.5, 0.5));
@@ -30,16 +31,8 @@ void CaptainAmericaStateSitAttack::setBoundCollision()
 
 void CaptainAmericaStateSitAttack::handleInput(float dt)
 {
-	if (input->isKeyDown(VK_D)) {
-		this->captainAmerica->setStatus(eStatus::MOVE);
-		onExit();
-		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::MOVE);
-		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
-	}
-	if (input->isKeyUp(VK_S) && input->isKeyUp(VK_J)) {
-		this->captainAmerica->setStatus(eStatus::START);
-		onExit();
-		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::START);
+	if (input->isKeyUp(VK_Z) && input->isKeyDown(VK_DOWN)) {
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::SIT);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
 }
@@ -58,3 +51,4 @@ void CaptainAmericaStateSitAttack::onExit()
 {
 	animation->stop();
 }
+

@@ -1,11 +1,12 @@
+
 #pragma once
 #include "BaseState.h"
 class CaptainAmericaStateSpin : public BaseState
 {
 public:
 	CaptainAmericaStateSpin();
-	CaptainAmericaStateSpin(CaptainAmerica* captainAmerica, Input* input);
 	~CaptainAmericaStateSpin();
+	CaptainAmericaStateSpin(CaptainAmerica* captainAmerica, Input* input);
 
 	void init();
 	void setBoundCollision();
@@ -17,3 +18,4 @@ public:
 	void onExit();
 };
 
+#pragma once

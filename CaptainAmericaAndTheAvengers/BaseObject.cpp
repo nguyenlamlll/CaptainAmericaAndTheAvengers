@@ -5,15 +5,16 @@ BaseObject::BaseObject(eID id)
 {
 	this->id = id;
 	this->sprite = nullptr;
-	this->status = eStatus::START;
+	this->status = eStatus::STAND;
 	this->direction = eDirection::right;
 	this->isActivity = true;
+	
 }
 
 BaseObject::BaseObject()
 {
 	this->sprite = nullptr;
-	this->status = eStatus::START;
+	this->status = eStatus::STAND;
 	this->direction = eDirection::right;
 	this->isActivity = true;
 }

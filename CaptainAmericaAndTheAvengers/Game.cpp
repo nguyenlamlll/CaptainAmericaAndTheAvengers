@@ -83,16 +83,17 @@ void Game::update(float dt)
 
 void Game::handleInput(float dt)
 {
-	if (input->isKeyDown(VK_LEFT))
-		Camera::getInstance()->setVelocity(VECTOR2(-150, 0));
-	if (input->isKeyDown(VK_RIGHT))
-		Camera::getInstance()->setVelocity(VECTOR2(150, 0));
-	if (input->isKeyDown(VK_UP))
-		Camera::getInstance()->setVelocity(VECTOR2(0, 150));
-	if (input->isKeyDown(VK_DOWN))
-		Camera::getInstance()->setVelocity(VECTOR2(0, -150));
-	if (input->isKeyDown(VK_RETURN))
-		Camera::getInstance()->setVelocity(VECTOR2(0, 0));
+	//if (input->isKeyDown(VK_LEFT))
+	//	//Camera::getInstance()->setVelocity(VECTOR2(-150, 0));
+	//	captainAmerica->setStatus(eStatus::MOVE);
+	//if (input->isKeyDown(VK_RIGHT))
+	//	Camera::getInstance()->setVelocity(VECTOR2(150, 0));
+	//if (input->isKeyDown(VK_UP))
+	//	Camera::getInstance()->setVelocity(VECTOR2(0, 150));
+	//if (input->isKeyDown(VK_DOWN))
+	//	Camera::getInstance()->setVelocity(VECTOR2(0, -150));
+	//if (input->isKeyDown(VK_RETURN))
+	//	Camera::getInstance()->setVelocity(VECTOR2(0, 0));
 	captainAmerica->handleInput(dt);
 }
 
@@ -103,8 +104,8 @@ void Game::collisions(float dt)
 void Game::render()
 {
 	this->getGraphics()->spriteBegin();
-	captainAmerica->draw();
 	map->draw();
+	captainAmerica->draw();
 	this->getGraphics()->spriteEnd();
 
 	fpsText->setText("FPS: " + std::to_string((int)this->fps));

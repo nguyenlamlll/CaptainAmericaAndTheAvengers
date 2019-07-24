@@ -30,11 +30,21 @@ void CaptainAmericaStateKick::setBoundCollision()
 
 void CaptainAmericaStateKick::handleInput(float dt)
 {
+	if (input->isKeyUp(VK_W)) {
+		this->captainAmerica->setStatus(eStatus::KICK);
+		onExit();
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::KICK);
+		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+	}
 }
 
 void CaptainAmericaStateKick::update(float dt)
 {
 	animation->update(dt);
+	if (animation->getCurrentFrame() == animation->getTotalFrames() - 1) {
+		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::JUMP);
+		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+	}
 }
 
 void CaptainAmericaStateKick::onStart()
@@ -46,3 +56,4 @@ void CaptainAmericaStateKick::onExit()
 {
 	animation->stop();
 }
+

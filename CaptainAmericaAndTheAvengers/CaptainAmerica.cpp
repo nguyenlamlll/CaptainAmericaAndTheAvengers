@@ -7,8 +7,8 @@
 
 
 //start position
-#define START_POS_X 650	
-#define START_POS_Y 1770
+#define START_POS_X 760	
+#define START_POS_Y 1680
 
 CaptainAmerica::CaptainAmerica()
 {
@@ -29,49 +29,92 @@ CaptainAmerica::CaptainAmerica(TextureManager * textureM, Graphics * graphics, I
 
 	this->setPosition(VECTOR2(START_POS_X, START_POS_Y));
 
-	
-	hitAnimation = new Animation(
+	attackAnimation = new Animation(
 		sprite,
-		IndexManager::getInstance()->captainAmericaHit,
-		4,
-		0.1f
+		IndexManager::getInstance()->captainAmericaAttack,
+		2,
+		0.2f
 	);
-	jumpAnimation = new Animation(
+
+	dashAnimation = new Animation(
 		sprite,
-		IndexManager::getInstance()->captainAmericaJump,
+		IndexManager::getInstance()->captainAmericaDash,
 		3,
 		0.1f
 	);
-	kickAnimation = new Animation(
+
+	dieAnimation = new Animation(
 		sprite,
-		IndexManager::getInstance()->captainAmericaKick,
-		5,
+		IndexManager::getInstance()->captainAmericaDie,
+		2,
 		0.1f
 	);
-	startAnimation = new Animation(
+
+	jumpAnimation = new Animation(
 		sprite,
-		IndexManager::getInstance()->captainAmericaStart,
+		IndexManager::getInstance()->captainAmericaJump,
 		1,
 		0.1f
 	);
+
+	kickAnimation = new Animation(
+		sprite,
+		IndexManager::getInstance()->captainAmericaKick,
+		1,
+		0.1f
+	);
+
+	lookUpAnimation = new Animation(
+		sprite,
+		IndexManager::getInstance()->captainAmericaLookUp,
+		1,
+		0.1f
+	);
+
 	moveAnimation = new Animation(
 		sprite,
 		IndexManager::getInstance()->captainAmericaMove,
-		5,
+		4,
 		0.1f
 	);
+
+	shieldlessAttackAnimation = new Animation(
+		sprite,
+		IndexManager::getInstance()->captainAmericaShieldlessAttack,
+		2,
+		0.1f
+	);
+
+	sitAnimation = new Animation(
+		sprite,
+		IndexManager::getInstance()->captainAmericaSit,
+		1,
+		0.1f
+	);
+
 	sitAttackAnimation = new Animation(
 		sprite,
 		IndexManager::getInstance()->captainAmericaSitAttack,
-		5,
+		2,
 		0.1f
 	);
+
 	spinAnimation = new Animation(
 		sprite,
 		IndexManager::getInstance()->captainAmericaSpin,
-		7,
+		2,
 		0.1f
 	);
+
+	standAnimation = new Animation(
+		sprite,
+		IndexManager::getInstance()->captainAmericaStand,
+		1,
+		0.1f
+	);
+
+	
+	
 
 
 	// Initialize the states and their manager class.
@@ -92,6 +135,14 @@ void CaptainAmerica::handleInput(float dt)
 
 void CaptainAmerica::update(float dt)
 {
+	this->setVelocityX(this->getVelocity().x + this->getAccelerate().x);
+	float deltaX = this->getVelocity().x * dt;
+	this->setPositionX(this->getPosition().x + deltaX);
+
+	this->setVelocityY(this->getVelocity().y + this->getAccelerate().y);
+	float deltaY = this->getVelocity().y * dt;
+	this->setPositionY(this->getPosition().y + deltaY);
+
 	CaptainAmericaStateManager::getInstance()->getCurrentState()->update(dt);
 }
 
@@ -109,4 +160,16 @@ void CaptainAmerica::drawIndicators()
 void CaptainAmerica::release()
 {
 }
+
+bool CaptainAmerica::canMoveLeft()
+{
+	return this->moveLeft;
+}
+
+bool CaptainAmerica::canMoveRight()
+{
+	return this->moveRight;
+}
+
+
 

@@ -11,7 +11,7 @@ Animation::Animation(Sprite *sprite, const int* list, int totalFrames, float tim
 	this->isloop = loop;
 	this->isPause = false;
 	this->isFinish = false;
-	this->frameDelay = timeFrameDelay;
+	//this->frameDelay = timeFrameDelay;
 	this->timerAnim = 0;
 	this->canAnimate = false;
 
@@ -42,6 +42,11 @@ Animation::Animation(Sprite *sprite, const int * list, int totalFrames, float ti
 
 Animation::~Animation()
 {
+}
+
+int Animation::getTotalFrames()
+{
+	return this->totalFrames;
 }
 
 void Animation::reverse()
