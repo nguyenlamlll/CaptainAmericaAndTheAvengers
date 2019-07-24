@@ -11,8 +11,8 @@ CaptainAmericaStateManager * CaptainAmericaStateManager::getInstance()
 }
 CaptainAmericaStateManager::CaptainAmericaStateManager()
 {
-	stateStart = new CaptainAmericaStateStart();
-	currentState = stateStart;
+	stateStand = new CaptainAmericaStateStand();
+	currentState = stateStand;
 	instance = this;
 }
 
@@ -23,14 +23,21 @@ CaptainAmericaStateManager::~CaptainAmericaStateManager()
 
 void CaptainAmericaStateManager::init(CaptainAmerica* captainAmerica, Input* input)
 {
-	stateStart = new CaptainAmericaStateStart(captainAmerica, input);
-	stateMove = new CaptainAmericaStateMove(captainAmerica, input);
-	stateHit = new CaptainAmericaStateHit(captainAmerica, input);
+	stateAttack = new CaptainAmericaStateAttack(captainAmerica, input);
+	stateDash = new CaptainAmericaStateDash(captainAmerica, input);
+	stateDie = new CaptainAmericaStateDie(captainAmerica, input);
+	stateJump = new CaptainAmericaStateJump(captainAmerica, input);
 	stateKick = new CaptainAmericaStateKick(captainAmerica, input);
+	stateLookUp = new CaptainAmericaStateLookUp(captainAmerica, input);
+	stateMove = new CaptainAmericaStateMove(captainAmerica, input);
+	stateShieldlessAttack = new CaptainAmericaStateShieldlessAttack(captainAmerica, input);
+	stateSit = new CaptainAmericaStateSit(captainAmerica, input);
 	stateSitAttack = new CaptainAmericaStateSitAttack(captainAmerica, input);
 	stateSpin = new CaptainAmericaStateSpin(captainAmerica, input);
-	stateJump = new CaptainAmericaStateJump(captainAmerica, input);
-	currentState = stateStart;
+	stateStand = new CaptainAmericaStateStand(captainAmerica, input);
+
+
+	currentState = stateStand;
 }
 
 void CaptainAmericaStateManager::setOldStatus(eStatus status)
@@ -60,18 +67,39 @@ BaseState * CaptainAmericaStateManager::getCurrentState()
 
 void CaptainAmericaStateManager::changeStateTo(eStatus eStatus)
 {
-	if (currentState != nullptr)
+	if (currentState != nullptr) {
+		oldStatus = currentState->getName();
 		currentState->onExit();
+	}
 
 	switch (eStatus)
 	{
-	case eStatus::START:
-	{
-		currentState = stateStart;
+	case eStatus::ATTACK:
+		currentState = stateAttack;
 		break;
-	}
+	case eStatus::DASH:
+		currentState = stateDash;
+		break;
+	case eStatus::DIE:
+		currentState = stateDie;
+		break;
+	case eStatus::JUMP:
+		currentState = stateJump;
+		break;
+	case eStatus::KICK:
+		currentState = stateKick;
+		break;
+	case eStatus::LOOKUP:
+		currentState = stateLookUp;
+		break;
 	case eStatus::MOVE:
 		currentState = stateMove;
+		break;
+	case eStatus::SHILEDLESSATTACK:
+		currentState = stateShieldlessAttack;
+		break;
+	case eStatus::SIT:
+		currentState = stateSit;
 		break;
 	case eStatus::SITATTACK:
 		currentState = stateSitAttack;
@@ -79,14 +107,8 @@ void CaptainAmericaStateManager::changeStateTo(eStatus eStatus)
 	case eStatus::SPIN:
 		currentState = stateSpin;
 		break;
-	case eStatus::HIT:
-		currentState = stateHit;
-		break;
-	case eStatus::JUMP:
-		currentState = stateJump;
-		break;
-	case eStatus::KICK:
-		currentState = stateKick;
+	case eStatus::STAND:
+		currentState = stateStand;
 		break;
 	default:
 		break;
@@ -99,7 +121,7 @@ void CaptainAmericaStateManager::changeStateTo(eStatus eStatus)
 
 void CaptainAmericaStateManager::release()
 {
-	delete stateStart;
+	delete stateStand;
 	delete stateMove;
 	delete instance;
 }

@@ -1,3 +1,4 @@
+
 #pragma once
 #include "BaseState.h"
 class CaptainAmericaStateSitAttack : public BaseState
@@ -5,7 +6,7 @@ class CaptainAmericaStateSitAttack : public BaseState
 public:
 	CaptainAmericaStateSitAttack();
 	~CaptainAmericaStateSitAttack();
-	CaptainAmericaStateSitAttack(CaptainAmerica*, Input*);
+	CaptainAmericaStateSitAttack(CaptainAmerica* captainAmerica, Input* input);
 
 	void init();
 	void setBoundCollision();
@@ -17,3 +18,4 @@ public:
 	void onExit();
 };
 
+#pragma once

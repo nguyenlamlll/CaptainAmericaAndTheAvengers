@@ -10,6 +10,13 @@
 
 #include <list>
 #include <map>
+#define CAPTAIN_VERLOCITY_X 100
+#define CAPTAIN_VELOCITY_JUMP_X 70
+#define CAPTAIN_VERLOCITY_Y 100
+#define CAPTAIN_VELOCITY_JUMP_Y 70
+
+#define WIDTH_COLLISION 10
+#define HEIGHT_COLLISION 30
 
 #define CAPTAIN_MIN_SPEED_Y 70
 #define CAPTAIN_VERLOCITY_X 100
@@ -35,15 +42,23 @@ private:
 	TextureManager* textureManager;
 	Graphics* graphics;
 
-	Animation* hitAnimation;
+	Animation* attackAnimation;
+	Animation* dashAnimation;
+	Animation* dieAnimation;
 	Animation* jumpAnimation;
 	Animation* kickAnimation;
-	Animation* startAnimation;
+	Animation* lookUpAnimation;
 	Animation* moveAnimation;
+	Animation* shieldlessAttackAnimation;
+	Animation* sitAnimation;
 	Animation* sitAttackAnimation;
 	Animation* spinAnimation;
+	Animation* standAnimation;
 
+	bool moveRight;
+	bool moveLeft;
 	bool visible;
+	
 
 public:
 	CaptainAmerica();
@@ -58,15 +73,29 @@ public:
 	void drawIndicators();
 	void release();
 
+	bool canMoveLeft();
+
+	bool canMoveRight();
+
+	bool isPressed();
+
 	//void updateHorizontal(float dt);
 	//void updateVertical(float dt);
 
-	Animation* getHitAnimation() { return this->hitAnimation; }
+	Animation* getAttackAnimation() { return this->attackAnimation; }
+	Animation* getDashAnimation() { return this->dashAnimation; }
+	Animation* getDieAnimation() { return this->dieAnimation; }
 	Animation* getJumpAnimation() { return this->jumpAnimation; }
 	Animation* getKickAnimation() { return this->kickAnimation; }
-	Animation* getStartAnimation() { return this->startAnimation; }
+	Animation* getLookUpAnimation() { return this->lookUpAnimation; }
 	Animation* getMoveAnimation() { return this->moveAnimation; }
+	Animation* getShieldlessAttackAnimation() { return this->shieldlessAttackAnimation; }
+	Animation* getSitAnimation() { return this->sitAnimation; }
 	Animation* getSitAttackAnimation() { return this->sitAttackAnimation; }
 	Animation* getSpinAnimation() { return this->spinAnimation; }
+	Animation* getStandAnimation() { return this->standAnimation; }
+
+
+	
 };
 

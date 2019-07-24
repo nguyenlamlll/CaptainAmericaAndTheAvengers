@@ -1,11 +1,12 @@
+
 #pragma once
 #include "BaseState.h"
-class CaptainAmericaStateMove : public BaseState
+class CaptainAmericaStateSit : public BaseState
 {
 public:
-	CaptainAmericaStateMove();
-	~CaptainAmericaStateMove();
-	CaptainAmericaStateMove(CaptainAmerica* captainAmerica, Input* input);
+	CaptainAmericaStateSit();
+	~CaptainAmericaStateSit();
+	CaptainAmericaStateSit(CaptainAmerica* captainAmerica, Input* input);
 
 	void init();
 	void setBoundCollision();

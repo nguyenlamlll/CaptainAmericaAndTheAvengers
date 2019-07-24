@@ -144,25 +144,37 @@
     <ClInclude Include="CaptainAmericaStateManager.h">
       <Filter>Header Files\Objects\Players\States</Filter>
     </ClInclude>
-    <ClInclude Include="CaptainAmericaStateStart.h">
+    <ClInclude Include="CaptainAmericaStateDash.h">
       <Filter>Header Files\Objects\Players\States</Filter>
     </ClInclude>
-    <ClInclude Include="CaptainAmericaStateMove.h">
+    <ClInclude Include="CaptainAmericaStateAttack.h">
       <Filter>Header Files\Objects\Players\States</Filter>
     </ClInclude>
-    <ClInclude Include="CaptainAmericaStateSitAttack.h">
-      <Filter>Header Files\Objects\Players\States</Filter>
-    </ClInclude>
-    <ClInclude Include="CaptainAmericaStateHit.h">
+    <ClInclude Include="CaptainAmericaStateDie.h">
       <Filter>Header Files\Objects\Players\States</Filter>
     </ClInclude>
     <ClInclude Include="CaptainAmericaStateJump.h">
       <Filter>Header Files\Objects\Players\States</Filter>
     </ClInclude>
-    <ClInclude Include="CaptainAmericaStateSpin.h">
+    <ClInclude Include="CaptainAmericaStateKick.h">
       <Filter>Header Files\Objects\Players\States</Filter>
     </ClInclude>
-    <ClInclude Include="CaptainAmericaStateKick.h">
+    <ClInclude Include="CaptainAmericaStateLookUp.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateMove.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateShieldlessAttack.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateSit.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateSitAttack.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateSpin.h">
       <Filter>Header Files\Objects\Players\States</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
@@ -173,6 +185,12 @@
     </ClInclude>
     <ClInclude Include="Cell.h">
       <Filter>Header Files\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateStart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateStand.h">
+      <Filter>Header Files\Objects\Players\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -254,25 +272,37 @@
     <ClCompile Include="CaptainAmerica.cpp">
       <Filter>Source Files\Objects\Players</Filter>
     </ClCompile>
-    <ClCompile Include="CaptainAmericaStateMove.cpp">
-      <Filter>Source Files\Objects\Players\States</Filter>
-    </ClCompile>
     <ClCompile Include="CaptainAmericaStateManager.cpp">
       <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
-    <ClCompile Include="CaptainAmericaStateStart.cpp">
+    <ClCompile Include="CaptainAmericaStateDash.cpp">
       <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
-    <ClCompile Include="CaptainAmericaStateSitAttack.cpp">
+    <ClCompile Include="CaptainAmericaStateAttack.cpp">
       <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
-    <ClCompile Include="CaptainAmericaStateHit.cpp">
+    <ClCompile Include="CaptainAmericaStateDie.cpp">
       <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
     <ClCompile Include="CaptainAmericaStateJump.cpp">
       <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
     <ClCompile Include="CaptainAmericaStateKick.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateLookUp.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateMove.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateShieldlessAttack.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateSit.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateSitAttack.cpp">
       <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
     <ClCompile Include="CaptainAmericaStateSpin.cpp">
@@ -286,6 +316,9 @@
     </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>Source Files\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="CaptainAmericaStateStand.cpp">
+      <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

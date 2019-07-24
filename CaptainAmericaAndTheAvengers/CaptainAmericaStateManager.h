@@ -1,25 +1,37 @@
 #pragma once
 #include "BaseState.h"
-#include "CaptainAmericaStateStart.h"
-#include "CaptainAmericaStateMove.h"
-#include "CaptainAmericaStateSitAttack.h"
-#include "CaptainAmericaStateHit.h"
+#include "CaptainAmericaStateAttack.h"
+#include "CaptainAmericaStateDash.h"
+#include "CaptainAmericaStateDie.h"
 #include "CaptainAmericaStateJump.h"
 #include "CaptainAmericaStateKick.h"
+#include "CaptainAmericaStateLookUp.h"
+#include "CaptainAmericaStateMove.h"
+#include "CaptainAmericaStateShieldlessAttack.h"
+#include "CaptainAmericaStateSit.h"
+#include "CaptainAmericaStateSitAttack.h"
 #include "CaptainAmericaStateSpin.h"
+#include "CaptainAmericaStateStand.h"
+
+
 
 class CaptainAmericaStateManager
 {
 private: 
 	static CaptainAmericaStateManager* instance;
 
-	CaptainAmericaStateStart* stateStart;
-	CaptainAmericaStateMove* stateMove;
-	CaptainAmericaStateHit* stateHit;
+	CaptainAmericaStateAttack* stateAttack;
+	CaptainAmericaStateDash* stateDash;
+	CaptainAmericaStateDie* stateDie;
 	CaptainAmericaStateJump* stateJump;
 	CaptainAmericaStateKick* stateKick;
+	CaptainAmericaStateLookUp* stateLookUp;
+	CaptainAmericaStateMove* stateMove;
+	CaptainAmericaStateShieldlessAttack* stateShieldlessAttack;
+	CaptainAmericaStateSit* stateSit;
 	CaptainAmericaStateSitAttack* stateSitAttack;
 	CaptainAmericaStateSpin* stateSpin;
+	CaptainAmericaStateStand* stateStand;
 
 	BaseState* currentState;
 
