@@ -12,6 +12,8 @@
 
 #include "CaptainAmerica.h"
 
+#include "Collision.h"
+
 #include "Grid.h"
 
 #include <map>

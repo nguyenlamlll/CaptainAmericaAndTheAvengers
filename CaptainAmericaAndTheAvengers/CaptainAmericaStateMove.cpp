@@ -26,6 +26,13 @@ void CaptainAmericaStateMove::init()
 
 void CaptainAmericaStateMove::setBoundCollision()
 {
+	GameRect rect;
+	VECTOR2 position(this->captainAmerica->getPosition().x, captainAmerica->getPosition().y - OFFSET_COLLISION_Y + 1);
+	rect.left = position.x - WIDTH_COLLISION * 0.5f;
+	rect.right = position.x + WIDTH_COLLISION * 0.5f;
+	rect.top = position.y + HEIGHT_COLLISION * 0.5f;
+	rect.bottom = position.y - HEIGHT_COLLISION * 0.5f;
+	captainAmerica->setBoundCollision(rect);
 }
 
 void CaptainAmericaStateMove::handleInput(float dt)
@@ -42,6 +49,52 @@ void CaptainAmericaStateMove::handleInput(float dt)
 void CaptainAmericaStateMove::update(float dt)
 {
 	animation->update(dt);
+}
+
+void CaptainAmericaStateMove::onCollision(float dt)
+{
+	GameRect bound;
+	for (auto i = this->captainAmerica->getListCollide()->begin(); i != this->captainAmerica->getListCollide()->end(); i++)
+	{
+		switch (i->object->getId())
+		{
+		case eID::GROUND:
+		{
+			switch (i->direction)
+			{
+			case CollideDirection::LEFT:
+				if (this->captainAmerica->getBoundCollision().bottom < i->object->getBoundCollision().top)
+				{
+					this->captainAmerica->setVelocityX(0);
+					this->captainAmerica->setCanMoveRight(false);
+					this->captainAmerica->setStatus(eStatus::STAND);
+				}
+				break;
+			case CollideDirection::RIGHT:
+
+				if (this->captainAmerica->getBoundCollision().bottom < i->object->getBoundCollision().top)
+				{
+					this->captainAmerica->setVelocityX(0);
+					this->captainAmerica->setCanMoveLeft(false);
+					this->captainAmerica->setStatus(eStatus::STAND);
+				}
+				break;
+			case CollideDirection::TOP:
+				this->captainAmerica->setIsFalling(false);
+				//this->samus->setPositionY()
+				this->captainAmerica->setPositionY(i->positionCollision + OFFSET_STAND);
+				this->captainAmerica->setVelocityY(0);
+				break;
+			}
+
+			break;
+		}
+		default:
+		{
+			break;
+		}
+		}
+	}
 }
 
 void CaptainAmericaStateMove::onStart()

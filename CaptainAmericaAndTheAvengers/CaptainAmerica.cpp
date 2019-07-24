@@ -15,7 +15,7 @@ CaptainAmerica::CaptainAmerica()
 }
 
 CaptainAmerica::CaptainAmerica(TextureManager * textureM, Graphics * graphics, Input * input) :
-	BaseObject(eID::SAMUS)
+	BaseObject(eID::CAPTAINAMERICA)
 {
 	this->input = input;
 	this->textureManager = textureM;
@@ -121,6 +121,8 @@ CaptainAmerica::CaptainAmerica(TextureManager * textureM, Graphics * graphics, I
 	CaptainAmericaStateManager::getInstance()->init(this, input);
 
 	visible = true;
+
+	listCollide = new list<CollisionReturn>();
 }
 
 
@@ -229,16 +231,6 @@ void CaptainAmerica::drawIndicators()
 
 void CaptainAmerica::release()
 {
-}
-
-bool CaptainAmerica::canMoveLeft()
-{
-	return this->moveLeft;
-}
-
-bool CaptainAmerica::canMoveRight()
-{
-	return this->moveRight;
 }
 
 

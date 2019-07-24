@@ -1,18 +1,70 @@
 {
   "Ground": [
     {
-      "id": 3,
-      "height": 16.6666666666665,
-      "width": 95.6666666666666,
-      "x": 703.666666666667,
-      "y": 3141.66666666667
-    },
-    {
-      "id": 4,
-      "height": 16.5,
-      "width": 1215,
-      "x": 864.5,
-      "y": 3142
-    }
+                 "height":16.6667,
+                 "id":3,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":95.6667,
+                 "x":703.667,
+                 "y":3141.67
+                }, 
+                {
+                 "height":16.5,
+                 "id":4,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1215,
+                 "x":864.5,
+                 "y":3142
+                }, 
+                {
+                 "height":16,
+                 "id":5,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":47.75,
+                 "x":752.125,
+                 "y":3012.75
+                }, 
+                {
+                 "height":0,
+                 "id":6,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":799.875,
+                 "y":3028.75
+                }, 
+                {
+                 "height":134.666666666667,
+                 "id":7,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":672,
+                 "y":3023.66666666667
+                }, 
+                {
+                 "height":1,
+                 "id":9,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":147,
+                 "y":2970
+                }
   ]
 }

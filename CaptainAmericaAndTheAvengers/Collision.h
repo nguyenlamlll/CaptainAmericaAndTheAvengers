@@ -18,11 +18,12 @@ public:
 
 	//Return true if one object will collide with another
 	bool willCollide(BaseObject* myObj, BaseObject* otherObj, float dt);
+	bool willCollide(BaseObject* myObj, BaseObject* otherObj, float dt, CollisionReturn& result);
 
 	//bool willCollide(BaseObject* myObj, CaptainAmerica* captainAmerica, float dt);
 
 	//TO DO: calculate collision rect
-	GameRect CalculateCollisionRect(GameRect rect1, GameRect rect2);
+	//GameRect CalculateCollisionRect(GameRect rect1, GameRect rect2);
 
 	//GameRect getSweptBroadphaseRect(GameRect myRect, VECTOR2 myVelocity, float frametime);
 

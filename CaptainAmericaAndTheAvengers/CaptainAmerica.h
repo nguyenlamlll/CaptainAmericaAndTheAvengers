@@ -55,8 +55,6 @@ private:
 	Animation* spinAnimation;
 	Animation* standAnimation;
 
-	bool moveRight;
-	bool moveLeft;
 	bool visible;
 
 	list<CollisionReturn> *listCollide;
@@ -76,11 +74,7 @@ public:
 	void drawIndicators();
 	void release();
 
-	bool canMoveLeft();
-
-	bool canMoveRight();
-
-	bool isPressed();
+	//bool isPressed();
 
 	//void updateHorizontal(float dt);
 	//void updateVertical(float dt);
@@ -106,6 +100,28 @@ public:
 
 	map<int, BaseObject*>* getListWallCanCollide() { return listWallCanCollide; }
 	void setListWallCanCollide(map<int, BaseObject*>* list) { this->listWallCanCollide = list; }
+
+#pragma region Moveable Directions & Actions
+
+private:
+	bool canMoveRight;
+	bool canMoveLeft;
+	bool isFalling;
+	bool canJump;
+public:
+	void setCanJump(bool value) { canJump = value; }
+	bool getCanJump() { return canJump; }
+	
+	void setCanMoveLeft(bool value) { canMoveLeft = value; }
+	bool getCanMoveLeft() { return canMoveLeft; }
+
+	void setCanMoveRight(bool value) { canMoveRight = value; }
+	bool getCanMoveRight() { return canMoveRight; }
+
+	void setIsFalling(bool value) { isFalling = value; }
+	bool getIsFalling() { return isFalling; }
+
+#pragma endregion
 	
 };
 

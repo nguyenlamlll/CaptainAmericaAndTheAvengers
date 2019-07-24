@@ -47,7 +47,7 @@ void ObjectManager::draw()
 
 bool ObjectManager::loadMapObjects(const char * fileName)
 {
-	try 
+	try
 	{
 		ifstream ifs(fileName);
 		IStreamWrapper isw(ifs);
@@ -64,7 +64,7 @@ bool ObjectManager::loadMapObjects(const char * fileName)
 			BaseObject* ground = new BaseObject(eID::GROUND);
 			id = groundObjectList[i]["id"].GetInt();
 			x = groundObjectList[i]["x"].GetFloat();
-			y = groundObjectList[i]["y"].GetFloat();
+			y = MAP_HEIGHT - groundObjectList[i]["y"].GetFloat();
 			height = groundObjectList[i]["height"].GetFloat();
 			width = groundObjectList[i]["width"].GetFloat();
 
@@ -78,14 +78,14 @@ bool ObjectManager::loadMapObjects(const char * fileName)
 
 			mapObjects.insert(std::pair<int, BaseObject*>(id, ground));
 
-			grid->add(id, ground, x , MAP_HEIGHT - y);
+			grid->add(id, ground, x, y);
 		}
 #pragma endregion
 
 
 		return true;
 	}
-	catch (...) 
+	catch (...)
 	{
 	}
 	return false;
@@ -106,17 +106,27 @@ void ObjectManager::handleVelocity(float dt)
 
 		auto captainAmericaPositionOnGrid = grid->calculateObjectPositionOnGrid(this->captainAmerica);
 		grid->getCollidableObjects(listWallCanCollideCaptainAmerica, captainAmericaPositionOnGrid.x, captainAmericaPositionOnGrid.y);
-		if (listWallCanCollideCaptainAmerica->size() > 1)
-		{
-			int a = 5;
-		}
 	}
 
 	// Handle velocity...
 }
 
-void ObjectManager::onCheckCollision(float frametime)
+void ObjectManager::onCheckCollision(float dt)
 {
+
+	captainAmerica->setListWallCanCollide(listWallCanCollideCaptainAmerica);
+	for (auto x = listWallCanCollideCaptainAmerica->begin(); x != listWallCanCollideCaptainAmerica->end(); x++)
+	{
+		BaseObject* object = (*x).second;
+
+		CollisionReturn data = CollisionReturn();
+		if (Collision::getInstance()->willCollide(captainAmerica, object, dt, data))
+		{
+			captainAmerica->getListCollide()->push_back(data);
+		}
+	}
+	// handle on listCollide
+	captainAmerica->onCollision(dt);
 
 }
 
