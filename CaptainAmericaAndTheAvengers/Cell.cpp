@@ -4,19 +4,20 @@
 
 Cell::Cell()
 {
+	listOfObjects = new std::map<int, BaseObject*>();
 }
 
 
 Cell::~Cell()
 {
-	for (list<BaseObject*>::const_iterator it = listOfObjects.begin(); it != listOfObjects.end(); ++it)
-	{
-		delete *it;
-	}
-	listOfObjects.clear();
+	//for (list<BaseObject*>::const_iterator it = listOfObjects.begin(); it != listOfObjects.end(); ++it)
+	//{
+	//	delete *it;
+	//}
+	//listOfObjects.clear();
 }
 
-void Cell::add(BaseObject * object)
+void Cell::add(int id, BaseObject * object)
 {
-	listOfObjects.push_front(object);
+	listOfObjects->insert(std::pair<int, BaseObject*>(id, object));
 }

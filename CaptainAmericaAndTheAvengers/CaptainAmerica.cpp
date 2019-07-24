@@ -133,6 +133,12 @@ void CaptainAmerica::handleInput(float dt)
 	CaptainAmericaStateManager::getInstance()->getCurrentState()->handleInput(dt);
 }
 
+void CaptainAmerica::onCollision(float dt)
+{
+	CaptainAmericaStateManager::getInstance()->getCurrentState()->onCollision(dt);
+	this->listCollide->clear();
+}
+
 void CaptainAmerica::update(float dt)
 {
 	this->setVelocityX(this->getVelocity().x + this->getAccelerate().x);
@@ -144,6 +150,70 @@ void CaptainAmerica::update(float dt)
 	this->setPositionY(this->getPosition().y + deltaY);
 
 	CaptainAmericaStateManager::getInstance()->getCurrentState()->update(dt);
+
+#pragma region handle camera
+	bool isCameraMoving = false;
+	if (!Camera::getInstance()->moveWhenSamusOnPort())
+	{
+		if (Camera::getInstance()->canFolowOnLeft())
+		{
+			if (this->getPosition().x < Camera::getInstance()->getActiveArea().left)
+			{
+				Camera::getInstance()->setVelocity(VECTOR2(this->getVelocity().x, 0));
+				isCameraMoving = true;
+			}
+		}
+
+		if (Camera::getInstance()->canFolowOnRight())
+		{
+			if (this->getPosition().x > Camera::getInstance()->getActiveArea().right)
+			{
+				Camera::getInstance()->setVelocity(VECTOR2(this->getVelocity().x, 0));
+				isCameraMoving = true;
+			}
+		}
+
+		if (Camera::getInstance()->canFolowUp() && this->getVelocity().y > 0)
+		{
+			if (this->getPosition().y > Camera::getInstance()->getActiveArea().top)
+			{
+				Camera::getInstance()->setVelocity(VECTOR2(0, this->getVelocity().y));
+				isCameraMoving = true;
+			}
+		}
+
+		if (Camera::getInstance()->canFolowDown() && this->getVelocity().y < 0)
+		{
+			if (this->getPosition().y < Camera::getInstance()->getActiveArea().bottom)
+			{
+				Camera::getInstance()->setVelocity(VECTOR2(0, this->getVelocity().y));
+				isCameraMoving = true;
+			}
+		}
+
+		if (!isCameraMoving)
+			Camera::getInstance()->setVelocity(VECTOR2(0, 0));
+	}
+
+	//if (isCollidingPort)
+	//	this->setVelocityX(Camera::getInstance()->getVelocity().x);
+
+	//if (moveToFontGate && !Camera::getInstance()->moveWhenSamusOnPort())
+	//{
+	//	float dis = dt * SAMUS_VERLOCITY_X;
+	//	this->distance += dis;
+
+	//	if (this->distance < DISTANCE_MOVE_FRONT_GATE)
+	//		this->setPositionX(this->getPosition().x + dis * this->getDirection());
+	//	else
+	//	{
+	//		this->distance = 0;
+	//		moveToFontGate = false;
+	//		this->setCanMoveLeft(true);
+	//		this->setCanMoveRight(true);
+	//	}
+	//}
+#pragma endregion
 }
 
 void CaptainAmerica::draw()

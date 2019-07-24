@@ -75,7 +75,7 @@ const char TILESET_IMAGE[] = "Resources\\Tileset\\3 Charleston.png";
 //const char MAP_BRINSTAR_JSON[] = "json\\Pittsburgh.json";
 //const char TILESET_IMAGE[] = "Resources\\Tileset\\4 Pittsburgh.png";
 
-const char OBJECT_LAYER_BRINSTAR_JSON[] = "json\\ObjectLayerBrinstar.json"; //object layer json of Brinstar
+const char OBJECT_LAYER_JSON[] = "json\\Objects.json"; //object layer json of Brinstar
 const char QUADTREE[] = "json\\QuadTree.json";
 
 //Rectangle of metroid

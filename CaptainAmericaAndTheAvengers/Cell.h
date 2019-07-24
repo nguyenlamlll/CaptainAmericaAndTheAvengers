@@ -1,15 +1,15 @@
 #pragma once
-#include <list>
+#include <map>
 #include "BaseObject.h"
 class Cell
 {
 private: 
-	std::list<BaseObject*> listOfObjects;
+	std::map<int, BaseObject*>* listOfObjects;
 public:
 	Cell();
 	~Cell();
 
-	void add(BaseObject* object);
-	std::list<BaseObject*> getAllObjects() { return listOfObjects; }
+	void add(int id, BaseObject* object);
+	std::map<int, BaseObject*>* getAllObjects() { return listOfObjects; }
 };
 

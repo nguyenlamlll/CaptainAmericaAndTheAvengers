@@ -58,7 +58,10 @@ private:
 	bool moveRight;
 	bool moveLeft;
 	bool visible;
-	
+
+	list<CollisionReturn> *listCollide;
+	map<int, BaseObject*>* listCanCollide;
+	map<int, BaseObject*>* listWallCanCollide;
 
 public:
 	CaptainAmerica();
@@ -66,7 +69,7 @@ public:
 	~CaptainAmerica();
 
 	void handleInput(float dt);
-	//void onCollision(float dt);
+	void onCollision(float dt);
 
 	void update(float dt);
 	void draw();
@@ -95,7 +98,14 @@ public:
 	Animation* getSpinAnimation() { return this->spinAnimation; }
 	Animation* getStandAnimation() { return this->standAnimation; }
 
+	list<CollisionReturn>* getListCollide() { return listCollide; }
+	//void setListCollide(list<CollisionReturn>* list) { this->listCollide = list; }
 
+	map<int, BaseObject*>* getListCanCollide() { return listCanCollide; }
+	void setListCanCollide(map<int, BaseObject*>* list) { this->listCanCollide = list; }
+
+	map<int, BaseObject*>* getListWallCanCollide() { return listWallCanCollide; }
+	void setListWallCanCollide(map<int, BaseObject*>* list) { this->listWallCanCollide = list; }
 	
 };
 

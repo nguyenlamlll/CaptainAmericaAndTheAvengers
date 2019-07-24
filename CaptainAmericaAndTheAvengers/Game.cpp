@@ -71,7 +71,10 @@ void Game::initialize(Graphics * graphics, Input * input)
 
 
 	ObjectManager::getInstance()->init(textureManager, graphics, captainAmerica);
-
+	if (!ObjectManager::getInstance()->loadMapObjects(OBJECT_LAYER_JSON)) 
+	{
+		throw GameError(GameErrorNS::FATAL_ERROR, "Can not load map objects.");
+	}
 
 
 	fpsText = new Text("FPS: 0", eFont::body, 8, VECTOR2(VIEWPORT_WIDTH - 70, 5), GraphicsNS::WHITE, false, true);
@@ -115,6 +118,8 @@ void Game::collisions(float dt)
 
 void Game::render()
 {
+	ObjectManager::getInstance()->setTotalObjectsPerFrame(0);
+
 	this->getGraphics()->spriteBegin();
 	map->draw();
 	captainAmerica->draw();
@@ -130,6 +135,10 @@ void Game::render()
 
 void Game::releaseAll()
 {
+	textureManager->onLostDevice();
+	spriteManger->releaseAll();
+
+	tileset->onLostDevice();
 }
 
 void Game::resetAll()

@@ -7,6 +7,7 @@
 #include "rapidjson-master\include\rapidjson\filereadstream.h"
 
 #include "Graphics.h"
+#include "Camera.h"
 #include "Constants.h"
 
 #include "CaptainAmerica.h"
@@ -33,6 +34,7 @@ private:
 
 	int totalObjectsPerFrame;
 	float timer;
+	map<int, BaseObject*>* listWallCanCollideCaptainAmerica;
 
 public:
 	ObjectManager();

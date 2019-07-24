@@ -7,6 +7,7 @@ ObjectManager::ObjectManager()
 	this->totalObjectsPerFrame = 0;
 	this->timer = 0;
 
+	this->listWallCanCollideCaptainAmerica = new map<int, BaseObject*>();
 }
 
 
@@ -30,7 +31,7 @@ void ObjectManager::init(TextureManager * textureM, Graphics * graphics, Captain
 	this->captainAmerica = captainAmerica;
 
 	grid = new Grid();
-	grid->add(this->captainAmerica);
+	grid->add(999, this->captainAmerica);
 	//std::list<BaseObject*> objects;
 	//grid->getCollidableObjects(objects, 13, 35);
 	//grid->getAllObjects(13, 35);
@@ -76,6 +77,8 @@ bool ObjectManager::loadMapObjects(const char * fileName)
 			ground->setActiveBound(bound);
 
 			mapObjects.insert(std::pair<int, BaseObject*>(id, ground));
+
+			grid->add(id, ground, x , MAP_HEIGHT - y);
 		}
 #pragma endregion
 
@@ -95,8 +98,21 @@ void ObjectManager::handleVelocity(float dt)
 	timer += dt;
 	if (timer >= TIME_RETRIEVE)
 	{
-		
+		timer = 0;
+
+		listWallCanCollideCaptainAmerica->clear();
+
+		GameRect r = Camera::getInstance()->getBound();
+
+		auto captainAmericaPositionOnGrid = grid->calculateObjectPositionOnGrid(this->captainAmerica);
+		grid->getCollidableObjects(listWallCanCollideCaptainAmerica, captainAmericaPositionOnGrid.x, captainAmericaPositionOnGrid.y);
+		if (listWallCanCollideCaptainAmerica->size() > 1)
+		{
+			int a = 5;
+		}
 	}
+
+	// Handle velocity...
 }
 
 void ObjectManager::onCheckCollision(float frametime)
