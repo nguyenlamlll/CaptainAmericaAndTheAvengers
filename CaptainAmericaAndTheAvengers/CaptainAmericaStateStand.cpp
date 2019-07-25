@@ -85,7 +85,7 @@ void CaptainAmericaStateStand::handleInput(float dt)
 	if (input->isKeyDown(VK_X))
 	{
 		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::JUMP);
-		this->captainAmerica->setVelocityX(0);
+		//this->captainAmerica->setVelocityX(0);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
 
@@ -124,6 +124,8 @@ void CaptainAmericaStateStand::update(float dt)
 
 void CaptainAmericaStateStand::onCollision(float dt)
 {
+
+
 	for (auto i = this->captainAmerica->getListCollide()->begin(); i != this->captainAmerica->getListCollide()->end(); i++) 
 	{
 		switch (i->object->getId())

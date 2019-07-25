@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CaptainAmericaStateJump.h"
 #include "CaptainAmericaStateManager.h"
+#include "CaptainAmerica.h"
 
 CaptainAmericaStateJump::CaptainAmericaStateJump()
 {
@@ -30,6 +31,13 @@ void CaptainAmericaStateJump::init()
 
 void CaptainAmericaStateJump::setBoundCollision()
 {
+	GameRect rect;
+	VECTOR2 position(this->captainAmerica->getPosition().x, captainAmerica->getPosition().y);
+	rect.left = position.x - JUMP_WIDTH * 0.5f;
+	rect.right = position.x + JUMP_WIDTH * 0.5f;
+	rect.top = position.y + JUMP_HEIGHT * 0.5f;
+	rect.bottom = position.y - JUMP_HEIGHT * 0.5f;
+	captainAmerica->setBoundCollision(rect);
 }
 
 void CaptainAmericaStateJump::handleInput(float dt)
@@ -43,7 +51,7 @@ void CaptainAmericaStateJump::handleInput(float dt)
 			//set direction to left
 			this->captainAmerica->setDirection(eDirection::right);
 		}
-		this->captainAmerica->setVelocityX(-CAPTAIN_VERLOCITY_Y);
+		this->captainAmerica->setVelocityX(-CAPTAIN_VERLOCITY_X);
 
 	}
 
@@ -58,12 +66,12 @@ void CaptainAmericaStateJump::handleInput(float dt)
 			this->captainAmerica->setDirection(eDirection::left);
 
 		}
-		this->captainAmerica->setVelocityX(CAPTAIN_VERLOCITY_Y);
+		this->captainAmerica->setVelocityX(CAPTAIN_VERLOCITY_X);
 	}
 
-	if (input->isKeyUp(VK_RIGHT) || input->isKeyUp(VK_LEFT)) {
-		this->captainAmerica->setVelocityX(0);
-	}
+	//if (input->isKeyUp(VK_RIGHT) || input->isKeyUp(VK_LEFT)) {
+	//	this->captainAmerica->setVelocityX(0);
+	//}
 
 	if (input->isKeyDown(VK_X) && this->captainAmerica->getVelocity().y <= 0 && this->captainAmerica->getVelocity().y >= -20) {
 		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::SPIN);
@@ -81,12 +89,68 @@ void CaptainAmericaStateJump::handleInput(float dt)
 
 void CaptainAmericaStateJump::update(float dt)
 {
-	if (this->captainAmerica->getPosition().y <= 1680) {
-		this->captainAmerica->setPositionY(1680);
+	if (this->captainAmerica->getPosition().y <= START_POS_Y) {
+		this->captainAmerica->setPositionY(START_POS_Y);
 		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::STAND);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
 	animation->update(dt);
+	setBoundCollision();
+}
+
+void CaptainAmericaStateJump::onCollision(float dt)
+{
+	float addX = 0, addY = 0;
+	for (auto i = this->captainAmerica->getListCollide()->begin(); i != this->captainAmerica->getListCollide()->end(); i++)
+	{
+		switch (i->object->getId())
+		{
+		case eID::GROUND:
+		{
+			switch (i->direction)
+			{
+			case CollideDirection::LEFT:
+
+				this->captainAmerica->setCanMoveRight(false);
+				this->captainAmerica->setVelocityX(0);
+				break;
+			case CollideDirection::RIGHT:
+				this->captainAmerica->setCanMoveLeft(false);
+				this->captainAmerica->setVelocityX(0);
+				break;
+			case CollideDirection::TOP:
+				//jumpDistance = 0;
+				//set jump = false, when user release jump button set to true
+				this->captainAmerica->setCanJump(false);
+				//set fall to false
+				this->captainAmerica->setIsFalling(false);
+				//reset velocity
+				this->captainAmerica->setVelocityY(0);
+				//positionCollide = i->positionCollision;
+				//if(this->samus->getStatus()!)
+				this->captainAmerica->setStatus(eStatus::STAND);
+
+				onExit();
+				CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::STAND);
+				CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+				break;
+			case CollideDirection::BOTTOM:
+				//jumpDistance = 0;
+				this->captainAmerica->setIsFalling(true);
+				this->captainAmerica->setVelocityY(0);
+				addY = i->positionCollision;
+
+				this->captainAmerica->setPositionY(addY - OFFSET_JUMP);
+				break;
+			}
+			break;
+		}
+		default:
+		{
+			break;
+		}
+		}
+	}
 }
 
 void CaptainAmericaStateJump::onStart()

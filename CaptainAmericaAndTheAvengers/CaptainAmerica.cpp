@@ -6,10 +6,6 @@
 //#include "Sound.h"
 
 
-//start position
-#define START_POS_X 760	
-#define START_POS_Y 1680
-
 CaptainAmerica::CaptainAmerica()
 {
 }
@@ -151,7 +147,11 @@ void CaptainAmerica::update(float dt)
 	float deltaY = this->getVelocity().y * dt;
 	this->setPositionY(this->getPosition().y + deltaY);
 
+	// Gravity
+	//this->setVelocityY(this->getVelocity().y + this->getAccelerate().y);
+
 	CaptainAmericaStateManager::getInstance()->getCurrentState()->update(dt);
+
 
 #pragma region handle camera
 	bool isCameraMoving = false;

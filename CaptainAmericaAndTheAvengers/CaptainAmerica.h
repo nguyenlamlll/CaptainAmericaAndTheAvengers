@@ -35,6 +35,15 @@
 #define OFFSET_COLLISION_Y 4
 #define OFFSET_ROLLING 6.0f
 
+#define JUMP_HEIGHT 24
+#define JUMP_WIDTH 10
+
+#define OFFSET_JUMP 11
+
+// Start position
+#define START_POS_X 760	
+#define START_POS_Y 1680
+
 class CaptainAmerica : public BaseObject
 {
 private:

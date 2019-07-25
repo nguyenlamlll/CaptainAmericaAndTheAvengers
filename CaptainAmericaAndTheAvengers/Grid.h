@@ -11,7 +11,7 @@ public:
 	~Grid();
 
 	// Edge size of a cell
-	static const int CELL_SIZE = 1000;
+	static const int CELL_SIZE = 200;
 
 	// Total number of columns based on prefixed map width
 	static const int NUM_COLUMNS = MAP_WIDTH / CELL_SIZE;
@@ -19,10 +19,12 @@ public:
 	// Total number of rows based on prefixed map height
 	static const int NUM_ROWS = MAP_HEIGHT / CELL_SIZE;
 
+	void CheckAndAddOversizedObject(BaseObject * object, D3DXVECTOR2 &objectPositionOnGrid, int id);
+	void CheckAndAddOversizedObject(BaseObject * object, int x, int y, D3DXVECTOR2 &objectPositionOnGrid, int id);
 	void add(int id, BaseObject* object);
 	void add(int id, BaseObject* object, int x, int y);
 	VECTOR2 calculateObjectPositionOnGrid(BaseObject* object);
-	VECTOR2 calculateObjectPositionOnGrid(BaseObject* object, int x, int y);
+	VECTOR2 calculateObjectPositionOnGrid(int x, int y);
 
 	std::map<int, BaseObject*>* getAllObjects(int column, int row) { return cells[column][row]->getAllObjects(); }
 

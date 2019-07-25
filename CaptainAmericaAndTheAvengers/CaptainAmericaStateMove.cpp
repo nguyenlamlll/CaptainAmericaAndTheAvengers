@@ -31,7 +31,7 @@ void CaptainAmericaStateMove::setBoundCollision()
 	rect.left = position.x - WIDTH_COLLISION * 0.5f;
 	rect.right = position.x + WIDTH_COLLISION * 0.5f;
 	rect.top = position.y + HEIGHT_COLLISION * 0.5f;
-	rect.bottom = position.y - HEIGHT_COLLISION * 0.5f;
+	rect.bottom = position.y - HEIGHT_COLLISION;
 	captainAmerica->setBoundCollision(rect);
 }
 

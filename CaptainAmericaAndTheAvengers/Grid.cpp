@@ -19,22 +19,70 @@ Grid::~Grid()
 {
 }
 
+void Grid::CheckAndAddOversizedObject(BaseObject * object, D3DXVECTOR2 &objectPositionOnGrid, int id)
+{
+	auto width = object->getBoundCollision().right - object->getBoundCollision().left;
+	auto height = object->getBoundCollision().top - object->getBoundCollision().bottom;
+	auto bottomRightPositionOnGrid = calculateObjectPositionOnGrid(
+		object->getPosition().x + width,
+		object->getPosition().y - height
+	);
+	if ((objectPositionOnGrid.x != bottomRightPositionOnGrid.x) || (objectPositionOnGrid.y != bottomRightPositionOnGrid.y))
+	{
+		for (int i = objectPositionOnGrid.x; i <= bottomRightPositionOnGrid.x; i++)
+		{
+			for (int j = objectPositionOnGrid.y; j >= bottomRightPositionOnGrid.y; j--) // From top-left go down to bottom right.
+			{
+				// Does not need to check cell [objectPositionOnGrid.x][objectPositionOnGrid.y].
+				// Because std::map only allows unique pairs.
+				// So added object in operation above will not be re-added in this loop.
+				cells[i][j]->add(id, object);
+			}
+		}
+	}
+}
+
+void Grid::CheckAndAddOversizedObject(BaseObject * object, int x, int y, D3DXVECTOR2 & objectPositionOnGrid, int id)
+{
+	auto width = object->getBoundCollision().right - object->getBoundCollision().left;
+	auto height = object->getBoundCollision().top - object->getBoundCollision().bottom;
+	auto bottomRightPositionOnGrid = calculateObjectPositionOnGrid(
+		x + width,
+		y - height
+	);
+	if ((objectPositionOnGrid.x != bottomRightPositionOnGrid.x) || (objectPositionOnGrid.y != bottomRightPositionOnGrid.y))
+	{
+		for (int i = objectPositionOnGrid.x; i <= bottomRightPositionOnGrid.x; i++)
+		{
+			for (int j = objectPositionOnGrid.y; j >= bottomRightPositionOnGrid.y; j--) // From top-left go down to bottom right.
+			{
+				// Does not need to check cell [objectPositionOnGrid.x][objectPositionOnGrid.y].
+				// Because std::map only allows unique pairs.
+				// So added object in operation above will not be re-added in this loop.
+				cells[i][j]->add(id, object);
+			}
+		}
+	}
+}
+
 void Grid::add(int id, BaseObject * object)
 {
 	auto objectPositionOnGrid = calculateObjectPositionOnGrid(object);
 
 	cells[(int)objectPositionOnGrid.x][(int)objectPositionOnGrid.y]->add(id, object);
 
-	//TODO: If an object is bigger than a cell, add that object to all cells which it resides.
+	// If an object is bigger than a cell, add that object to all cells which it resides.
+	CheckAndAddOversizedObject(object, objectPositionOnGrid, id);
 }
 
 void Grid::add(int id, BaseObject * object, int x, int y)
 {
-	auto objectPositionOnGrid = calculateObjectPositionOnGrid(object, x, y);
+	auto objectPositionOnGrid = calculateObjectPositionOnGrid(x, y);
 
 	cells[(int)objectPositionOnGrid.x][(int)objectPositionOnGrid.y]->add(id, object);
 
-	//TODO: If an object is bigger than a cell, add that object to all cells which it resides.
+	// If an object is bigger than a cell, add that object to all cells which it resides.
+	CheckAndAddOversizedObject(object, x, y, objectPositionOnGrid, id);
 }
 
 VECTOR2 Grid::calculateObjectPositionOnGrid(BaseObject * object)
@@ -44,7 +92,9 @@ VECTOR2 Grid::calculateObjectPositionOnGrid(BaseObject * object)
 	return VECTOR2(cellX, cellY);
 }
 
-VECTOR2 Grid::calculateObjectPositionOnGrid(BaseObject * object, int x, int y)
+// Calculate which cell on the grid that the given position lies inside.
+// We can use this function to calculate objects that are not initalized (yet) or do not have sprites to use sprite->getPosition().
+VECTOR2 Grid::calculateObjectPositionOnGrid(int x, int y)
 {
 	int cellX = (int)(x / Grid::CELL_SIZE);
 	int cellY = (int)(y / Grid::CELL_SIZE);
@@ -57,12 +107,12 @@ void Grid::getCollidableObjects(std::map<int, BaseObject*>* result, int column, 
 	auto objects = cells[column][row]->getAllObjects();
 	result->insert(objects->begin(), objects->end());
 
-	if (column > 0 && row > 0) 
+	if (column > 0 && row > 0)
 	{
 		objects = cells[column - 1][row - 1]->getAllObjects();
 		result->insert(objects->begin(), objects->end());
 	}
-	if (column > 0) 
+	if (column > 0)
 	{
 		objects = cells[column - 1][row]->getAllObjects();
 		result->insert(objects->begin(), objects->end());
