@@ -7,9 +7,14 @@
 #include "rapidjson-master\include\rapidjson\filereadstream.h"
 
 #include "Graphics.h"
+#include "Camera.h"
 #include "Constants.h"
 
 #include "CaptainAmerica.h"
+
+#include "Collision.h"
+
+#include "Grid.h"
 
 #include <map>
 
@@ -24,7 +29,15 @@ private:
 	TextureManager* textureManager;
 	Graphics* graphics;
 
+	Grid* grid;
+	map<int, BaseObject*> mapObjects;
+
 	CaptainAmerica* captainAmerica;
+
+	int totalObjectsPerFrame;
+	float timer;
+	map<int, BaseObject*>* listWallCanCollideCaptainAmerica;
+
 public:
 	ObjectManager();
 	~ObjectManager();
@@ -32,7 +45,18 @@ public:
 	static ObjectManager* getInstance();
 	void init(TextureManager* textureM, Graphics* graphics, CaptainAmerica* captainAmerica);
 
-	//void update(float dt);
-	//void draw();
+	void update(float dt);
+	void draw();
+
+	int getTotalObjectsPerFrame() { return totalObjectsPerFrame; }
+	void setTotalObjectsPerFrame(int value) { totalObjectsPerFrame = value; }
+
+	// Load map objects defined in a file.
+	bool loadMapObjects(const char *fileName);
+
+	void handleVelocity(float dt);
+
+	void onCheckCollision(float frametime);
+	void onCheckCollision(BaseObject* obj, float frametime);
 };
 

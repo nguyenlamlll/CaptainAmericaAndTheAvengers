@@ -29,6 +29,13 @@ void CaptainAmericaStateStand::init()
 
 void CaptainAmericaStateStand::setBoundCollision()
 {
+	GameRect rect;
+	VECTOR2 position(this->captainAmerica->getPosition().x, captainAmerica->getPosition().y - OFFSET_COLLISION_Y + 1);
+	rect.left = position.x - WIDTH_COLLISION * 0.5f;
+	rect.right = position.x + WIDTH_COLLISION * 0.5f;
+	rect.top = position.y + HEIGHT_COLLISION * 0.5f;
+	rect.bottom = position.y - HEIGHT_COLLISION;
+	captainAmerica->setBoundCollision(rect);
 }
 
 void CaptainAmericaStateStand::handleInput(float dt)
@@ -78,7 +85,7 @@ void CaptainAmericaStateStand::handleInput(float dt)
 	if (input->isKeyDown(VK_X))
 	{
 		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::JUMP);
-		this->captainAmerica->setVelocityX(0);
+		//this->captainAmerica->setVelocityX(0);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
 	}
 
@@ -110,7 +117,39 @@ void CaptainAmericaStateStand::handleInput(float dt)
 
 void CaptainAmericaStateStand::update(float dt)
 {
+	setBoundCollision();
+
 	animation->update(dt);
+}
+
+void CaptainAmericaStateStand::onCollision(float dt)
+{
+
+
+	for (auto i = this->captainAmerica->getListCollide()->begin(); i != this->captainAmerica->getListCollide()->end(); i++) 
+	{
+		switch (i->object->getId())
+		{
+		case eID::GROUND:
+		{
+			switch (i->direction)
+			{
+			case CollideDirection::TOP:
+				this->captainAmerica->setVelocityY(0);
+				this->captainAmerica->setPositionY(i->positionCollision + OFFSET_STAND);
+
+				//canRolling = true;
+				break;
+
+			}
+			break;
+		}
+		default:
+		{
+			break;
+		}
+		}
+	}
 }
 
 void CaptainAmericaStateStand::onStart()

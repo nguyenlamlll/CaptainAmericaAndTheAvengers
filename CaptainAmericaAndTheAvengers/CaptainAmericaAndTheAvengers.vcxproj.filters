@@ -43,6 +43,27 @@
     <Filter Include="Source Files\Objects\Players\States">
       <UniqueIdentifier>{da90feec-d215-4c2b-af56-c2b23945109f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objects\StaticObjects">
+      <UniqueIdentifier>{4cb38c6e-0907-4776-af5c-5bcaeb0df2bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\StaticObjects">
+      <UniqueIdentifier>{c3f51e13-3e97-4e67-9f09-0d24fc5c1c8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Grid">
+      <UniqueIdentifier>{001d2a92-e678-411e-a7e0-74c1ff3278d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Grid">
+      <UniqueIdentifier>{a938d892-057e-44ea-a5ce-3511c73ba341}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{6582c100-eaca-4cad-aa55-9824053b7863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{9ce2a4c8-4f76-4177-a03b-29422f8a7a95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{69cf86c6-7ac6-434b-9a01-1a226e0d7fb6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -67,9 +88,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Constants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameError.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Input.h">
@@ -165,8 +183,26 @@
     <ClInclude Include="CaptainAmericaStateSpin.h">
       <Filter>Header Files\Objects\Players\States</Filter>
     </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Header Files\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Header Files\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="CaptainAmericaStateStart.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="CaptainAmericaStateStand.h">
       <Filter>Header Files\Objects\Players\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameError.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ConversionUtilities.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -186,9 +222,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Constants.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameError.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
@@ -284,8 +317,20 @@
     <ClCompile Include="CaptainAmericaStateSpin.cpp">
       <Filter>Source Files\Objects\Players\States</Filter>
     </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Source Files\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files\Grid</Filter>
+    </ClCompile>
     <ClCompile Include="CaptainAmericaStateStand.cpp">
       <Filter>Source Files\Objects\Players\States</Filter>
+    </ClCompile>
+    <ClCompile Include="GameError.cpp">
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -300,5 +345,8 @@
     <Image Include="CaptainAmericaAndTheAvengers.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

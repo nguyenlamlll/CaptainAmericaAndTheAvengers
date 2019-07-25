@@ -24,6 +24,11 @@ BaseObject::~BaseObject()
 {
 }
 
+void BaseObject::setPositionInGrid()
+{
+
+}
+
 void BaseObject::update(float dt)
 {
 }
@@ -166,12 +171,12 @@ void BaseObject::onCollision(float dt)
 
 }
 
-void BaseObject::setBoundCollision(MetroidRect rect)
+void BaseObject::setBoundCollision(GameRect rect)
 {
 	this->boundCollision = rect;
 }
 
-MetroidRect BaseObject::getBoundCollision()
+GameRect BaseObject::getBoundCollision()
 {
 	return boundCollision;
 }
@@ -195,12 +200,12 @@ void BaseObject::setVelocity(VECTOR2 velocity)
 {
 	this->velocity = velocity;
 }
-MetroidRect BaseObject::getActiveBound()
+GameRect BaseObject::getActiveBound()
 {
 	return this->activeBound;
 }
 
-void BaseObject::setActiveBound(MetroidRect rect)
+void BaseObject::setActiveBound(GameRect rect)
 {
 	this->activeBound = rect;
 }
