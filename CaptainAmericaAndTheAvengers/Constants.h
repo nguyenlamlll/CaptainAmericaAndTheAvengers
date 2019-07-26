@@ -63,8 +63,8 @@ const char STARTGAME_IMAGE[] = "Resources\\SpriteSheets\\hqdefault.jpg";
 
 //const char SOURCE_IMAGE[] = "Resources\\SpriteSheets\\MetroidTexture.png";//character of game
 //const char SOURCE_JSON[] = "json\\MetroidTexture.json"; //json file of metroid sprite
-const char SOURCE_IMAGE[] = "Resources\\SpriteSheets\\captionamerica.png";//character of game
-const char SOURCE_JSON[] = "json\\animation-character.json"; //json file of metroid sprite
+const char SOURCE_IMAGE[] = "Resources\\SpriteSheets\\sprite.png";//character of game
+const char SOURCE_JSON[] = "json\\sprite.json"; //json file of metroid sprite
 
 //const char MAP_BRINSTAR_JSON[] = "json\\MapBrinstar.json"; //json file of map brinstar
 //const char TILESET_IMAGE[] = "Resources\\Tileset\\Tileset.png"; //tileset of map brinstar
