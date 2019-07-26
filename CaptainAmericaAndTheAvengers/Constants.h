@@ -75,16 +75,17 @@ const char TILESET_IMAGE[] = "Resources\\Tileset\\3 Charleston.png";
 //const char MAP_BRINSTAR_JSON[] = "json\\Pittsburgh.json";
 //const char TILESET_IMAGE[] = "Resources\\Tileset\\4 Pittsburgh.png";
 
-const char OBJECT_LAYER_BRINSTAR_JSON[] = "json\\ObjectLayerBrinstar.json"; //object layer json of Brinstar
+const char OBJECT_LAYER_JSON[] = "json\\Objects.json"; //object layer json of Brinstar
 const char QUADTREE[] = "json\\QuadTree.json";
+
 //Rectangle of metroid
-struct MetroidRect
+struct GameRect
 {
 	float top, left, right, bottom;
-	MetroidRect()
+	GameRect()
 	{
 	};
-	MetroidRect(float top, float bottom, float left, float right)
+	GameRect(float top, float bottom, float left, float right)
 	{
 		this->top = top;
 		this->bottom = bottom;
@@ -97,40 +98,8 @@ struct MetroidRect
 // Element ID
 enum eID {
 	SAMUS,
-	ICEBULLET,
-	BULLET,
-	SKREE,
-	ZEB,
-	WAVER,
-	ZOMMER,
-	RIO,
-	RIPPER,
-	ALIENBIG,
-	ALIENSMALL,
-	BOSSDRAGON,
-	BOSSKRAID,
-	MOTHERBRAIN,
-	MARUMARI,
-	VARIA,
-	MISSILEROCKET,
-	ROCKET,
-	LONGBEAM,
-	ICEBEAM,
-	ENERGYTANK,
-	BOMB,
-	BOOMBOMB,
-	WALL,
-	PORT,
-	FIRE,
-	ELEVATOR,
-	GATEBLUE,
-	GATERED,
-	BRICK,
-	BOSSKRAID_ROCKET,
-	DEFENSEBOSS,
-	MACHINE_CANON,
-	CANON_BULLET,
-	FIRE_BUBLE,
+	CAPTAINAMERICA,
+	GROUND,
 };
 
 // collision direction

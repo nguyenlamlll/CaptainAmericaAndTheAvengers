@@ -11,8 +11,8 @@ protected:
 	eID id;
 	eStatus status;
 	eDirection direction;
-	MetroidRect activeBound;
-	MetroidRect boundCollision;
+	GameRect activeBound;
+	GameRect boundCollision;
 	VECTOR2 velocity;
 	VECTOR2 accelerate;
 
@@ -22,6 +22,8 @@ public:
 	BaseObject(eID id);
 	BaseObject();
 	~BaseObject();
+
+	virtual void setPositionInGrid();
 
 	virtual void update(float dt);
 	virtual void draw();
@@ -60,8 +62,8 @@ public:
 
 	virtual void onCollision(float dt);
 
-	virtual void setBoundCollision(MetroidRect rect);
-	virtual MetroidRect getBoundCollision();
+	virtual void setBoundCollision(GameRect rect);
+	virtual GameRect getBoundCollision();
 
 	virtual void setFlipX(bool flipX) { sprite->setFlipX(flipX); }
 	virtual void setFlipY(bool flipY) { sprite->setFlipY(flipY); }
@@ -70,8 +72,8 @@ public:
 	virtual void setVelocityY(float y);
 	virtual void setVelocity(VECTOR2 velocity);
 
-	virtual MetroidRect getActiveBound();
-	virtual void setActiveBound(MetroidRect rect);
+	virtual GameRect getActiveBound();
+	virtual void setActiveBound(GameRect rect);
 
 	virtual void setActivity(bool flag);
 	virtual bool isActivitied();

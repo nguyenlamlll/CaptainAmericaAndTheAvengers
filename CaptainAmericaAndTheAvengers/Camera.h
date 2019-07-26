@@ -73,12 +73,12 @@ public:
 	int getHeight();
 
 	D3DXVECTOR3 getPosition();
-	MetroidRect getBound();
+	GameRect getBound();
 
 	D3DXVECTOR2 getVelocity();
 	void setVelocity(D3DXVECTOR2 vec);
 
-	MetroidRect getActiveArea();
+	GameRect getActiveArea();
 
 	void update(float dt);
 

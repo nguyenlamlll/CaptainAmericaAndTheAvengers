@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="32" tileheight="24" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="200" height="200" tilewidth="32" tileheight="24" infinite="0" nextlayerid="3" nextobjectid="21">
  <tileset firstgid="1" source="Tileset/3 Charleston.tsx"/>
  <layer id="1" name="Tile Layer 1" width="200" height="200">
   <data encoding="csv">
@@ -205,4 +205,22 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="2" name="Ground">
+  <object id="3" x="703.667" y="3141.67" width="95.6667" height="16.6667"/>
+  <object id="4" x="864.5" y="3142" width="1215" height="16.5"/>
+  <object id="5" x="752.125" y="3012.75" width="47.75" height="16"/>
+  <object id="7" x="672" y="3023.67" width="32" height="134.667"/>
+  <object id="9" x="147" y="2970" height="1"/>
+  <object id="10" x="1280.36" y="3061.55" width="31.1818" height="13.0909"/>
+  <object id="11" x="1376.55" y="3061.45" width="47" height="13.8182"/>
+  <object id="12" x="1328.69" y="2981.56" width="30.6875" height="13.25"/>
+  <object id="13" x="1536.55" y="3061.82" width="30.9091" height="13.2727"/>
+  <object id="14" x="1632.63" y="3061.5" width="46.75" height="13.375"/>
+  <object id="15" x="1584.63" y="2981.5" width="30.75" height="13.625"/>
+  <object id="16" x="2032.38" y="3013.38" width="47.375" height="14.125"/>
+  <object id="17" x="2496" y="3125.33" width="64" height="91.6667"/>
+  <object id="18" x="2559.75" y="3140.75" width="191.25" height="75.9167"/>
+  <object id="19" x="2720.67" y="3013.33" width="30.3333" height="130"/>
+  <object id="20" x="2495.67" y="3013.33" width="226.333" height="47"/>
+ </objectgroup>
 </map>

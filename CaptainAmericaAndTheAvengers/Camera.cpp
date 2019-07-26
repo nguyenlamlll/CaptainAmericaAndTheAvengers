@@ -64,9 +64,9 @@ D3DXVECTOR3 Camera::getPosition()
 	return this->position;
 }
 
-MetroidRect Camera::getBound()
+GameRect Camera::getBound()
 {
-	MetroidRect bound;
+	GameRect bound;
 
 	bound.left = (position.x - width * 0.5f);
 	bound.right = (bound.left + width);
@@ -86,9 +86,9 @@ void Camera::setVelocity(D3DXVECTOR2 vec)
 	this->velocity = vec;
 }
 
-MetroidRect Camera::getActiveArea()
+GameRect Camera::getActiveArea()
 {
-	MetroidRect area;
+	GameRect area;
 	area.left = (this->position.x - ACTIVE_AREA_WIDTH * 0.5f);
 	area.right = (area.left + ACTIVE_AREA_WIDTH);
 	area.top = (this->position.y + ACTIVE_AREA_HEIGHT);

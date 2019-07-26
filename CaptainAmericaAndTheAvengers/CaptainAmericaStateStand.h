@@ -14,6 +14,7 @@ public:
 
 	void handleInput(float dt);
 	void update(float dt);
+	void onCollision(float dt);
 
 	void onStart();
 	void onExit();
