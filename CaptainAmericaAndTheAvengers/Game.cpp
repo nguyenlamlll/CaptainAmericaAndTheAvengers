@@ -65,7 +65,7 @@ void Game::initialize(Graphics * graphics, Input * input)
 
 	camera = new Camera(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
 	camera->setPosition(VECTOR2(CAM_POS_X, CAM_POS_Y));
-	camera->setPosition(VECTOR2(850, 1750)); // For Charleston
+	camera->setPosition(VECTOR2(355, 1000)); // For Charleston
 
 	captainAmerica = new CaptainAmerica(textureManager, graphics, input);
 

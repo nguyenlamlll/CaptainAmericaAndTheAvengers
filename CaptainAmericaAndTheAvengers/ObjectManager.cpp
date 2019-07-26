@@ -62,11 +62,11 @@ bool ObjectManager::loadMapObjects(const char * fileName)
 		for (SizeType i = 0; i < groundObjectList.Size(); i++)
 		{
 			BaseObject* ground = new BaseObject(eID::GROUND);
-			id = groundObjectList[i]["id"].GetInt();
-			x = groundObjectList[i]["x"].GetFloat();
-			y = MAP_HEIGHT - groundObjectList[i]["y"].GetFloat();
-			height = groundObjectList[i]["height"].GetFloat();
-			width = groundObjectList[i]["width"].GetFloat();
+			id = groundObjectList[i]["Id"].GetInt();
+			x = groundObjectList[i]["X"].GetFloat();
+			y = groundObjectList[i]["Y"].GetFloat();
+			height = groundObjectList[i]["Height"].GetFloat();
+			width = groundObjectList[i]["Width"].GetFloat();
 
 			bound.left = x;
 			bound.top = y;

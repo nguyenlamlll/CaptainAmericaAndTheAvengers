@@ -41,8 +41,8 @@
 #define OFFSET_JUMP 11
 
 // Start position
-#define START_POS_X 760	
-#define START_POS_Y 1680
+#define START_POS_X 310
+#define START_POS_Y 1000
 
 class CaptainAmerica : public BaseObject
 {

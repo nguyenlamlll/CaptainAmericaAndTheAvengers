@@ -28,8 +28,10 @@ const UINT VIEWPORT_HEIGHT = 500;               // height of game in pixels
 // Change width and height accordingly to the map to calculate the columns and the rows.
 //const UINT MAP_WIDTH = 3200; 
 //const UINT MAP_HEIGHT = 2400;
-const UINT MAP_WIDTH = 6400;
-const UINT MAP_HEIGHT = 4800;
+//const UINT MAP_WIDTH = 6400;
+//const UINT MAP_HEIGHT = 4800;
+const UINT MAP_WIDTH = 2560;
+const UINT MAP_HEIGHT = 1440;
 
 // Game Manger
 const double PI = 3.14159265;
@@ -69,13 +71,13 @@ const char SOURCE_JSON[] = "json\\sprite.json"; //json file of metroid sprite
 //const char MAP_BRINSTAR_JSON[] = "json\\MapBrinstar.json"; //json file of map brinstar
 //const char TILESET_IMAGE[] = "Resources\\Tileset\\Tileset.png"; //tileset of map brinstar
 //
-const char MAP_BRINSTAR_JSON[] = "json\\Charleston.json"; 
-const char TILESET_IMAGE[] = "Resources\\Tileset\\3 Charleston.png"; 
+const char MAP_BRINSTAR_JSON[] = "json\\Charleston-Pittsburgh.json"; 
+const char TILESET_IMAGE[] = "Resources\\Charleston-Pittsburgh.png"; 
 
 //const char MAP_BRINSTAR_JSON[] = "json\\Pittsburgh.json";
 //const char TILESET_IMAGE[] = "Resources\\Tileset\\4 Pittsburgh.png";
 
-const char OBJECT_LAYER_JSON[] = "json\\Objects.json"; //object layer json of Brinstar
+const char OBJECT_LAYER_JSON[] = "json\\Charleston-Pittsburgh-objects.json"; 
 const char QUADTREE[] = "json\\QuadTree.json";
 
 //Rectangle of metroid
