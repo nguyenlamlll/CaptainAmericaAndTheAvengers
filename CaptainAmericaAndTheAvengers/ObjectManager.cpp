@@ -82,6 +82,30 @@ bool ObjectManager::loadMapObjects(const char * fileName)
 		}
 #pragma endregion
 
+#pragma region Load Reward Vault
+		const Value& rewardVaultObjectList = jSon["RewardVault"];
+		for (SizeType i = 0; i < groundObjectList.Size(); i++)
+		{
+			BaseObject* rewardvault = new BaseObject(eID::REWARDVAULT);
+			id = groundObjectList[i]["id"].GetInt();
+			x = groundObjectList[i]["x"].GetFloat();
+			y = MAP_HEIGHT - groundObjectList[i]["y"].GetFloat();
+			height = groundObjectList[i]["height"].GetFloat();
+			width = groundObjectList[i]["width"].GetFloat();
+
+			bound.left = x;
+			bound.top = y;
+			bound.right = bound.left + width;
+			bound.bottom = bound.top - height;
+			rewardvault->setBoundCollision(bound);
+
+			rewardvault->setActiveBound(bound);
+
+			mapObjects.insert(std::pair<int, BaseObject*>(id, rewardvault));
+
+			grid->add(id, rewardvault, x, y);
+		}
+#pragma endregion
 
 		return true;
 	}
