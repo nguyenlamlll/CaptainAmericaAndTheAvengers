@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MapEditor.Models;
+using Newtonsoft.Json;
 
 namespace MapEditor
 {
@@ -18,7 +20,7 @@ namespace MapEditor
         private int WORLD_Y;
 
         private GameObject _object;
-        private List<GameObject> _listObject;
+        private List<GameObject> objectList;
         private int _countClick;
         private QNode quadtree;
 
@@ -34,21 +36,17 @@ namespace MapEditor
             this._heightCell = int.Parse(this.txt_height.Text);
             this.cb_typeObject.SelectedIndex = 0;
             this.cb_directStair.SelectedIndex = 0;
-            this._listObject = new List<GameObject>();
+            this.objectList = new List<GameObject>();
+            this.Text = "Map Editor";
 
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.worldSpace.callBack = new Action(Invisible_OpenButton);
+            //this.worldSpace.callBack = new Action(Invisible_OpenButton);
             this.worldSpace.WidthCell = int.Parse(txt_width.Text);
             this.worldSpace.HeightCell = int.Parse(txt_height.Text);
-        }
-
-        private void Invisible_OpenButton()
-        {
-            this.btn_OpenImage.Hide();
         }
 
         private void btn_Excute_Click(object sender, EventArgs e)
@@ -67,12 +65,12 @@ namespace MapEditor
 
         private void btnSaveQuadTree_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < this._listObject.Count; i++)
-                this._listObject[i].Key = i;
+            for (int i = 0; i < this.objectList.Count; i++)
+                this.objectList[i].Key = i;
 
             this.quadtree.clear();
             //Đổ tất cả object vào node đầu tiên của quadtree
-            foreach (var item in this._listObject)
+            foreach (var item in this.objectList)
                 this.quadtree.ListObject.Add(item);
 
             this.quadtree.buildTree();//Xây dụng quadtree
@@ -141,7 +139,8 @@ namespace MapEditor
             this._locationMouse.X = currentMouse.X / this._widthCell;
             this._locationMouse.Y = currentMouse.Y / this._heightCell;
 
-            this.location.Text = "[" + this._locationMouse.X + ", " + this._locationMouse.Y + "]";
+            this.location.Text = "Grid: [" + this._locationMouse.X + ", " + this._locationMouse.Y + "]" + " " +
+                "Position: " + currentMouse.X + "," + currentMouse.Y;
         }
 
         /// <summary>
@@ -154,7 +153,7 @@ namespace MapEditor
             //Delete Object
             if (check_deleteObject.Checked)
             {
-                if (this._listObject.Count == 0)
+                if (this.objectList.Count == 0)
                 {
                     MessageBox.Show("No object can delete! Please check again", "Notify", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
@@ -163,9 +162,9 @@ namespace MapEditor
                 //Current location in world
                 Point currentMouse = new Point(e.X - this.worldSpace.AutoScrollPosition.X, WORLD_Y - (e.Y - this.worldSpace.AutoScrollPosition.Y));
                 WorldRect currentObject = new WorldRect(currentMouse, new Size(1, 1));
-                for (int i = _listObject.Count - 1; i >= 0; i--)
+                for (int i = objectList.Count - 1; i >= 0; i--)
                 {
-                    var obj = this._listObject[i];
+                    var obj = this.objectList[i];
                     WorldRect rectObject = new WorldRect(obj.X, obj.Y, obj.Width, obj.Height);
                     if (rectObject.Contains(currentObject))
                     {
@@ -180,19 +179,19 @@ namespace MapEditor
                             "Notify", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                         if (result == DialogResult.Yes)
-                            this._listObject.Remove(obj);
+                            this.objectList.Remove(obj);
                     }
                 }
 
                 //Draw all object in listObject
 
-                if (this._listObject.Count > 0)
+                if (this.objectList.Count > 0)
                 {
                     Image image = new Bitmap(this._imageBuffer);
                     using (Graphics graphics = Graphics.FromImage(image))
                     {
                         List<Rectangle> listRect = new List<Rectangle>();
-                        foreach (var obj in this._listObject)
+                        foreach (var obj in this.objectList)
                         {
                             listRect.Add(new Rectangle(obj.X, WORLD_Y - obj.Y, obj.Width, obj.Height));
                         }
@@ -221,7 +220,7 @@ namespace MapEditor
                     this._object.Y = WORLD_Y - this._locationMouse.Y * this._heightCell;
 
                     Rectangle rect = new Rectangle(new Point(this._object.X - 2, WORLD_Y - this._object.Y - 2), new Size(3, 3));
-                    this.DrawDemo(rect, _object.Id);
+                    this.DrawObjectBoundOnMap(rect, _object.ObjectTypeId);
 
                 }
                 else
@@ -251,45 +250,47 @@ namespace MapEditor
                     this.txt_W.Text = this._object.Width.ToString();
                     this.txt_H.Text = this._object.Height.ToString();
 
-                  
+
                     this._countClick = 0; ;
 
                     switch (cb_typeObject.SelectedIndex)
                     {
-                        case 0: _object.Id = GameObject.EObjectID.GROUND; break;
-                        case 1: _object.Id = GameObject.EObjectID.ROPE; break;
-                        case 2: _object.Id = GameObject.EObjectID.WALL; break;
-                        case 3: _object.Id = GameObject.EObjectID.LEVERAGE; break;
-                        case 4: _object.Id = GameObject.EObjectID.COLUMN; break;
-                        case 5: _object.Id = GameObject.EObjectID.BAR; break;
-                        case 6: _object.Id = GameObject.EObjectID.CAMEL; break;
-                        case 7: _object.Id = GameObject.EObjectID.GUARDS1; break;
-                        case 8: _object.Id = GameObject.EObjectID.GUARDS2; break;
-                        case 9: _object.Id = GameObject.EObjectID.GUARDS3; break;
-                        case 10: _object.Id = GameObject.EObjectID.CIVILIAN1; break;
-                        case 11: _object.Id = GameObject.EObjectID.CIVILIAN2; break;
-                        case 12: _object.Id = GameObject.EObjectID.CIVILIAN3; break;
-                        case 13: _object.Id = GameObject.EObjectID.CIVILIAN4; break;
-                        case 14: _object.Id = GameObject.EObjectID.PEDDLER; break;
-                        case 15: _object.Id = GameObject.EObjectID.APPLEITEM; break;
-                        case 16: _object.Id = GameObject.EObjectID.TEAPOTITEM; break;
-                        case 17: _object.Id = GameObject.EObjectID.GENIEITEM; break;
-                        case 18: _object.Id = GameObject.EObjectID.BALLITEM; break;
-                        case 19: _object.Id = GameObject.EObjectID.ALADDINITEM; break;
-                        case 20: _object.Id = GameObject.EObjectID.HEARTITEM; break;
-                        case 21: _object.Id = GameObject.EObjectID.MONKEYITEM; break;
-                        case 22: _object.Id = GameObject.EObjectID.JARITEM; break;
-                        case 23: _object.Id = GameObject.EObjectID.STAIR; break;
-                        case 24: _object.Id = GameObject.EObjectID.GROUND_DROP; break;
-                        case 25: _object.Id = GameObject.EObjectID.STICKITEM; break;
-                        case 26: _object.Id = GameObject.EObjectID.TRAP; break;
-                        case 27: _object.Id = GameObject.EObjectID.JAFAR; break;
+                        case 0: _object.ObjectTypeId = GameObject.EObjectID.Ground; break;
+                        case 1: _object.ObjectTypeId = GameObject.EObjectID.ROPE; break;
+                        case 2: _object.ObjectTypeId = GameObject.EObjectID.WALL; break;
+                        case 3: _object.ObjectTypeId = GameObject.EObjectID.LEVERAGE; break;
+                        case 4: _object.ObjectTypeId = GameObject.EObjectID.COLUMN; break;
+                        case 5: _object.ObjectTypeId = GameObject.EObjectID.BAR; break;
+                        case 6: _object.ObjectTypeId = GameObject.EObjectID.CAMEL; break;
+                        case 7: _object.ObjectTypeId = GameObject.EObjectID.GUARDS1; break;
+                        case 8: _object.ObjectTypeId = GameObject.EObjectID.GUARDS2; break;
+                        case 9: _object.ObjectTypeId = GameObject.EObjectID.GUARDS3; break;
+                        case 10: _object.ObjectTypeId = GameObject.EObjectID.CIVILIAN1; break;
+                        case 11: _object.ObjectTypeId = GameObject.EObjectID.CIVILIAN2; break;
+                        case 12: _object.ObjectTypeId = GameObject.EObjectID.CIVILIAN3; break;
+                        case 13: _object.ObjectTypeId = GameObject.EObjectID.CIVILIAN4; break;
+                        case 14: _object.ObjectTypeId = GameObject.EObjectID.PEDDLER; break;
+                        case 15: _object.ObjectTypeId = GameObject.EObjectID.APPLEITEM; break;
+                        case 16: _object.ObjectTypeId = GameObject.EObjectID.TEAPOTITEM; break;
+                        case 17: _object.ObjectTypeId = GameObject.EObjectID.GENIEITEM; break;
+                        case 18: _object.ObjectTypeId = GameObject.EObjectID.BALLITEM; break;
+                        case 19: _object.ObjectTypeId = GameObject.EObjectID.ALADDINITEM; break;
+                        case 20: _object.ObjectTypeId = GameObject.EObjectID.HEARTITEM; break;
+                        case 21: _object.ObjectTypeId = GameObject.EObjectID.MONKEYITEM; break;
+                        case 22: _object.ObjectTypeId = GameObject.EObjectID.JARITEM; break;
+                        case 23: _object.ObjectTypeId = GameObject.EObjectID.STAIR; break;
+                        case 24: _object.ObjectTypeId = GameObject.EObjectID.GROUND_DROP; break;
+                        case 25: _object.ObjectTypeId = GameObject.EObjectID.STICKITEM; break;
+                        case 26: _object.ObjectTypeId = GameObject.EObjectID.TRAP; break;
+                        case 27: _object.ObjectTypeId = GameObject.EObjectID.JAFAR; break;
                     }
                     _object.Direct = cb_directStair.SelectedIndex;
-                    this._listObject.Add(_object);
+
+                    _object.Id = objectList.Count;
+                    this.objectList.Add(_object);
 
                     Rectangle rect = new Rectangle(new Point(this._object.X, WORLD_Y - this._object.Y), new Size(this._object.Width, this._object.Height));
-                    this.DrawDemo(rect, _object.Id);
+                    this.DrawObjectBoundOnMap(rect, _object.ObjectTypeId);
                 }
 
                 this.txt_X.Text = (this._object.X / this._widthCell).ToString();
@@ -306,7 +307,7 @@ namespace MapEditor
         /// Draw a rectangle demo for objects on map
         /// </summary>
         /// <param name="rect"></param>
-        private void DrawDemo(Rectangle rect, GameObject.EObjectID id)
+        private void DrawObjectBoundOnMap(Rectangle rect, GameObject.EObjectID id)
         {
             Image tempBitmap = this.worldSpace.Image;
 
@@ -321,7 +322,7 @@ namespace MapEditor
                     case GameObject.EObjectID.CIVILIAN1: color = Color.Green; break;
                     case GameObject.EObjectID.CIVILIAN2: color = Color.Gold; break;
                     case GameObject.EObjectID.CIVILIAN3: color = Color.Gray; break;
-                    case GameObject.EObjectID.CIVILIAN4: color = Color.FloralWhite ; break;
+                    case GameObject.EObjectID.CIVILIAN4: color = Color.FloralWhite; break;
                     default: color = Color.White; break;
                 }
                 Pen pen = new Pen(color);
@@ -350,20 +351,20 @@ namespace MapEditor
             TextWriter writer = new StreamWriter(path, true);
 
             //First Line: Number of object, Map width, Map height
-            writer.WriteLine(this._listObject.Count + " " + WORLD_X + " " + WORLD_Y);
+            writer.WriteLine(this.objectList.Count + " " + WORLD_X + " " + WORLD_Y);
 
             //Write object
             int index = 0;
 
-            foreach (var item in this._listObject)
+            foreach (var item in this.objectList)
             {
                 writer.WriteLine(
-                    index++ + " " 
-                    + this.ParseID(item.Id) + " " 
-                    + item.X + " " 
-                    + item.Y + " " 
-                    + item.Width + " " 
-                    + item.Height+ " " 
+                    index++ + " "
+                    + this.ParseID(item.Id) + " "
+                    + item.X + " "
+                    + item.Y + " "
+                    + item.Width + " "
+                    + item.Height + " "
                     + item.Direct);
             }
 
@@ -383,7 +384,7 @@ namespace MapEditor
         {
             switch (id)
             {
-                case GameObject.EObjectID.GROUND: return 1;
+                case GameObject.EObjectID.Ground: return 1;
                 case GameObject.EObjectID.ROPE: return 2;
                 case GameObject.EObjectID.WALL: return 3;
                 case GameObject.EObjectID.LEVERAGE: return 4;
@@ -419,7 +420,7 @@ namespace MapEditor
         {
             switch (id)
             {
-                case 1: return GameObject.EObjectID.GROUND;
+                case 1: return GameObject.EObjectID.Ground;
                 case 2: return GameObject.EObjectID.ROPE;
                 case 3: return GameObject.EObjectID.WALL;
                 case 4: return GameObject.EObjectID.LEVERAGE;
@@ -451,12 +452,6 @@ namespace MapEditor
             }
         }
 
-        private void btn_Refresh_Click(object sender, EventArgs e)
-        {
-            this.quadtree.clear();
-            this._listObject.Clear();
-            this.worldSpace.Image = new Bitmap(this._imageBuffer);
-        }
 
         private void subMenu_OpenFile_Click(object sender, EventArgs e)
         {
@@ -466,7 +461,7 @@ namespace MapEditor
                 openDialog.Title = "Open source file";
                 if (openDialog.ShowDialog() == DialogResult.OK)
                 {
-                    this._listObject.Clear();
+                    this.objectList.Clear();
                     string fileName = openDialog.FileName;
                     using (StreamReader reader = new StreamReader(fileName))
                     {
@@ -478,7 +473,7 @@ namespace MapEditor
                             string currentLine = reader.ReadLine();
                             List<int> listNumber = ParseLine(currentLine);
                             GameObject obj = new GameObject();
-                            obj.Id = ParseID(listNumber[1]);
+                            obj.ObjectTypeId = ParseID(listNumber[1]);
                             obj.X = listNumber[2];
                             obj.Y = listNumber[3];
                             obj.Width = listNumber[4];
@@ -486,19 +481,19 @@ namespace MapEditor
                             if (listNumber.Count == 7)
                                 obj.Direct = listNumber[6];
 
-                            this._listObject.Add(obj);
+                            this.objectList.Add(obj);
                         }
                     }
 
                     //Draw all object in listObject
 
-                    if (this._listObject.Count > 0)
+                    if (this.objectList.Count > 0)
                     {
                         Image image = new Bitmap(this._imageBuffer);
                         using (Graphics graphics = Graphics.FromImage(image))
                         {
                             List<Rectangle> listRect = new List<Rectangle>();
-                            foreach (var obj in this._listObject)
+                            foreach (var obj in this.objectList)
                             {
                                 listRect.Add(new Rectangle(obj.X, WORLD_Y - obj.Y, obj.Width, obj.Height));
                             }
@@ -549,7 +544,7 @@ namespace MapEditor
 
         private void cb_typeObject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cb_directStair.Visible = true;
+            //cb_directStair.Visible = true;
         }
 
         private void worldSpace_KeyPress(object sender, KeyPressEventArgs e)
@@ -563,6 +558,49 @@ namespace MapEditor
         private void subMenu_DeleteObject_Click(object sender, EventArgs e)
         {
             this.check_deleteObject.Checked = (this.check_deleteObject.Checked) ? false : true;
+        }
+
+        private void btnDeleteAllObjects_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.quadtree.clear();
+                this.objectList.Clear();
+                this.worldSpace.Image = new Bitmap(this._imageBuffer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Encountered some errors.", ex.Message, MessageBoxButtons.OK);
+            }
+        }
+
+        private void exportObjectsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Json File|*.json";
+                saveFileDialog.Title = "Export Objects To Data File";
+                saveFileDialog.FileName = "objects.json";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    ObjectJsonFile content = new ObjectJsonFile();
+                    foreach (var item in objectList)
+                    {
+                        switch (item.ObjectTypeId)
+                        {
+                            case GameObject.EObjectID.Ground:
+                                {
+                                    content.Ground.Add(new Ground(item));
+                                    break;
+                                }
+                        }
+                    }
+                    var objectsAsJSON = JsonConvert.SerializeObject(content);
+                    using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName))
+                        sw.WriteLine(objectsAsJSON);
+                }
+            }
         }
     }
 }

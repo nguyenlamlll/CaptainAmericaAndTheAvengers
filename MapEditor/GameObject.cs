@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MapEditor
 {
-    class GameObject
+    public class GameObject
     {
         public enum EObjectID
         {
-            GROUND,
+            Ground,
             GROUND_DROP,
             ROPE,
             WALL,
@@ -46,11 +46,16 @@ namespace MapEditor
             NONE
         }
 
+        /// <summary>
+        /// Object Id.
+        /// </summary>
+        public int Id { get; set; }
+
         private int _width;
         private int _height;
         private int _x;
         private int _y;
-        private EObjectID _id;
+        private EObjectID objectTypeId;
         private int _direct;//0-> left to right; 1-> right to left
         private int _key;
 
@@ -106,16 +111,16 @@ namespace MapEditor
             }
         }
 
-        internal EObjectID Id
+        internal EObjectID ObjectTypeId
         {
             get
             {
-                return _id;
+                return objectTypeId;
             }
 
             set
             {
-                _id = value;
+                objectTypeId = value;
             }
         }
 
@@ -149,13 +154,14 @@ namespace MapEditor
         {
         }
 
-        public GameObject(int x, int y, int width, int height, EObjectID id)
+        public GameObject(int id, int x, int y, int width, int height, EObjectID objectTypeId)
         {
+            this.Id = id;
             this.X = x;
             this.Y = y;
             this.Width = width;
             this.Height = height;
-            this.Id = id;
+            this.ObjectTypeId = objectTypeId;
         }
     }
 }

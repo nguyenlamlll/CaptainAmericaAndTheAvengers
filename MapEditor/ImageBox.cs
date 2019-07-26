@@ -12,26 +12,25 @@ namespace MapEditor
 {
     public partial class ImageBox : UserControl
     {
-        private Image _image;
+        private Image image;
 
-        private int _widthCell;
-
-        private int _heightCell;
+        public int WidthCell { get; set; }
+        public int HeightCell { get; set; }
 
         public Action callBack;
 
-        #region Property
+
 
         public Image Image
         {
             get
             {
-                return _image;
+                return image;
             }
 
             set
             {
-                _image = value;
+                image = value;
                 if (value == null) this.AutoScrollMinSize = new Size(0, 0);
                 else
                 {
@@ -47,56 +46,32 @@ namespace MapEditor
             }
         }
 
-        public int WidthCell
-        {
-            get
-            {
-                return _widthCell;
-            }
 
-            set
-            {
-                _widthCell = value;
-            }
-        }
 
-        public int HeightCell
-        {
-            get
-            {
-                return _heightCell;
-            }
 
-            set
-            {
-                _heightCell = value;
-            }
-        }
 
-        #endregion
 
-        #region Override Event
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics graphics = e.Graphics;
 
             graphics.TranslateTransform(this.AutoScrollPosition.X, this.AutoScrollPosition.Y);
 
-            if (_image != null)
+            if (image != null)
             {
-                this.callBack();
-                graphics.DrawImage(_image, 0, 0);
+                //this.callBack();
+                graphics.DrawImage(image, 0, 0);
 
-                int max = (this._image.Width >= this._image.Height) ? this._image.Width : this._image.Height;
+                int max = (this.image.Width >= this.image.Height) ? this.image.Width : this.image.Height;
 
-                int rows = (max % _widthCell == 0) ? max / this._widthCell : max / this._widthCell + 1;//(this._image.Height % this._heightCell == 0) ? this._image.Height / this._heightCell : this._image.Height / this._heightCell + 1;
-                int columns = (max % _heightCell == 0) ? max / this._heightCell : max / this._heightCell + 1;// (this._image.Width % this._widthCell == 0) ? this._image.Width / this._widthCell : this._image.Width / this._widthCell + 1;
+                int rows = (max % WidthCell == 0) ? max / this.WidthCell : max / this.WidthCell + 1;//(this._image.Height % this._heightCell == 0) ? this._image.Height / this._heightCell : this._image.Height / this._heightCell + 1;
+                int columns = (max % HeightCell == 0) ? max / this.HeightCell : max / this.HeightCell + 1;// (this._image.Width % this._widthCell == 0) ? this._image.Width / this._widthCell : this._image.Width / this._widthCell + 1;
 
                 for (int r = 0; r < rows; r++)
-                    graphics.DrawLine(Pens.Black, new Point(0, r * this._heightCell), new Point(max, r * this._heightCell));
+                    graphics.DrawLine(Pens.Black, new Point(0, r * this.HeightCell), new Point(max, r * this.HeightCell));
 
                 for (int c = 0; c < columns; c++)
-                    graphics.DrawLine(Pens.Black, new Point(c * this._widthCell, 0), new Point(c * this._widthCell, max));
+                    graphics.DrawLine(Pens.Black, new Point(c * this.WidthCell, 0), new Point(c * this.WidthCell, max));
             }
             base.OnPaint(e);
         }
@@ -106,6 +81,6 @@ namespace MapEditor
             this.DoubleBuffered = true;
             base.OnLoad(e);
         }
-        #endregion
+
     }
 }
