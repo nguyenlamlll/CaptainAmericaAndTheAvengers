@@ -64,6 +64,12 @@
     <Filter Include="Header Files\Utilities">
       <UniqueIdentifier>{69cf86c6-7ac6-434b-9a01-1a226e0d7fb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\Item">
+      <UniqueIdentifier>{241662c1-0980-43d4-af96-3a8182682d1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\Item">
+      <UniqueIdentifier>{cbb591ac-6573-4c8b-a986-e0edde75348b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -204,6 +210,9 @@
     <ClInclude Include="ConversionUtilities.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="RewardVault.h">
+      <Filter>Header Files\Objects\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -331,6 +340,9 @@
     </ClCompile>
     <ClCompile Include="GameError.cpp">
       <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="RewardVault.cpp">
+      <Filter>Source Files\Objects\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

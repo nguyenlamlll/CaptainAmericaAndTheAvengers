@@ -84,26 +84,27 @@ bool ObjectManager::loadMapObjects(const char * fileName)
 
 #pragma region Load Reward Vault
 		const Value& rewardVaultObjectList = jSon["RewardVault"];
-		for (SizeType i = 0; i < groundObjectList.Size(); i++)
+
+		for (SizeType i = 0; i < rewardVaultObjectList.Size(); i++)
 		{
-			BaseObject* rewardvault = new BaseObject(eID::REWARDVAULT);
-			id = groundObjectList[i]["id"].GetInt();
-			x = groundObjectList[i]["x"].GetFloat();
-			y = MAP_HEIGHT - groundObjectList[i]["y"].GetFloat();
-			height = groundObjectList[i]["height"].GetFloat();
-			width = groundObjectList[i]["width"].GetFloat();
+			BaseObject *rv = new BaseObject(eID::REWARDVAULT);
+
+			id = rewardVaultObjectList[i]["id"].GetInt();
+			x = rewardVaultObjectList[i]["x"].GetFloat();
+			y = rewardVaultObjectList[i]["y"].GetFloat();
+			rv->setPosition(VECTOR2(x, y));
+
 
 			bound.left = x;
 			bound.top = y;
-			bound.right = bound.left + width;
-			bound.bottom = bound.top - height;
-			rewardvault->setBoundCollision(bound);
+			bound.right = bound.left + rv->getSprite()->getWidth();
+			bound.bottom = bound.top - rv->getSprite()->getHeight();
+			rv->setBoundCollision(bound);
 
-			rewardvault->setActiveBound(bound);
+			rv->setActiveBound(bound);
 
-			mapObjects.insert(std::pair<int, BaseObject*>(id, rewardvault));
 
-			grid->add(id, rewardvault, x, y);
+			mapObjects.insert(std::pair<int, BaseObject*>(id, rv));
 		}
 #pragma endregion
 

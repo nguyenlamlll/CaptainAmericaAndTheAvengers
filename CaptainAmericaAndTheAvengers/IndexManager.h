@@ -2,6 +2,8 @@
 // Class used to manage Index Sprites in Texture
 
 #define MAX_INDEX 311
+#define NUM_FRAMES_ITEM 1
+
 class IndexManager
 {
 private:
@@ -24,5 +26,7 @@ public:
 	const int captainAmericaSitAttack[2] = { 17,18 };
 	const int captainAmericaSpin[2] = { 19, 20 };
 	const int captainAmericaStand[1] = { 21 };
+
+	const int rewardVault[1] = {108};
 };
 

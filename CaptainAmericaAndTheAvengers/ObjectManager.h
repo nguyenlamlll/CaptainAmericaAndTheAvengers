@@ -15,6 +15,7 @@
 #include "Collision.h"
 
 #include "Grid.h"
+#include "RewardVault.h"
 
 #include <map>
 
