@@ -17,7 +17,7 @@ RewardVault::RewardVault(TextureManager * textureM, Graphics * graphics) : BaseO
 		sprite,
 		IndexManager::getInstance()->rewardVault,
 		1,
-		0.5f
+		0.3f
 	);
 	this->anim->start();
 

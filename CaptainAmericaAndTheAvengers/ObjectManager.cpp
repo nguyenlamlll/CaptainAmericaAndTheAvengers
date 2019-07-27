@@ -8,7 +8,7 @@ ObjectManager::ObjectManager()
 	this->timer = 0;
 
 	this->listWallCanCollideCaptainAmerica = new map<int, BaseObject*>();
-	this->listObjectNotWallOnViewPort
+	this->listObjectNotWallOnViewPort = new map<int, BaseObject*>();
 }
 
 
@@ -147,6 +147,7 @@ void ObjectManager::handleVelocity(float dt)
 
 		auto captainAmericaPositionOnGrid = grid->calculateObjectPositionOnGrid(this->captainAmerica);
 		grid->getCollidableObjects(listWallCanCollideCaptainAmerica, captainAmericaPositionOnGrid.x, captainAmericaPositionOnGrid.y);
+		grid->getCollidableObjects(listObjectNotWallOnViewPort, captainAmericaPositionOnGrid.x, captainAmericaPositionOnGrid.y);
 	}
 
 	// Handle velocity...
