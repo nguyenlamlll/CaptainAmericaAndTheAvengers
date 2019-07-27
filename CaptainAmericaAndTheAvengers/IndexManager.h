@@ -27,6 +27,6 @@ public:
 	const int captainAmericaSpin[2] = { 19, 20 };
 	const int captainAmericaStand[1] = { 21 };
 
-	const int rewardVault[1] = {108};
+	const int rewardVault[1] = {109};
 };
 

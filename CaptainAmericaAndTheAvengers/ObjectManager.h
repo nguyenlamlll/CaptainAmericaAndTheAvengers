@@ -38,6 +38,8 @@ private:
 	int totalObjectsPerFrame;
 	float timer;
 	map<int, BaseObject*>* listWallCanCollideCaptainAmerica;
+	map<int, BaseObject*>* listObjectNotWallOnViewPort;
+
 
 public:
 	ObjectManager();

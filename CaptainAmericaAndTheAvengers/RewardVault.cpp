@@ -1,5 +1,5 @@
-#include "RewardVault.h"
 #include "stdafx.h"
+#include "RewardVault.h"
 
 RewardVault::RewardVault()
 {
@@ -17,7 +17,7 @@ RewardVault::RewardVault(TextureManager * textureM, Graphics * graphics) : BaseO
 		sprite,
 		IndexManager::getInstance()->rewardVault,
 		1,
-		0
+		0.5f
 	);
 	this->anim->start();
 

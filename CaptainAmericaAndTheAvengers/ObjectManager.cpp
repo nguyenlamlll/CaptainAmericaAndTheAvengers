@@ -8,6 +8,7 @@ ObjectManager::ObjectManager()
 	this->timer = 0;
 
 	this->listWallCanCollideCaptainAmerica = new map<int, BaseObject*>();
+	this->listObjectNotWallOnViewPort
 }
 
 
@@ -39,10 +40,25 @@ void ObjectManager::init(TextureManager * textureM, Graphics * graphics, Captain
 
 void ObjectManager::update(float dt)
 {
+	if (listObjectNotWallOnViewPort)
+	{
+		for (auto i = listObjectNotWallOnViewPort->begin(); i != listObjectNotWallOnViewPort->end(); ++i)
+		{
+			BaseObject* object = (*i).second;
+			object->update(dt);
+		}
+	}
 }
 
 void ObjectManager::draw()
 {
+	if (listObjectNotWallOnViewPort)
+	{
+		for (auto i = listObjectNotWallOnViewPort->begin(); i != listObjectNotWallOnViewPort->end(); ++i)
+		{
+			(*i).second->draw();
+		}
+	}
 }
 
 bool ObjectManager::loadMapObjects(const char * fileName)
@@ -87,16 +103,16 @@ bool ObjectManager::loadMapObjects(const char * fileName)
 
 		for (SizeType i = 0; i < rewardVaultObjectList.Size(); i++)
 		{
-			BaseObject *rv = new BaseObject(eID::REWARDVAULT);
+			RewardVault *rv = new RewardVault(this->textureManager, this->graphics);
 
 			id = rewardVaultObjectList[i]["id"].GetInt();
 			x = rewardVaultObjectList[i]["x"].GetFloat();
-			y = rewardVaultObjectList[i]["y"].GetFloat();
+			y = MAP_HEIGHT - rewardVaultObjectList[i]["y"].GetFloat();
 			rv->setPosition(VECTOR2(x, y));
 
 
-			bound.left = x;
-			bound.top = y;
+			bound.left = x + 10;
+			bound.top = y + 10;
 			bound.right = bound.left + rv->getSprite()->getWidth();
 			bound.bottom = bound.top - rv->getSprite()->getHeight();
 			rv->setBoundCollision(bound);
