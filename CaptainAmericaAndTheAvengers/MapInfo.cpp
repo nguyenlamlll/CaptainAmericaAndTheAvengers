@@ -62,7 +62,7 @@ bool MapInfo::initialize(const char * fileJson)
 		tileWidth = jSon["tilewidth"].GetInt();
 
 		//get row and column of tileset
-		const Value& tilesets = jSon["tilesets"];
+		const Value& tilesets = jSon["tileset"];
 		int column = tilesets["column"].GetInt();
 		int row = tilesets["row"].GetInt();
 
@@ -102,6 +102,19 @@ bool MapInfo::initialize(const char * fileJson)
 				map[x][y].visible = true;
 			}
 		}
+	}
+	catch (const std::runtime_error& re)
+	{
+		// speciffic handling for runtime_error
+		std::cerr << "Runtime error: " << re.what() << std::endl;
+		return false;
+	}
+	catch (const std::exception& ex)
+	{
+		// speciffic handling for all exceptions extending std::exception, except
+		// std::runtime_error which is handled explicitly
+		std::cerr << "Error occurred: " << ex.what() << std::endl;
+		return false;
 	}
 	catch (...)
 	{

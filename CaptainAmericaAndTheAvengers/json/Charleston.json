@@ -7,7 +7,7 @@
  "renderorder":"right-down",
  "tiledversion":"1.2.1",
  "tileheight":24,
- "tilesets":
+ "tileset":
  {
 	"column": 80,
 	"row": 19
