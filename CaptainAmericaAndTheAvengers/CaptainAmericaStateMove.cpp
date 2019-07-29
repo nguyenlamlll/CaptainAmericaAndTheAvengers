@@ -38,7 +38,7 @@ void CaptainAmericaStateMove::setBoundCollision()
 void CaptainAmericaStateMove::handleInput(float dt)
 {
 
-	if (input->isKeyUp(VK_LEFT) || input->isKeyUp(VK_RIGHT))
+	if (input->isKeyUp(VK_LEFT) && input->isKeyUp(VK_RIGHT))
 	{
 		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::STAND);
 		this->captainAmerica->setVelocityX(0);

@@ -9,6 +9,8 @@ protected:
 	CaptainAmerica* captainAmerica;
 	Input* input;
 	Animation* animation;
+	bool isUp;
+	bool isShoot;
 
 public:
 	BaseState();

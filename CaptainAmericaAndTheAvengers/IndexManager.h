@@ -24,5 +24,7 @@ public:
 	const int captainAmericaSitAttack[2] = { 17,18 };
 	const int captainAmericaSpin[2] = { 19, 20 };
 	const int captainAmericaStand[1] = { 21 };
+
+	const int captainBullet[3] = {91, 92, 93};
 };
 

@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "CaptainAmericaStateAttack.h"
 #include "CaptainAmericaStateManager.h"
-
+#include "TextureManager.h"
+#include "BulletPool.h"
 CaptainAmericaStateAttack::CaptainAmericaStateAttack()
 {
 }
@@ -16,12 +17,15 @@ CaptainAmericaStateAttack::CaptainAmericaStateAttack(CaptainAmerica * captainAme
 {
 	captainAmerica->setOrigin(VECTOR2(0.5, 0.5));
 	animation = captainAmerica->getAttackAnimation();
-	init();
+	//init();
 	animation->start();
 }
 
 void CaptainAmericaStateAttack::init()
 {
+	/*Bullet *bullet = BulletPool::getInstance()->getBullet();*/
+	/*captainAmerica->setBullet(new Bullet(new TextureManager(), captainAmerica->getGraphics()));*/
+
 }
 
 void CaptainAmericaStateAttack::setBoundCollision()

@@ -117,6 +117,11 @@ CaptainAmerica::CaptainAmerica(TextureManager * textureM, Graphics * graphics, I
 	CaptainAmericaStateManager::getInstance()->init(this, input);
 
 	visible = true;
+	
+	bulletPool = new BulletPool(textureM, graphics, 15);
+
+	/*bul = new Bullet(textureM, graphics);
+	bul->init(VECTOR2(this->getPosition().x, this->getPosition().y + 1));*/
 
 	listCollide = new list<CollisionReturn>();
 }
@@ -197,6 +202,9 @@ void CaptainAmerica::update(float dt)
 			Camera::getInstance()->setVelocity(VECTOR2(0, 0));
 	}
 
+	for (unsigned i = 0; i < this->bulletPool->getListUsing().size(); i++)
+		this->bulletPool->getListUsing().at(i)->update(dt);
+
 	//if (isCollidingPort)
 	//	this->setVelocityX(Camera::getInstance()->getVelocity().x);
 
@@ -221,8 +229,14 @@ void CaptainAmerica::update(float dt)
 void CaptainAmerica::draw()
 {
 	if (visible) {
+		for (unsigned i = 0; i < this->bulletPool->getListUsing().size(); i++)
+			this->bulletPool->getListUsing().at(i)->draw();
+
 		this->sprite->draw();
+		//this->bul->draw();
 	}
+
+
 }
 
 void CaptainAmerica::drawIndicators()

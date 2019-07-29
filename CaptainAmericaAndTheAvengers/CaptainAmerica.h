@@ -7,6 +7,8 @@
 #include "TextureManager.h"
 #include "GameError.h"
 #include "Animation.h"
+#include "Bullet.h"
+#include "BulletPool.h"
 
 #include <list>
 #include <map>
@@ -63,6 +65,8 @@ private:
 	Animation* sitAttackAnimation;
 	Animation* spinAnimation;
 	Animation* standAnimation;
+	
+	BulletPool *bulletPool;
 
 	bool visible;
 
@@ -70,6 +74,7 @@ private:
 	map<int, BaseObject*>* listCanCollide;
 	map<int, BaseObject*>* listWallCanCollide;
 
+	Bullet* bul;
 public:
 	CaptainAmerica();
 	CaptainAmerica(TextureManager* textureM, Graphics* graphics, Input* input);
@@ -129,6 +134,8 @@ public:
 
 	void setIsFalling(bool value) { isFalling = value; }
 	bool getIsFalling() { return isFalling; }
+
+	
 
 #pragma endregion
 	

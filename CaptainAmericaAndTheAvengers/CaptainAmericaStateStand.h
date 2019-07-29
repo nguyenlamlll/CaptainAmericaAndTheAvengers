@@ -18,6 +18,9 @@ public:
 
 	void onStart();
 	void onExit();
+
+	void fire();
+	void fireRocket();
 };
 
 #pragma once
