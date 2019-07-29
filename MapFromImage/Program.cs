@@ -56,8 +56,8 @@ namespace MapFromImage
                     Column = uniqueTiles.Count,
                     Row = 1
                 },
-                Height = originalImage.Height,
-                Width = originalImage.Width,
+                Height = originalImage.Height/mapCell,
+                Width = originalImage.Width/mapCell,
                 TileHeight = mapCell,
                 TileWidth = mapCell
             };
@@ -99,7 +99,7 @@ namespace MapFromImage
             Directory.CreateDirectory("results");
             Console.WriteLine("\n---------------");
             Console.WriteLine("Merge separated tiles into one single tileset image...");
-            var tilesetImage = MergeImages(uniqueTiles.Values);
+            var tilesetImage = CombineBitmap(uniqueTiles.Values.ToList());
             tilesetImage.Save("results\\tileset.png", ImageFormat.Png);
 
             // Loop through all tiles in the original image
@@ -208,6 +208,63 @@ namespace MapFromImage
                 }
             }
             return bitmap;
+        }
+
+        public static System.Drawing.Bitmap CombineBitmap(List<Bitmap> images)
+        {
+            //read all images into memory
+            //List<System.Drawing.Bitmap> images = new List<System.Drawing.Bitmap>();
+            System.Drawing.Bitmap finalImage = null;
+
+            try
+            {
+                int width = 0;
+                int height = 0;
+
+                foreach (var image in images)
+                {
+
+                    //update the size of the final bitmap
+                    width += image.Width;
+                    height = image.Height > height ? image.Height : height;
+                }
+
+                //create a bitmap to hold the combined image
+                finalImage = new System.Drawing.Bitmap(width, height);
+
+                //get a graphics object from the image so we can draw on it
+                using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(finalImage))
+                {
+                    //set background color
+                    g.Clear(System.Drawing.Color.Black);
+
+                    //go through each image and draw it on the final image
+                    int offset = 0;
+                    foreach (System.Drawing.Bitmap image in images)
+                    {
+                        g.DrawImage(image,
+                          new System.Drawing.Rectangle(offset, 0, image.Width, image.Height));
+                        offset += image.Width;
+                    }
+                }
+
+                return finalImage;
+            }
+            catch (Exception)
+            {
+                if (finalImage != null)
+                    finalImage.Dispose();
+                //throw ex;
+                throw;
+            }
+            finally
+            {
+                //clean up memory
+                foreach (System.Drawing.Bitmap image in images)
+                {
+                    image.Dispose();
+                }
+            }
         }
     }
 }
