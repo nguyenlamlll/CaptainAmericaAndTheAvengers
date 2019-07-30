@@ -13,7 +13,7 @@ namespace MapFromImage
 {
     class Program
     {
-        static readonly int mapCell = 16;
+        static readonly int mapCell = 160;
 
         static void Main(string[] args)
         {
@@ -36,19 +36,20 @@ namespace MapFromImage
 
 
             var allOriginalTiles = new List<Bitmap>();
-            for (int column = 0; column < totalColumns; column++)
+            for (int row = 0; row < totalRows; row++)
             {
-                for (int row = 0; row < totalRows; row++)
+                for (int column = 0; column < totalColumns; column++)
                 {
                     var tileToClone = new Rectangle(column * mapCell, row * mapCell, mapCell, mapCell);
                     allOriginalTiles.Add(originalImage.Clone(tileToClone, originalImage.PixelFormat));
 
-                    Console.WriteLine("Added tile[" + column + "][" + row + "]");
+                   Console.WriteLine("Added tile[" + column + "][" + row + "]");
                 }
             }
+            var emptyCell = (Bitmap)allOriginalTiles[0].Clone();
 
             var uniqueTiles = new Dictionary<int, Bitmap>();
-            int id = 0;
+            int id = 1;
             MapData mapData = new MapData()
             {
                 Tileset = new TilesetInformation()
@@ -61,8 +62,15 @@ namespace MapFromImage
                 TileHeight = mapCell,
                 TileWidth = mapCell
             };
+            originalImage.Dispose();
             foreach (var item in allOriginalTiles)
             {
+                if (AreTwoBitMapsTheSame(item, emptyCell))
+                {
+                    mapData.Data.Add(0);
+                    continue;
+                }
+
                 bool isThisItemANewUniqueTile = true;
                 int? tileId = null;
                 foreach (var uniqueTile in uniqueTiles)
@@ -77,8 +85,9 @@ namespace MapFromImage
 
                 if (isThisItemANewUniqueTile)
                 {
-                    uniqueTiles.Add(id++, item);
+                    uniqueTiles.Add(id, item);
                     mapData.Data.Add(id);
+                    id++;
                 }
                 else
                 {
@@ -99,23 +108,14 @@ namespace MapFromImage
             Directory.CreateDirectory("results");
             Console.WriteLine("\n---------------");
             Console.WriteLine("Merge separated tiles into one single tileset image...");
+
             var tilesetImage = CombineBitmap(uniqueTiles.Values.ToList());
             tilesetImage.Save("results\\tileset.png", ImageFormat.Png);
-
-            // Loop through all tiles in the original image
-            //Console.WriteLine("\n---------------");
-            //Console.WriteLine("Encoding and writing map data to JSON file...");
-
-            //for (int i = 0; i < allOriginalTiles.Count; i++)
-            //{
-            //    foreach(var tile in uniqueTiles)
-            //    {
-            //        if (CompareMemCmp(allOriginalTiles[i], tile.Value))
-            //        {
-            //            mapData.Data.Add(tile.Key);
-            //        }
-            //    }
-            //}
+            tilesetImage.Dispose();
+            foreach (var image in uniqueTiles.Values)
+            {
+                image.Dispose();
+            }
 
             var mapDataJSON = JsonConvert.SerializeObject(mapData).ToLower();
             File.WriteAllText("results\\map.json", mapDataJSON);
@@ -236,7 +236,7 @@ namespace MapFromImage
                 using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(finalImage))
                 {
                     //set background color
-                    g.Clear(System.Drawing.Color.Black);
+                    g.Clear(System.Drawing.Color.Transparent);
 
                     //go through each image and draw it on the final image
                     int offset = 0;
