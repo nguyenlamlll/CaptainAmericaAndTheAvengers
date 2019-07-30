@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="170" height="170" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="16">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-down" width="170" height="170" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="23">
  <tileset firstgid="1" name="3 Charleston" tilewidth="16" tileheight="16" tilecount="4640" columns="160">
   <image source="Tileset/Charleston.png" width="2560" height="477"/>
  </tileset>
@@ -181,7 +181,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="Ground" visible="0">
+ <objectgroup id="4" name="Ground">
   <object id="1" x="176.182" y="592.364" width="94.7273" height="14.9091"/>
   <object id="2" x="336.667" y="592"/>
   <object id="3" x="336.667" y="592" width="1215.67" height="14.3333"/>
@@ -197,5 +197,25 @@
   <object id="13" x="1008.88" y="511.625" width="30.75" height="11.875"/>
   <object id="14" x="1105" y="511.75" width="46" height="12"/>
   <object id="15" x="1503.5" y="463.75" width="48.25" height="11.75"/>
+ </objectgroup>
+ <objectgroup id="6" name="Soldier">
+  <object id="16" x="700.5" y="580.5">
+   <point/>
+  </object>
+  <object id="18" x="815" y="422.5">
+   <point/>
+  </object>
+  <object id="19" x="1014" y="584">
+   <point/>
+  </object>
+  <object id="20" x="1135.33" y="505.333">
+   <point/>
+  </object>
+  <object id="21" x="1535.33" y="584">
+   <point/>
+  </object>
+  <object id="22" x="1914.67" y="586">
+   <point/>
+  </object>
  </objectgroup>
 </map>

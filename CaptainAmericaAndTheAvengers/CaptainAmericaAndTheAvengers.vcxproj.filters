@@ -64,6 +64,18 @@
     <Filter Include="Header Files\Utilities">
       <UniqueIdentifier>{69cf86c6-7ac6-434b-9a01-1a226e0d7fb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objects\Enemies">
+      <UniqueIdentifier>{ebb85489-44f9-4171-880d-e3c704ffcd3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\Enemies">
+      <UniqueIdentifier>{58a5c900-1e55-4788-9b16-121d6c01511d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{6a5dd214-1ad3-4b34-9aa1-499982d6826b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Constants">
+      <UniqueIdentifier>{eea8b450-e1b6-4a73-af9c-713c66985513}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -204,6 +216,12 @@
     <ClInclude Include="ConversionUtilities.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="Soldier.h">
+      <Filter>Header Files\Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="SoldierBullet.h">
+      <Filter>Header Files\Objects\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -331,6 +349,12 @@
     </ClCompile>
     <ClCompile Include="GameError.cpp">
       <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier.cpp">
+      <Filter>Source Files\Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="SoldierBullet.cpp">
+      <Filter>Source Files\Objects\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

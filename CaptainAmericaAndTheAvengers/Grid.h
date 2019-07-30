@@ -11,7 +11,7 @@ public:
 	~Grid();
 
 	// Edge size of a cell
-	static const int CELL_SIZE = 200;
+	static const int CELL_SIZE = 272;
 
 	// Total number of columns based on prefixed map width
 	static const int NUM_COLUMNS = MAP_WIDTH / CELL_SIZE;

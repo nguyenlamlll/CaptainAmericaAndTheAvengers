@@ -95,12 +95,12 @@ void Game::update(float dt)
 
 void Game::handleInput(float dt)
 {
-	if (input->isKeyDown(VK_UP))
-		Camera::getInstance()->setVelocity(VECTOR2(0, 150));
-	if (input->isKeyDown(VK_DOWN))
-		Camera::getInstance()->setVelocity(VECTOR2(0, -150));
-	if (input->isKeyDown(VK_RETURN))
-		Camera::getInstance()->setVelocity(VECTOR2(0, 0));
+	//if (input->isKeyDown(VK_UP))
+	//	Camera::getInstance()->setVelocity(VECTOR2(0, 150));
+	//if (input->isKeyDown(VK_DOWN))
+	//	Camera::getInstance()->setVelocity(VECTOR2(0, -150));
+	//if (input->isKeyDown(VK_RETURN))
+	//	Camera::getInstance()->setVelocity(VECTOR2(0, 0));
 	captainAmerica->handleInput(dt);
 
 	ObjectManager::getInstance()->handleVelocity(dt);
@@ -117,7 +117,9 @@ void Game::render()
 
 	this->getGraphics()->spriteBegin();
 	map->draw();
+	
 	captainAmerica->draw();
+
 	ObjectManager::getInstance()->draw();
 	this->getGraphics()->spriteEnd();
 
@@ -126,6 +128,8 @@ void Game::render()
 
 	opsText->setText("OPS: " + std::to_string(ObjectManager::getInstance()->getTotalObjectsPerFrame()));
 	opsText->draw();
+
+
 }
 
 void Game::releaseAll()

@@ -19,3 +19,4 @@
 
 
 // reference additional headers your program requires here
+#include <d3dx9math.h>

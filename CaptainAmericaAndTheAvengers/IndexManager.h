@@ -24,5 +24,12 @@ public:
 	const int captainAmericaSitAttack[2] = { 17,18 };
 	const int captainAmericaSpin[2] = { 19, 20 };
 	const int captainAmericaStand[1] = { 21 };
+
+
+	const int soldierStand = { 30 };
+	const int soldierMove[3] = { 27, 28, 29 };
+	const int soldierSit = { 31 };
+	const int soldierDie = { 32 };
+	const int soldierBullet = { 33 };
 };
 

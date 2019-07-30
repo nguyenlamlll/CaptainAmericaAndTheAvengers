@@ -111,20 +111,36 @@ void Grid::getCollidableObjects(std::map<int, BaseObject*>* result, int column, 
 	{
 		objects = cells[column - 1][row - 1]->getAllObjects();
 		result->insert(objects->begin(), objects->end());
-	}
-	if (column > 0)
-	{
 		objects = cells[column - 1][row]->getAllObjects();
 		result->insert(objects->begin(), objects->end());
-	}
-	if (row > 0)
-	{
-		objects = cells[column][row - 1]->getAllObjects();
-		result->insert(objects->begin(), objects->end());
-	}
-	if (column > 0 && row < NUM_ROWS - 1)
-	{
 		objects = cells[column - 1][row + 1]->getAllObjects();
 		result->insert(objects->begin(), objects->end());
+
+		objects = cells[column][row - 1]->getAllObjects();
+		result->insert(objects->begin(), objects->end());
+		objects = cells[column][row + 1]->getAllObjects();
+		result->insert(objects->begin(), objects->end());
+
+		objects = cells[column + 1][row - 1]->getAllObjects();
+		result->insert(objects->begin(), objects->end());
+		objects = cells[column + 1][row]->getAllObjects();
+		result->insert(objects->begin(), objects->end());
+		objects = cells[column + 1][row + 1]->getAllObjects();
+		result->insert(objects->begin(), objects->end());
 	}
+	//if (column > 0)
+	//{
+	//	objects = cells[column - 1][row]->getAllObjects();
+	//	result->insert(objects->begin(), objects->end());
+	//}
+	//if (row > 0)
+	//{
+	//	objects = cells[column][row - 1]->getAllObjects();
+	//	result->insert(objects->begin(), objects->end());
+	//}
+	//if (column > 0 && row < NUM_ROWS - 1)
+	//{
+	//	objects = cells[column - 1][row + 1]->getAllObjects();
+	//	result->insert(objects->begin(), objects->end());
+	//}
 }

@@ -1,6 +1,5 @@
 #pragma once
-#include <Windows.h>
-#include <d3dx9math.h>
+
 
 //-----------------------------------------------
 // Useful macros
@@ -100,6 +99,8 @@ enum eID {
 	SAMUS,
 	CAPTAINAMERICA,
 	GROUND,
+	SOLDIER,
+	SOLDIER_BULLET
 };
 
 // collision direction

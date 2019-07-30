@@ -18,6 +18,8 @@
 
 #include <map>
 
+#include "Soldier.h"
+
 using namespace rapidjson;
 using namespace std;
 

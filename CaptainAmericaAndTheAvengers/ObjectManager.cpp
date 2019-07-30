@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ObjectManager.h"
 
+
 ObjectManager* ObjectManager::instance = nullptr;
 ObjectManager::ObjectManager()
 {
@@ -39,10 +40,25 @@ void ObjectManager::init(TextureManager * textureM, Graphics * graphics, Captain
 
 void ObjectManager::update(float dt)
 {
+	if (listWallCanCollideCaptainAmerica)
+	{
+		for (auto i = listWallCanCollideCaptainAmerica->begin(); i != listWallCanCollideCaptainAmerica->end(); ++i)
+		{
+			BaseObject* object = (*i).second;
+			object->update(dt);
+		}
+	}
 }
 
 void ObjectManager::draw()
 {
+	if (listWallCanCollideCaptainAmerica)
+	{
+		for (auto i = listWallCanCollideCaptainAmerica->begin(); i != listWallCanCollideCaptainAmerica->end(); ++i)
+		{
+			(*i).second->draw();
+		}
+	}
 }
 
 bool ObjectManager::loadMapObjects(const char * fileName)
@@ -83,6 +99,31 @@ bool ObjectManager::loadMapObjects(const char * fileName)
 #pragma endregion
 
 
+#pragma region Load Enemies
+		const Value& soldierObjectList = jSon["Soldier"];
+		for (SizeType i = 0; i < soldierObjectList.Size(); i++)
+		{
+			Soldier* soldier = new Soldier(this->textureManager, this->graphics);
+			id = soldierObjectList[i]["id"].GetInt();
+			x = soldierObjectList[i]["x"].GetFloat();
+			y = MAP_HEIGHT - soldierObjectList[i]["y"].GetFloat();
+			soldier->setPosition(VECTOR2(x, y));
+
+			soldier->setBoundCollision();
+
+			bound.left = x;
+			bound.top = y;
+			bound.right = bound.left + width;
+			bound.bottom = bound.top - height;
+			soldier->setActiveBound(bound);
+
+			mapObjects.insert(std::pair<int, BaseObject*>(id, soldier));
+
+			grid->add(id, soldier, x, y);
+		}
+#pragma endregion
+
+
 		return true;
 	}
 	catch (...)
@@ -106,6 +147,10 @@ void ObjectManager::handleVelocity(float dt)
 
 		auto captainAmericaPositionOnGrid = grid->calculateObjectPositionOnGrid(this->captainAmerica);
 		grid->getCollidableObjects(listWallCanCollideCaptainAmerica, captainAmericaPositionOnGrid.x, captainAmericaPositionOnGrid.y);
+
+		auto it = listWallCanCollideCaptainAmerica->find(999);
+		if (it != listWallCanCollideCaptainAmerica->end())
+			listWallCanCollideCaptainAmerica->erase(it);
 	}
 
 	// Handle velocity...
