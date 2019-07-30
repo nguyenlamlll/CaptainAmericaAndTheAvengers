@@ -28,9 +28,9 @@ void CaptainAmericaStateMove::setBoundCollision()
 {
 	GameRect rect;
 	VECTOR2 position(this->captainAmerica->getPosition().x, captainAmerica->getPosition().y - OFFSET_COLLISION_Y + 1);
-	rect.left = position.x - WIDTH_COLLISION * 0.5f;
-	rect.right = position.x + WIDTH_COLLISION * 0.5f;
-	rect.top = position.y + HEIGHT_COLLISION * 0.5f;
+	rect.left = position.x - WIDTH_COLLISION;
+	rect.right = position.x + WIDTH_COLLISION;
+	rect.top = position.y + HEIGHT_COLLISION;
 	rect.bottom = position.y - HEIGHT_COLLISION;
 	captainAmerica->setBoundCollision(rect);
 }
