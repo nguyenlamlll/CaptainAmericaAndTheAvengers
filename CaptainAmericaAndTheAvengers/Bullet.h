@@ -19,6 +19,8 @@ private:
 	bool isCollided;
 	float timer;
 
+	Animation* anim;
+
 	float dame;
 
 	int indexSprite;

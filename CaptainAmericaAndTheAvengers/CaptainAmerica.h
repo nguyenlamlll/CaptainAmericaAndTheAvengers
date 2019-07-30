@@ -74,7 +74,7 @@ private:
 	map<int, BaseObject*>* listCanCollide;
 	map<int, BaseObject*>* listWallCanCollide;
 
-	Bullet* bul;
+	Bullet* shield;
 public:
 	CaptainAmerica();
 	CaptainAmerica(TextureManager* textureM, Graphics* graphics, Input* input);

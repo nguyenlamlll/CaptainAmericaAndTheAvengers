@@ -14,13 +14,19 @@ Bullet::Bullet(TextureManager * textureM, Graphics * graphics) : BaseObject(eID:
 		throw GameError(GameErrorNS::FATAL_ERROR, "Can not init sprite Bullet");
 	}
 
-
-	this->indexSprite = IndexManager::getInstance()->captainBullet[0];
+	anim = new Animation(
+		sprite,
+		IndexManager::getInstance()->captainBullet,
+		3,
+		0.1f
+	);
+	this->anim->start();
+	this->indexSprite = IndexManager::getInstance()->captainBullet[1];
 	//this->indexEffect = IndexManager::getInstance()->samusYellowBulletNormalColliding;
 	// Set Data for sprite
 	this->sprite->setData(indexSprite);
 	this->setOrigin(VECTOR2(0.5f, 0.5f));
-
+	
 	this->setPosition(700,700);
 	this->setStatus(eStatus::STAND);
 
@@ -78,7 +84,7 @@ void Bullet::update(float dt)
 			BulletPool::getInstance()->returnPool(this);
 		}
 	}
-	this->setPosition(this->getPosition().x + this->getVelocity().x*dt, this->getPosition().y + this->getVelocity().y*dt);
+	this->setPosition(this->getPosition().x - this->getVelocity().x*dt, this->getPosition().y + this->getVelocity().y*dt);
 }
 
 void Bullet::draw()

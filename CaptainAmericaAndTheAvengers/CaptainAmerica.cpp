@@ -120,8 +120,8 @@ CaptainAmerica::CaptainAmerica(TextureManager * textureM, Graphics * graphics, I
 	
 	bulletPool = new BulletPool(textureM, graphics, 15);
 
-	/*bul = new Bullet(textureM, graphics);
-	bul->init(VECTOR2(this->getPosition().x, this->getPosition().y + 1));*/
+	shield = new Bullet(textureM, graphics);
+	shield->init(VECTOR2(this->getPosition().x, this->getPosition().y + 1));
 
 	listCollide = new list<CollisionReturn>();
 }
