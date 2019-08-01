@@ -33,11 +33,14 @@ Bullet::Bullet(TextureManager * textureM, Graphics * graphics) : BaseObject(eID:
 	this->distance = 0;
 	this->isCollided = false;
 	this->timer = 0;
-	this->listCollide = new list<CollisionReturn>();
+	this->isBack = false;
+	this->isFly = false;
+	//this->listCollide = new list<CollisionReturn>();
+
 
 	this->dame = 1; // se setup lai sau
 
-	this->distanceShoot = DISTANCE_SHOOT;
+	this->distanceMax = DISTANCE_MAX;
 }
 
 Bullet::Bullet()
@@ -61,7 +64,7 @@ void Bullet::onCollision()
 void Bullet::handleVelocity(float dt)
 {
 
-	if (this->distance < this->distanceShoot)
+	if (this->distance < this->distanceMax)
 	{
 		this->distance += VELOCITY_BULLET * dt;
 
@@ -69,21 +72,31 @@ void Bullet::handleVelocity(float dt)
 	}
 	else
 	{
-		BulletPool::getInstance()->returnPool(this);
+		//BulletPool::getInstance()->returnPool(this);
 	}
 
 }
 
 void Bullet::update(float dt)
 {
-	if (this->isCollided)
+	/*if (this->isCollided)
 	{
 		timer += dt;
 		if (timer > 0.1)
 		{
 			BulletPool::getInstance()->returnPool(this);
 		}
+	}*/
+	float vx = this->getVelocity().x;
+
+	if (!this->isBack) {
+		this->distance += abs(vx*dt);
 	}
+	if (this->distance >= this->distanceMax && this->isBack == false) {
+		this->setVelocityX(-vx);
+		this->isBack = true;
+	}
+
 	this->setPosition(this->getPosition().x - this->getVelocity().x*dt, this->getPosition().y + this->getVelocity().y*dt);
 }
 
@@ -139,14 +152,14 @@ list<CollisionReturn>* Bullet::getListCollide()
 	return this->listCollide;
 }
 
-float Bullet::getDistanceShoot()
+float Bullet::getDistanceMax()
 {
-	return this->distanceShoot;
+	return this->distanceMax;
 }
 
-void Bullet::setDistanceShoot(float distan)
+void Bullet::setDistanceMax(float distan)
 {
-	this->distanceShoot = distan;
+	this->distanceMax = distan;
 }
 
 void Bullet::setIceBullet()

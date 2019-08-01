@@ -23,6 +23,7 @@ CaptainAmericaStateAttack::CaptainAmericaStateAttack(CaptainAmerica * captainAme
 
 void CaptainAmericaStateAttack::init()
 {
+	
 	/*Bullet *bullet = BulletPool::getInstance()->getBullet();*/
 	/*captainAmerica->setBullet(new Bullet(new TextureManager(), captainAmerica->getGraphics()));*/
 

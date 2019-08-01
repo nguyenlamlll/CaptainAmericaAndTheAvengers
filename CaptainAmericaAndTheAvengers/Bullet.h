@@ -3,7 +3,7 @@
 #include "Animation.h"
 #include <list>
 
-#define DISTANCE_SHOOT 52
+#define DISTANCE_MAX 70
 #define VELOCITY_BULLET 180
 #define EXPLOSION_TIME_FRAME_DELAY 0.1f
 #define WIDTH_BULLET_HALF 1
@@ -13,7 +13,7 @@ class Bullet : public BaseObject
 {
 private:
 	float distance;
-	float distanceShoot;
+	float distanceMax;
 
 	list<CollisionReturn> *listCollide;
 	bool isCollided;
@@ -25,6 +25,8 @@ private:
 
 	int indexSprite;
 	int indexEffect;
+	bool isBack;
+	bool isFly;
 public:
 	Bullet(TextureManager* textureM, Graphics* graphics);
 	Bullet();
@@ -44,9 +46,12 @@ public:
 
 	list<CollisionReturn> *getListCollide();
 
-	float getDistanceShoot();
-	void setDistanceShoot(float distan);
+	float getDistanceMax();
+	void setDistanceMax(float distan);
 
 	void setIceBullet();
+
+	void setFly(bool fly) { isFly = fly; }
+	bool getFly() { return isFly; }
 };
 

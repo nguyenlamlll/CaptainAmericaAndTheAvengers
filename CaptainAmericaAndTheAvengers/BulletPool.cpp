@@ -103,7 +103,7 @@ void BulletPool::setDistanceShoot(float dis)
 {
 	for (unsigned i = 0; i < this->list.size(); i++)
 	{
-		this->list.at(i)->setDistanceShoot(dis);
+		this->list.at(i)->setDistanceMax(dis);
 	}
 }
 

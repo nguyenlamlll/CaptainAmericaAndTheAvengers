@@ -117,8 +117,7 @@ CaptainAmerica::CaptainAmerica(TextureManager * textureM, Graphics * graphics, I
 	CaptainAmericaStateManager::getInstance()->init(this, input);
 
 	visible = true;
-	
-	bulletPool = new BulletPool(textureM, graphics, 15);
+	this->isHaveShield = true;
 
 	shield = new Bullet(textureM, graphics);
 	shield->init(VECTOR2(this->getPosition().x, this->getPosition().y + 1));
@@ -156,7 +155,13 @@ void CaptainAmerica::update(float dt)
 	//this->setVelocityY(this->getVelocity().y + this->getAccelerate().y);
 
 	CaptainAmericaStateManager::getInstance()->getCurrentState()->update(dt);
-
+	if (!this->shield->getFly()) {
+		this->shield->setPositionX(this->getPosition().x + deltaX + 12);
+		this->shield->setPositionY(this->getPosition().y + deltaY + 8);
+	}
+	else {
+		this->shield->update(dt);
+	}
 
 #pragma region handle camera
 	bool isCameraMoving = false;
@@ -202,9 +207,6 @@ void CaptainAmerica::update(float dt)
 			Camera::getInstance()->setVelocity(VECTOR2(0, 0));
 	}
 
-	for (unsigned i = 0; i < this->bulletPool->getListUsing().size(); i++)
-		this->bulletPool->getListUsing().at(i)->update(dt);
-
 	//if (isCollidingPort)
 	//	this->setVelocityX(Camera::getInstance()->getVelocity().x);
 
@@ -229,14 +231,9 @@ void CaptainAmerica::update(float dt)
 void CaptainAmerica::draw()
 {
 	if (visible) {
-		for (unsigned i = 0; i < this->bulletPool->getListUsing().size(); i++)
-			this->bulletPool->getListUsing().at(i)->draw();
-
 		this->sprite->draw();
-		//this->bul->draw();
+		this->shield->draw();
 	}
-
-
 }
 
 void CaptainAmerica::drawIndicators()

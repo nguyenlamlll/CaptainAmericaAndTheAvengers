@@ -65,8 +65,6 @@ private:
 	Animation* sitAttackAnimation;
 	Animation* spinAnimation;
 	Animation* standAnimation;
-	
-	BulletPool *bulletPool;
 
 	bool visible;
 
@@ -75,6 +73,7 @@ private:
 	map<int, BaseObject*>* listWallCanCollide;
 
 	Bullet* shield;
+	bool isHaveShield;
 public:
 	CaptainAmerica();
 	CaptainAmerica(TextureManager* textureM, Graphics* graphics, Input* input);
@@ -134,6 +133,16 @@ public:
 
 	void setIsFalling(bool value) { isFalling = value; }
 	bool getIsFalling() { return isFalling; }
+
+	void initShield(TextureManager* textureM, Graphics* graphics) { shield = new Bullet(textureM, graphics);  }
+	void destroyShield() {
+		if (shield) { shield = NULL; delete shield; }
+	}
+
+	Bullet* getBullet() { return shield; }
+
+	TextureManager* getTextureManager() { return textureManager; }
+	Graphics* getGraphics() { return graphics; }
 
 	
 

@@ -167,19 +167,19 @@ void CaptainAmericaStateStand::onExit()
 void CaptainAmericaStateStand::fire()
 {
 	VECTOR2 stP;
-	Bullet* bullet = BulletPool::getInstance()->getBullet();
+
 	if (isUp)
 	{
 		stP = VECTOR2(this->captainAmerica->getPosition().x + this->captainAmerica->getDirection(), this->captainAmerica->getPosition().y + this->captainAmerica->getSprite()->getHeight()*0.4f);
-		bullet->setVelocity(VECTOR2(0, VELOCITY_BULLET));
+		this->captainAmerica->getBullet()->setVelocity(VECTOR2(0, VELOCITY_BULLET));
 	}
 	else
 	{
 		stP = VECTOR2(this->captainAmerica->getPosition().x, this->captainAmerica->getPosition().y + 3);
-		bullet->setVelocity(VECTOR2((float)VELOCITY_BULLET*this->captainAmerica->getDirection(), 0));
+		this->captainAmerica->getBullet()->setVelocity(VECTOR2((float)VELOCITY_BULLET*this->captainAmerica->getDirection(), 0));
 	}
 
-	bullet->init(stP);
+	this->captainAmerica->getBullet()->setFly(true);
 }
 
 void CaptainAmericaStateStand::fireRocket()
