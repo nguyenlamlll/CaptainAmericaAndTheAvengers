@@ -146,6 +146,7 @@ void CaptainAmericaStateStand::onCollision(float dt)
 			}
 			break;
 		}
+		
 		default:
 		{
 			break;
@@ -168,6 +169,7 @@ void CaptainAmericaStateStand::fire()
 {
 	VECTOR2 stP;
 
+
 	if (isUp)
 	{
 		stP = VECTOR2(this->captainAmerica->getPosition().x + this->captainAmerica->getDirection(), this->captainAmerica->getPosition().y + this->captainAmerica->getSprite()->getHeight()*0.4f);
@@ -180,6 +182,7 @@ void CaptainAmericaStateStand::fire()
 	}
 
 	this->captainAmerica->getBullet()->setFly(true);
+	this->captainAmerica->getBullet()->setDistance(0);
 }
 
 void CaptainAmericaStateStand::fireRocket()

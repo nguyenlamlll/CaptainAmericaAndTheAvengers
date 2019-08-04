@@ -14,7 +14,7 @@ class Bullet : public BaseObject
 private:
 	float distance;
 	float distanceMax;
-
+	
 	list<CollisionReturn> *listCollide;
 	bool isCollided;
 	float timer;
@@ -48,10 +48,13 @@ public:
 
 	float getDistanceMax();
 	void setDistanceMax(float distan);
+	void setDistance(float distan) { distance = distan; }
 
 	void setIceBullet();
 
 	void setFly(bool fly) { isFly = fly; }
+	void setBack(bool back) {isBack = back;}
 	bool getFly() { return isFly; }
+	bool getBack() { return isBack; }
 };
 

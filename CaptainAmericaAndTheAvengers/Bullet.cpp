@@ -35,6 +35,7 @@ Bullet::Bullet(TextureManager * textureM, Graphics * graphics) : BaseObject(eID:
 	this->timer = 0;
 	this->isBack = false;
 	this->isFly = false;
+	this->id = eID::BULLET;
 	//this->listCollide = new list<CollisionReturn>();
 
 
@@ -57,7 +58,23 @@ Bullet::~Bullet()
 
 void Bullet::onCollision()
 {
-	
+	for (auto i = this->getListCollide()->begin(); i != this->getListCollide()->end(); i++)
+	{
+		switch (i->object->getId())
+		{
+
+		case eID::CAPTAINAMERICA:
+		{
+			if (this->isFly == true
+				&& this->isBack == true)
+			{
+				this->setFly(false);
+				this->setBack(false);
+				this->setVelocity(VECTOR2(0, 0));
+			}
+		}
+		}
+	}
 }
 
 
@@ -92,12 +109,14 @@ void Bullet::update(float dt)
 	if (!this->isBack) {
 		this->distance += abs(vx*dt);
 	}
+
 	if (this->distance >= this->distanceMax && this->isBack == false) {
 		this->setVelocityX(-vx);
 		this->isBack = true;
 	}
 
 	this->setPosition(this->getPosition().x - this->getVelocity().x*dt, this->getPosition().y + this->getVelocity().y*dt);
+	setBoundCollision();
 }
 
 void Bullet::draw()

@@ -2,6 +2,7 @@
 #include "CaptainAmerica.h"
 #include "CaptainAmericaStateManager.h"
 #include "Camera.h"
+#include "Collision.h"
 //#include "GameDebug.h"
 //#include "Sound.h"
 
@@ -156,12 +157,21 @@ void CaptainAmerica::update(float dt)
 
 	CaptainAmericaStateManager::getInstance()->getCurrentState()->update(dt);
 	if (!this->shield->getFly()) {
-		this->shield->setPositionX(this->getPosition().x + deltaX + 12);
-		this->shield->setPositionY(this->getPosition().y + deltaY + 8);
+		this->shield->setPositionX(this->getPosition().x + 12);
+		this->shield->setPositionY(this->getPosition().y + 8);
 	}
 	else {
 		this->shield->update(dt);
+		if(this->shield->getBack()) 
+		{
+			if (Collision::getInstance()->isColliding(this->getBoundCollision(), this->shield->getBoundCollision())) {
+				this->shield->setFly(false);
+				this->shield->setBack(false);
+				this->shield->setVelocity(VECTOR2(0, 0));
+			}
+		}
 	}
+
 
 #pragma region handle camera
 	bool isCameraMoving = false;
