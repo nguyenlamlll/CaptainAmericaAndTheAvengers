@@ -79,6 +79,10 @@ void Map::draw()
 	{
 		for (int row = rowBegin; row < rowEnd; row++)
 		{
+			if (row <= -1 || col <= -1) 
+			{
+				continue;
+			}
 			if (mapCell[row][col].visible == false || mapCell[row][col].rect == NULL)
 			{
 				continue;
