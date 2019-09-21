@@ -7,6 +7,8 @@
 #include "TextureManager.h"
 #include "GameError.h"
 #include "Animation.h"
+#include "Bullet.h"
+#include "BulletPool.h"
 
 #include <list>
 #include <map>
@@ -70,6 +72,8 @@ private:
 	map<int, BaseObject*>* listCanCollide;
 	map<int, BaseObject*>* listWallCanCollide;
 
+	Bullet* shield;
+	bool isHaveShield;
 public:
 	CaptainAmerica();
 	CaptainAmerica(TextureManager* textureM, Graphics* graphics, Input* input);
@@ -129,6 +133,18 @@ public:
 
 	void setIsFalling(bool value) { isFalling = value; }
 	bool getIsFalling() { return isFalling; }
+
+	void initShield(TextureManager* textureM, Graphics* graphics) { shield = new Bullet(textureM, graphics);  }
+	void destroyShield() {
+		if (shield) { shield = NULL; delete shield; }
+	}
+
+	Bullet* getBullet() { return shield; }
+
+	TextureManager* getTextureManager() { return textureManager; }
+	Graphics* getGraphics() { return graphics; }
+
+	
 
 #pragma endregion
 	

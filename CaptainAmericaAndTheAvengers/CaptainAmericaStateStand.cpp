@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "CaptainAmericaStateStand.h"
 #include "CaptainAmericaStateManager.h"
+#include "BulletPool.h"
 #define TIME_TO_NORMAL 0.1f
 
 CaptainAmericaStateStand::CaptainAmericaStateStand()
@@ -93,6 +94,7 @@ void CaptainAmericaStateStand::handleInput(float dt)
 	{
 		CaptainAmericaStateManager::getInstance()->changeStateTo(eStatus::ATTACK);
 		CaptainAmericaStateManager::getInstance()->getCurrentState()->onStart();
+		this->fire();
 	}
 
 	if (input->isKeyDown(VK_D))
@@ -144,6 +146,7 @@ void CaptainAmericaStateStand::onCollision(float dt)
 			}
 			break;
 		}
+		
 		default:
 		{
 			break;
@@ -160,5 +163,30 @@ void CaptainAmericaStateStand::onStart()
 void CaptainAmericaStateStand::onExit()
 {
 	animation->stop();
+}
+
+void CaptainAmericaStateStand::fire()
+{
+	VECTOR2 stP;
+
+
+	if (isUp)
+	{
+		stP = VECTOR2(this->captainAmerica->getPosition().x + this->captainAmerica->getDirection(), this->captainAmerica->getPosition().y + this->captainAmerica->getSprite()->getHeight()*0.4f);
+		this->captainAmerica->getBullet()->setVelocity(VECTOR2(0, VELOCITY_BULLET));
+	}
+	else
+	{
+		stP = VECTOR2(this->captainAmerica->getPosition().x, this->captainAmerica->getPosition().y + 3);
+		this->captainAmerica->getBullet()->setVelocity(VECTOR2((float)VELOCITY_BULLET*this->captainAmerica->getDirection(), 0));
+	}
+
+	this->captainAmerica->getBullet()->setFly(true);
+	this->captainAmerica->getBullet()->setDistance(0);
+}
+
+void CaptainAmericaStateStand::fireRocket()
+{
+	
 }
 

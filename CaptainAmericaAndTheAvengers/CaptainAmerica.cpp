@@ -2,6 +2,7 @@
 #include "CaptainAmerica.h"
 #include "CaptainAmericaStateManager.h"
 #include "Camera.h"
+#include "Collision.h"
 //#include "GameDebug.h"
 //#include "Sound.h"
 
@@ -117,6 +118,10 @@ CaptainAmerica::CaptainAmerica(TextureManager * textureM, Graphics * graphics, I
 	CaptainAmericaStateManager::getInstance()->init(this, input);
 
 	visible = true;
+	this->isHaveShield = true;
+
+	shield = new Bullet(textureM, graphics);
+	shield->init(VECTOR2(this->getPosition().x, this->getPosition().y + 1));
 
 	listCollide = new list<CollisionReturn>();
 }
@@ -151,6 +156,21 @@ void CaptainAmerica::update(float dt)
 	//this->setVelocityY(this->getVelocity().y + this->getAccelerate().y);
 
 	CaptainAmericaStateManager::getInstance()->getCurrentState()->update(dt);
+	if (!this->shield->getFly()) {
+		this->shield->setPositionX(this->getPosition().x + 12);
+		this->shield->setPositionY(this->getPosition().y + 8);
+	}
+	else {
+		this->shield->update(dt);
+		if(this->shield->getBack()) 
+		{
+			if (Collision::getInstance()->isColliding(this->getBoundCollision(), this->shield->getBoundCollision())) {
+				this->shield->setFly(false);
+				this->shield->setBack(false);
+				this->shield->setVelocity(VECTOR2(0, 0));
+			}
+		}
+	}
 
 
 #pragma region handle camera
@@ -222,6 +242,7 @@ void CaptainAmerica::draw()
 {
 	if (visible) {
 		this->sprite->draw();
+		this->shield->draw();
 	}
 }
 

@@ -100,6 +100,7 @@ enum eID {
 	SAMUS,
 	CAPTAINAMERICA,
 	GROUND,
+	BULLET,
 };
 
 // collision direction

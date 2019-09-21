@@ -16,6 +16,7 @@ public:
 	// Return true if the two rectangles are colliding with each other.
 	bool isColliding(GameRect myRect, GameRect otherRect);
 
+
 	//Return true if one object will collide with another
 	bool willCollide(BaseObject* myObj, BaseObject* otherObj, float dt);
 	bool willCollide(BaseObject* myObj, BaseObject* otherObj, float dt, CollisionReturn& result);

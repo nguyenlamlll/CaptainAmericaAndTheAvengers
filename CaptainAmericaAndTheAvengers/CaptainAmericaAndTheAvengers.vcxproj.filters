@@ -64,6 +64,12 @@
     <Filter Include="Header Files\Utilities">
       <UniqueIdentifier>{69cf86c6-7ac6-434b-9a01-1a226e0d7fb6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\Players\Bullet">
+      <UniqueIdentifier>{ed350c77-90a2-47da-bfa4-387356300d0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\Players\Bullet">
+      <UniqueIdentifier>{b93292db-b38a-421c-a8e5-7ffb97dcddd2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -204,6 +210,12 @@
     <ClInclude Include="ConversionUtilities.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Header Files\Objects\Players\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletPool.h">
+      <Filter>Header Files\Objects\Players\Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -331,6 +343,12 @@
     </ClCompile>
     <ClCompile Include="GameError.cpp">
       <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Source Files\Objects\Players\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletPool.cpp">
+      <Filter>Source Files\Objects\Players\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
